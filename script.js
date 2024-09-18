@@ -30,7 +30,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         window.location.href = "mainpage.html";
     });
+});
 
+document.addEventListener("DOMContentLoaded", function() {
+    alert("You are on the loginpage");
+    
     document.getElementById("clickMeButton").addEventListener("click", function() {
         alert("You clicked the button!");
     });
