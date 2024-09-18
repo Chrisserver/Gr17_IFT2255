@@ -4,7 +4,7 @@ document.getElementById("clickMeButton").addEventListener("click", function() {
 // script.js
 document.getElementById("loginForm").addEventListener("submit", function() {
     //event.preventDefault();
-
+    alert("You clicked the button!");
     window.location.href = "mainpage.html";
 
     /**
