@@ -20,7 +20,7 @@ document.getElementById("loginForm").addEventListener("submit", function() {
 **/
 
 document.addEventListener("DOMContentLoaded", function() {
-    alert("You clicked the button!");
+    alert("You are on the loginpage");
 
     document.getElementById("loginForm").addEventListener("submit", function(event) {
         event.preventDefault();
@@ -29,5 +29,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const password = document.getElementById("password").value;
 
         window.location.href = "mainpage.html";
+    });
+
+    document.getElementById("clickMeButton").addEventListener("click", function() {
+        alert("You clicked the button!");
     });
 });
