@@ -5,6 +5,9 @@ document.getElementById("clickMeButton").addEventListener("click", function() {
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
+    window.location.href = "mainpage.html";
+
+    /**
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
@@ -12,9 +15,6 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     const validUsername = "user";
     const validPassword = "password123";
 
-    window.location.href = "mainpage.html";
-
-    /**
     if (username === validUsername && password === validPassword) {
         window.location.href = "mainpage.html"; // Redirect to a "dashboard" page
     } else {
