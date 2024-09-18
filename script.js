@@ -1,7 +1,8 @@
+/**
 document.getElementById("clickMeButton").addEventListener("click", function() {
     alert("You clicked the button!");
 });
-/**
+
 document.getElementById("loginForm").addEventListener("submit", function() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
