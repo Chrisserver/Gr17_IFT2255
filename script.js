@@ -20,7 +20,7 @@ document.getElementById("loginForm").addEventListener("submit", function() {
 **/
 
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("Script loaded and ready!");
+    alert("You clicked the button!");
 
     document.getElementById("loginForm").addEventListener("submit", function(event) {
         event.preventDefault();
