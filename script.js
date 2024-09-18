@@ -1,8 +1,4 @@
 /**
-document.getElementById("clickMeButton").addEventListener("click", function() {
-    alert("You clicked the button!");
-});
-
 document.getElementById("loginForm").addEventListener("submit", function() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -33,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    alert("You are on the loginpage");
+    alert("You are on the mainpage");
     
     document.getElementById("clickMeButton").addEventListener("click", function() {
         alert("You clicked the button!");
