@@ -2,8 +2,8 @@ document.getElementById("clickMeButton").addEventListener("click", function() {
     alert("You clicked the button!");
 });
 // script.js
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+document.getElementById("loginForm").addEventListener("submit", function() {
+    //event.preventDefault();
 
     window.location.href = "mainpage.html";
 
