@@ -16,8 +16,23 @@ document.getElementById("loginForm").addEventListener("submit", function() {
 **/
 
 document.addEventListener("DOMContentLoaded", function() {
-    alert("You are on the loginpage");
+    document.getElementById("dropDown").classList.toggle("show")
 
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+        }
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("loginForm").addEventListener("submit", function(event) {
         event.preventDefault();
 
@@ -29,9 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    alert("You are on the mainpage");
-    
     document.getElementById("clickMeButton").addEventListener("click", function() {
         alert("You clicked the button!");
     });
 });
+
