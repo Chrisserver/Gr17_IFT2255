@@ -16,7 +16,9 @@ document.getElementById("loginForm").addEventListener("submit", function() {
 **/
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("myDropdown").classList.toggle("show")
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
 
     window.onclick = function(event) {
         if (!event.target.matches('.dropbtn')) {
