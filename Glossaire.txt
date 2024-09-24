@@ -1,0 +1,11 @@
+Glossaire:
+
+*Résident: Citoyen(ne) qui habite dans la ville et à qui les travaux publics peuvent poser un problème.
+
+*Intervenants: Toute organisation ou personne effectuant un travail public.
+
+*Travaux publics: Travaux se déroulant sur l'espace public(ex:route,autoroute,passage piéton,place publique) et qui bloquent une certaine zone de ces lieux.
+
+*Planification participative: Une planification des travaux publics faisant participer les intervenants(effectuant les travaux) et les résidents(impactés par ces travaux).
+
+*Notifications personalisées: Alerte de travaux piblics, proche du lieu d'habitation ou autre centres d'intérêts du résident.
