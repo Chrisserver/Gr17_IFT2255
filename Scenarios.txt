@@ -60,7 +60,7 @@ Pas de travail prévu : Si aucun travail n'est prévu dans la zone sélectionné
     • Postconditions: Le résident a donné son accord ou non quand à la réalisation du projet.
 
 
- **** SCENARIOS UTILISATEUR*****
+ **** SCENARIOS INTERVENANT*****
  
  - S'inscrire comme intervenant
  	• Acteur principal : Intervenant
