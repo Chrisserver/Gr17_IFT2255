@@ -1,49 +1,59 @@
 Devoir 1
-À Montréal, les travaux publics et privés sont une réalité constante qui affecte le quotidien des résidents. Les chantiers, souvent imprévus ou mal annoncés, entraînent des perturbations importantes, allant des embouteillages aux fermetures de routes et aux entraves piétonnières. Ces situations créent un sentiment de frustration et d'imprévisibilité chez les citoyens, qui se retrouvent souvent surpris par des interventions touchant leur mobilité et leur accès aux services.
-Actuellement, les résidents ont accès à certaines informations liées aux entraves à la circulation grâce au service Info entraves et travaux. Ce service gratuit permet de s'informer sur les entraves causées par les travaux réalisés par la Ville, ses partenaires, les promoteurs immobiliers, les entrepreneurs privés et les particuliers. Cependant, le service présente certaines limites importantes, impactant son efficacité.
+Ã€ MontrÃ©al, les travaux publics et privÃ©s sont une rÃ©alitÃ© constante qui affecte le quotidien des rÃ©sidents. Les chantiers, souvent imprÃ©vus ou mal annoncÃ©s, 
+entraÃ®nent des perturbations importantes, allant des embouteillages aux fermetures de routes et aux entraves piÃ©tonniÃ¨res. Ces situations crÃ©ent un sentiment de
+frustration et d'imprÃ©visibilitÃ© chez les citoyens, qui se retrouvent souvent surpris par des interventions touchant leur mobilitÃ© et leur accÃ¨s aux services.
+
+Actuellement, les rÃ©sidents ont accÃ¨s Ã  certaines informations liÃ©es aux entraves Ã  la circulation grÃ¢ce au service Info entraves et travaux. Ce service gratuit
+permet de s'informer sur les entraves causÃ©es par les travaux rÃ©alisÃ©s par la Ville, ses partenaires, les promoteurs immobiliers, les entrepreneurs privÃ©s et les 
+particuliers. Cependant, le service prÃ©sente certaines limites importantes, impactant son efficacitÃ©.
+
 Proposition
-Nous pensons qu'une meilleure communication des activités et travaux prévus et entrepris par les intervenants, ainsi qu'une planification plus inclusive, pourrait réduire significativement les incompréhensions entre les différents acteurs. Une collaboration plus étroite entre le public, le privé, et la population pourrait améliorer la coordination des travaux, minimisant ainsi les impacts sur le quotidien des citoyens. Ainsi nous proposons la création de l'application, “MaVille”.
+
+Nous pensons qu'une meilleure communication des activitÃ©s et travaux prÃ©vus et entrepris par les intervenants, ainsi qu'une planification plus inclusive, pourrait
+rÃ©duire significativement les incomprÃ©hensions entre les diffÃ©rents acteurs. Une collaboration plus Ã©troite entre le public, le privÃ©, et la population pourrait
+amÃ©liorer la coordination des travaux, minimisant ainsi les impacts sur le quotidien des citoyens. Ainsi nous proposons la crÃ©ation de l'application, â€œMaVilleâ€.
+
 
 
 Liste de souhaits resident
-* S'inscrire comme résident
-* Consulter les travaux en cours ou à venir
+* S'inscrire comme rÃ©sident
+* Consulter les travaux en cours ou Ã  venir
 * Rechercher des travaux
-* Recevoir des notifications personnalisées
+* Recevoir des notifications personnalisÃ©es
 * Permettre une planification participative
-* Soumettre une requête de travail
-* Signaler un problème à la ville ou autre 
+* Soumettre une requÃªte de travail
+* Signaler un problÃ¨me Ã  la ville ou autre 
 Liste de souhaits intervenant
 * S'inscrire comme intervenant
 * Soumettre un nouveau projet de travaux
-* Mettre à jour les informations d'un chantier
+* Mettre Ã  jour les informations d'un chantier
 Prototype
-Étant limités en temps, nous ne vous demandons pas plus qu'une implémentation où l'interaction est en ligne de commande.
-Suite à l'authentification, l'application devrait afficher un menu principal présentant les actions possibles pour l'utilisateur connecté.
-Les actions peuvent être imbriquées pour éviter d'afficher trop d'options à l'utilisateur. Cependant, le menu ne devrait pas avoir plus de 3 niveaux d'imbrication. Bien entendu, il devrait toujours être possible de retourner au menu principal sans quitter l'application.
-Tâches
-Pour ce premier jalon, vous devez produire un rapport en HTML présentant le cadre du projet, votre analyse des exigences et un prototype.
+Ã‰tant limitÃ©s en temps, nous ne vous demandons pas plus qu'une implÃ©mentation oÃ¹ l'interaction est en ligne de commande.
+Suite Ã  l'authentification, l'application devrait afficher un menu principal prÃ©sentant les actions possibles pour l'utilisateur connectÃ©.
+Les actions peuvent Ãªtre imbriquÃ©es pour Ã©viter d'afficher trop d'options Ã  l'utilisateur. Cependant, le menu ne devrait pas avoir plus de 3 niveaux d'imbrication. Bien entendu, il devrait toujours Ãªtre possible de retourner au menu principal sans quitter l'application.
+TÃ¢ches
+Pour ce premier jalon, vous devez produire un rapport en HTML prÃ©sentant le cadre du projet, votre analyse des exigences et un prototype.
 Cadre
-* Description du projet: Contexte, Problèmes à résoudre, Proposition
-* Hypothèses: Hypothèses émises dans l'élaboration du projet
-* Équipe: Coordonnées des membres (Nom complet, matricule, username Discord)
-* Échéancier: Planification des taches montrant la répartition dans l'équipe
+* Description du projet: Contexte, ProblÃ¨mes Ã  rÃ©soudre, Proposition
+* HypothÃ¨ses: HypothÃ¨ses Ã©mises dans l'Ã©laboration du projet
+* Ã‰quipe: CoordonnÃ©es des membres (Nom complet, matricule, username Discord)
+* Ã‰chÃ©ancier: Planification des taches montrant la rÃ©partition dans l'Ã©quipe
 Exigences
-* Glossaire: Liste des termes et expressions clés caractérisant le domaine
-* Diagramme de cas d'utilisation et scénarios: Besoins fonctionnels et interaction avec l'application
-* Diagramme d'activités: Flux d'activités de l'application couvrant les CUs des résidents uniquement
+* Glossaire: Liste des termes et expressions clÃ©s caractÃ©risant le domaine
+* Diagramme de cas d'utilisation et scÃ©narios: Besoins fonctionnels et interaction avec l'application
+* Diagramme d'activitÃ©s: Flux d'activitÃ©s de l'application couvrant les CUs desÂ rÃ©sidents uniquement
 
 Analyse
-* Risques: 5 risques associés au projet (avec justification et solution pour mitiger le risque)
-* Besoins non fonctionnels: 5 caractéristiques de l'application (avec justification)
-Besoins matériels, solution de stockage et solution d'intégration
+* Risques:Â 5 risquesÂ associÃ©s au projet (avec justification et solutionÂ pour mitiger le risque)
+* Besoins non fonctionnels:Â 5 caractÃ©ristiquesÂ de l'application (avec justification)
+Besoins matÃ©riels, solution de stockage et solution d'intÃ©gration
 Prototype
-* Permet de se connecter comme résident ou intervenant
-* Permet d'accéder aux divers menus de l'application une fois connectée
+* Permet de se connecter comme rÃ©sident ou intervenant
+* Permet d'accÃ©der aux divers menus de l'application une fois connectÃ©e
 Git (GitHub)
-* README: Brève description du projet, organisation du répertoire
+* README: BrÃ¨ve description du projet, organisation du rÃ©pertoire
 * Participation active: au moins un commit par membre
-* Release: Faire un release lors de la remise
+* Release: Faire unÂ releaseÂ lors de la remise
 
 
 
@@ -62,44 +72,56 @@ Git (GitHub)
 
 Cadre
 Contexte :
-À Montréal, les travaux publics et privés perturbent fréquemment la circulation et l’accès des résidents aux services. En effet, les chantiers, souvent imprévus ou mal annoncés, entraînent des perturbations importantes, allant des embouteillages aux fermetures de routes et aux entraves piétonnières. Bien que le service Info entraves et travaux soit utile, il présente des lacunes en termes de communication et d’information.
-Problèmes à résoudre :
-- Manque d’informations claires sur les travaux à venir.
-- Frustration des citoyens face aux interruptions imprévues.
-- Difficulté à planifier ses déplacements en raison d’informations incomplètes.
+Ã€ MontrÃ©al, les travaux publics et privÃ©s perturbent frÃ©quemment la circulation et lâ€™accÃ¨s des rÃ©sidents aux services. En effet, les chantiers, souvent imprÃ©vus ou mal annoncÃ©s, entraÃ®nent des perturbations importantes, allant des embouteillages aux fermetures de routes et aux entraves piÃ©tonniÃ¨res. Bien que le service Info entraves et travaux soit utile, il prÃ©sente des lacunes en termes de communication et dâ€™information.
+ProblÃ¨mes Ã  rÃ©soudre :
+- Manque dâ€™informations claires sur les travaux Ã  venir.
+- Frustration des citoyens face aux interruptions imprÃ©vues.
+- DifficultÃ© Ã  planifier ses dÃ©placements en raison dâ€™informations incomplÃ¨tes.
 Proposition :
-Développer une application nommée “MaVille” qui offrira aux résidents et aux intervenants un accès à des informations détaillées sur les travaux, la possibilité de soumettre des demandes, et de recevoir des notifications personnalisées.
-Hypothèses :
-Pas compris, des idées de ce qui pourrait marcher ou ce qu’on présume du domaine lui-même.
-Équipe : 
-Nom completMatriculeUsername DiscordRim El Harras20248496RimElUdem
-Échéancier :
-Tout le long du projet, à faire en équipe
+DÃ©velopper une application nommÃ©e â€œMaVilleâ€ qui offrira aux rÃ©sidents et aux intervenants un accÃ¨s Ã  des informations dÃ©taillÃ©es sur les travaux, la possibilitÃ© de soumettre des demandes, et de recevoir des notifications personnalisÃ©es.
+HypothÃ¨sesÂ :
+Pas compris, des idÃ©es de ce qui pourrait marcher ou ce quâ€™on prÃ©sume du domaine lui-mÃªme.
+Ã‰quipe : 
+Nom complet
+Matricule
+Username Discord
+Rim El Harras
+20248496
+RimElUdem
+
+
+
+
+
+
+
+Ã‰chÃ©ancierÂ :
+Tout le long du projet, Ã  faire en Ã©quipe
 
 
 Exigences
-Glossaire: Liste des termes et expressions clés caractérisant le domaine
+Glossaire: Liste des termes et expressions clÃ©s caractÃ©risant le domaine
 
-Diagramme de cas d'utilisation et scénarios: Besoins fonctionnels et interaction avec l'application
+Diagramme de cas d'utilisation et scÃ©narios: Besoins fonctionnels et interaction avec l'application
 
-Diagramme d'activités: Flux d'activités de l'application couvrant les CUs des résidents uniquement
+Diagramme d'activitÃ©s: Flux d'activitÃ©s de l'application couvrant les CUs desÂ rÃ©sidents uniquement
 
 
 
 
 Analyse
-Risques: 5 risques associés au projet (avec justification et solution pour mitiger le risque)
-Retards dans la mise à jour des informations
-Les intervenants, comme les entreprises de construction ou les promoteurs immobiliers, peuvent être submergés par leurs projets et ne pas accorder assez de temps à la mise à jour des informations sur les chantiers. Cela peut entraîner la diffusion d’informations dépassée, créant de la confusion parmi les résidents qui dépendent de l’application pour des mises à jour précises. Une mauvaise communication sur l’état des chantiers peut également causer des désagréments, des retards dans les déplacements et une perte de confiance envers l’application.
-Pour atténuer ce risque, il est crucial de mettre en place un système de rappels automatisés qui envoie des notifications aux intervenants, les incitant à mettre à jour régulièrement les informations sur leurs chantiers. Par exemple, des alertes hebdomadaires pourraient être programmées pour rappeler aux intervenants de vérifier et actualiser les détails des projets en cours. De plus, la création d’un tableau de bord simple et intuitif pour les intervenants faciliterait le processus de mise à jour, réduisant ainsi la charge de travail associée. Enfin, établir des indicateurs de performance, tels que des délais de mise à jour, permettrait de suivre la réactivité des intervenants et d’ajuster le système en conséquence.
-Problèmes de sécurité des données
-Avec la hausse des cyberattaques et des violations de données, la protection des informations personnelles des utilisateurs devient essentielle. Si les données des résidents, telles que leurs coordonnées ou leurs historiques de navigation, étaient compromises, cela mettrait non seulement leur vie privée en péril, mais pourrait aussi nuire à la réputation de l'application et de la Ville. Par crainte que leurs informations soient mal utilisées, les utilisateurs pourraient choisir de se désinscrire, ce qui entraînerait une diminution de l'engagement envers l'application.
+Risques:Â 5 risquesÂ associÃ©s au projet (avec justification et solutionÂ pour mitiger le risque)
+Retards dans la mise Ã  jour des informations
+Les intervenants, comme les entreprises de construction ou les promoteurs immobiliers, peuvent Ãªtre submergÃ©s par leurs projets et ne pas accorder assez de temps Ã  la mise Ã  jour des informations sur les chantiers. Cela peut entraÃ®ner la diffusion dâ€™informations dÃ©passÃ©e, crÃ©ant de la confusion parmi les rÃ©sidents qui dÃ©pendent de lâ€™application pour des mises Ã  jour prÃ©cises. Une mauvaise communication sur lâ€™Ã©tat des chantiers peut Ã©galement causer des dÃ©sagrÃ©ments, des retards dans les dÃ©placements et une perte de confiance envers lâ€™application.
+Pour attÃ©nuer ce risque, il est crucial de mettre en place un systÃ¨me de rappels automatisÃ©s qui envoie des notifications aux intervenants, les incitant Ã  mettre Ã  jour rÃ©guliÃ¨rement les informations sur leurs chantiers. Par exemple, des alertes hebdomadaires pourraient Ãªtre programmÃ©es pour rappeler aux intervenants de vÃ©rifier et actualiser les dÃ©tails des projets en cours. De plus, la crÃ©ation dâ€™un tableau de bord simple et intuitif pour les intervenants faciliterait le processus de mise Ã  jour, rÃ©duisant ainsi la charge de travail associÃ©e. Enfin, Ã©tablir des indicateurs de performance, tels que des dÃ©lais de mise Ã  jour, permettrait de suivre la rÃ©activitÃ© des intervenants et dâ€™ajuster le systÃ¨me en consÃ©quence.
+ProblÃ¨mes de sÃ©curitÃ© des donnÃ©es
+Avec la hausse des cyberattaques et des violations de donnÃ©es, la protection des informations personnelles des utilisateurs devient essentielle. Si les donnÃ©es des rÃ©sidents, telles que leurs coordonnÃ©es ou leurs historiques de navigation, Ã©taient compromises, cela mettrait non seulement leur vie privÃ©e en pÃ©ril, mais pourrait aussi nuire Ã  la rÃ©putation de l'application et de la Ville. Par crainte que leurs informations soient mal utilisÃ©es, les utilisateurs pourraient choisir de se dÃ©sinscrire, ce qui entraÃ®nerait une diminution de l'engagement envers l'application.
 Trouver la solution
 
 
-Besoins non fonctionnels: 5 caractéristiques de l'application (avec justification)
+Besoins non fonctionnels:Â 5 caractÃ©ristiquesÂ de l'application (avec justification)
 
 
 
-Besoins matériels, solution de stockage et solution d'intégration
+Besoins matÃ©riels, solution de stockage et solution d'intÃ©gration
 
