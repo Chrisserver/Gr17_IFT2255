@@ -864,6 +864,70 @@
                 <div class="scenario" id="cu-2">
                     <div class="scenario-meta">
                         <h4 class="cu-name">
+                            <strong>CU:</strong> Signaler un problème
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'utilisateur peut dire s'il y a un problème a un endroit précis d'un travail en cours.
+                        </p>
+                        
+                        <hr>
+
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur (Principal)</li>
+                                <li class="cu-actor">Intervenant (Secondaire)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Un travail doit être en cours dans ce lieu.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Aucune</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part cu-part--notes">
+                            <h5 class="cu-part-title">Notes</h5>
+                            <p class="cu-notes">Notes additionnelles et hypothèses</p>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur se rend à la section où il peut signaler un problème</li>
+                            <li class="scenario-main-step">Le système affiche une carte des chantiers de construction en cours</li>
+                            <li class="scenario-main-step">L'utilisateur choisit un chantier de construction où il y a un problème.</li>
+                            <li class="scenario-main-step">L'utilisateur mentionne quel est le problème</li>
+                            <li class="scenario-main-step">L'utilisateur envoit cette réclamation.</li>
+                            <li class="scenario-main-step">Le système envoit cet avertissement à l'intervenant en charge du projet.</li>
+                            <li class="scenario-main-step">Le système renouvelle le projet en ajoutant ce problème.</li>
+                        </ol>
+
+                        <div class="scenario-alt">
+                            <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+                            <ol class="bare-list scenario-alt-steps">
+                                <li class="scenario-alt-step" value="3">
+                                    Localisation automatique activée
+                                    <ol class="bare-list">
+                                        <li value="3">Si cette fonctionnalité est activée, le système accède directement la localisation de l'utilisateur</li>
+                                        <li value="3">Le système montre sur la carte où l'utilisateur se trouve et il sélectionne le chantier de construction</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                    </div>
+                </div>
+
+                <div class="scenario" id="cu-3">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
                             <strong>CU:</strong> Accepter une requête
                         </h4>
                         <p class="cu-goal">
