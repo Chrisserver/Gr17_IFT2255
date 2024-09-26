@@ -768,10 +768,10 @@
                 <div class="scenario" id="cu-1">
                     <div class="scenario-meta">
                         <h4 class="cu-name">
-                            <strong>CU:</strong> Créer une séance
+                            <strong>CU:</strong> Soumettre un requête
                         </h4>
                         <p class="cu-goal">
-                            <strong>Objectif:</strong> Un professionnel souhaite donner une séance d'un service au GYM
+                            <strong>Objectif:</strong> Un résident souhaite soumettre un projet de réparation, de construction, d'entretien, etc. pour un endroit près de chez lui.
                         </p>
                         
                         <hr>
@@ -779,61 +779,82 @@
                         <div class="cu-part">
                             <h5 class="cu-part-title">Acteurs</h5>
                             <ul class="bare-list cu-actors">
-                                <li class="cu-actor">Professionnel (Principal)</li>
-                                <li class="cu-actor">Agent (Secondaire)</li>
+                                <li class="cu-actor">Résident (Principal)</li>
+                                <li class="cu-actor">Intervenant (Secondaire)</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part">
                             <h5 class="cu-part-title">Préconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Le professionnel a un compte et est présent au GYM.</li>
+                                <li class="dash">Le résident a un compte d'ouvert et est dans le périmètre de sa résidence.</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part">
                             <h5 class="cu-part-title">Postconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Aucun</li>
+                                <li class="dash">Les autres résidents du périmètre autour de l'endroit de cette requête ont le droit d'y donner leur avis.</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part cu-part--notes">
                             <h5 class="cu-part-title">Notes</h5>
-                            <p class="cu-notes">Notes additionnelles et hypothèses</p>
+                            <p class="cu-notes">Ces requêtes sont différentes entre les résidents et les intervenants. Les intervenants doivent mentionner les points énoncés dans le scénario "Accepter une requête" pour la soumettre. Cette requête soumise par les intervenants sont à la fois affichée pour que les autres utilisateurs puissent la voir et elle est envoyée à la municipalité/ville/province.</p>
                         </div>
                     </div>
                     <div class="scenario-main">
                         <h5 class="scenario-main-title">Scénario principal</h5>
                         <ol class="scenario-main-steps">
-                            <li class="scenario-main-step">Le professionnel se présente à l’accueil et donne son numéro.</li>
-                            <li class="scenario-main-step">L’agent entre le numéro dans le système.</li>
-                            <li class="scenario-main-step">Le système valide le numéro du membre.</li>
-                            <li class="scenario-main-step">Le professionnel indique à l’agent le service qu’il souhaite fournir.</li>
-                            <li class="scenario-main-step">L’agent <a href="#cu-2">consulte le Répertoire des services</a> pour trouver le code de service.</li>
-                            <li class="scenario-main-step">L’agent demande au professionnel le reste des informations requises.</li>
-                            <li class="scenario-main-step">L’agent entre les données dans le système.</li>
-                            <li class="scenario-main-step">Le système affiche les détails de la séance nouvellement créée.</li>
+                            <li class="scenario-main-step">Le résident se rend dans la section pour compléter un formulaire et choisi quel type de formulaire il désire remplir (entretien, réparation, construction, ou autres).</li>
+                            <li class="scenario-main-step">Le résident nomme l'emplacement exacte du problème à résoudre.</li>
+                            <li class="scenario-main-step">Le système valide si l'emplacement est près de chez lui.</li>
+                            <li class="scenario-main-step">Le résident donne une description détaillée des travaux à faire. (e.g. nid de poule)</li>
+                            <li class="scenario-main-step">Le résident écrit l'état actuel du problème. (e.g. profondeur, largeur)</li>
+                            <ol class="bare-list">
+                                <li value="5">Description de l'état de dégradation et des risques</li>
+                                <li value="5">Si cela s'applique: Si des gens se sont blessés à cet endroit et/ou ont eu un accident.</li>
+                            </ol>
+                            <li class="scenario-main-step">Le résident renseigne l'ampleur du problème. (e.g. quelques mètres dans la rue, toute la rue, etc.).</li>
+                            <li class="scenario-main-step">Le résident mentionne si des travaux ont déjà eu lieu à cet endroit pour une raison similaire.</li>
+                            <ol class="bare-list">
+                                <li value="7">Date ou approximation de la date de la dernière fois qu'ils sont venus faire des travaux à cet endroit.</li>
+                            </ol>  
+                            <li class="scenario-main-step">Le résident élabore sur le problème qui peut en être engendré et l'urgence de cette requête.</li>
+                            <ol class="bare-list">
+                                <li value="8">Si cela s'applique: Le traffic que ce problème cause, si ça bloque des piétons ou des cyclistes.</li>
+                            </ol>
+                            <li class="scenario-main-step">Le résident rajoute des photos à ce rapport si nécessaire.</li>
+
+                            <li class="scenario-main-step">Le résident soumet la requête</li>
+                            <ol class="bare-list">
+                                <li value="10">Les informations de base (nom, prénom, courriel, numéro de téléphone, addresse) sont déjà inscrit dans l'envoi du formulaire.</li>
+                            </ol>
+                            <li class="scenario-main-step">Le système reçoit la requête et l'envoie à la ville concernée, l'arrondissement concernée et aux différents contracteurs privés de cette région qui ont les capacités de remédier au problème.</li>
+                            <li class="scenario-main-step">Le résident reçoit également une notification sur son compte de la requête soumise.</li>
+                            <li class="scenario-main-step">Le système ajoute cette requête dans les projets en devenir.</li>
+                            <ol class="bare-list">
+                                <li value="13">La requête est ajoutée au cartes, dans flux de notifications des résidents aux alentours d'où cette requête aura lieu et dans la liste de nouveaux projets à consulter</li>
+                            </ol>
                         </ol>
 
                         <div class="scenario-alt">
                             <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
                             <ol class="bare-list scenario-alt-steps">
-                                <li class="scenario-alt-step" value="4">
-                                    Le compte est suspendu.
+                                <li class="scenario-alt-step" value="2">
+                                    Sélectionner "Autre"
                                     <ol class="bare-list">
-                                        <li value="4">Le système affiche Compte suspendu à l'écran</li>
-                                        <li value="4">Le scénario se termine</li>
+                                        <li value="2">Si le type de service est "Autre", il doit mentionner de quel type il s'agit avant de procéder.</li>
+                                        <li value="2">Le formulaire "Autre" s'affiche.</li>
                                     </ol>
                                 </li>
                             </ol>
                             <ol class="bare-list scenario-alt-steps">
-                                <li class="scenario-alt-step" value="6">
-                                    Le service souhaité n'est pas offert chez GYM.
+                                <li class="scenario-alt-step" value="2">
+                                    L'emplacement est erroné
                                     <ol class="bare-list">
-                                        <li value="6">L'agent ne trouve pas le code pour le service demandé.</li>
-                                        <li value="6">L'agent informe le professionnel de la non-disponibilité du service.</li>
-                                        <li value="6">Le scénario se termine.</li>
+                                        <li value="4">Si l'emplacement est erroné, ce serait pour deux raisons valables; soit l'endroit n'est pas dans le périmètre auxquels il peut soumettre la requête, soit il remplit le formulaire "Autre" et l'emplacement n'est pas adéquat au service.</li>
+                                        <li value="4">Le système renvoie une erreur en demandant de changer la zone où se situerait cette requête.</li>
                                     </ol>
                                 </li>
                             </ol>
@@ -844,10 +865,10 @@
                 <div class="scenario" id="cu-2">
                     <div class="scenario-meta">
                         <h4 class="cu-name">
-                            <strong>CU:</strong> Consulter le répertoire des services
+                            <strong>CU:</strong> Accepter une requête
                         </h4>
                         <p class="cu-goal">
-                            <strong>Objectif:</strong> Obtenir la liste des services et séances offerts et disponibles
+                            <strong>Objectif:</strong> Un intervenant désire accepter une requête créé par un résident.
                         </p>
                         
                         <hr>
@@ -855,21 +876,22 @@
                         <div class="cu-part">
                             <h5 class="cu-part-title">Acteurs</h5>
                             <ul class="bare-list cu-actors">
-                                <li class="cu-actor">Agent (Principal)</li>
+                                <li class="cu-actor">Intervenant (Principal)</li>
+                                <li class="cu-actor">Municipalité/ville/province (Secondaire)</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part">
                             <h5 class="cu-part-title">Préconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Aucun.</li>
+                                <li class="dash">Une requête doit être fait par résident pour que les intervenants puissent l'accepter.</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part">
                             <h5 class="cu-part-title">Postconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Aucun</li>
+                                <li class="dash">Les intervenants doivent garder un suivi avec la ville pour exécuter ce projet.</li>
                             </ul>
                         </div>
                         
