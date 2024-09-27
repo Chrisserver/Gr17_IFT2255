@@ -1,0 +1,52 @@
+HYPOTHÈSES:
+
+
+*S'inscrire comme résident
+
+Hypothèses :
+Le résident possède une adresse valide dans la ville ou région couverte par l'application.
+Le résident a accès à une connexion internet pour s'inscrire via l'application.
+
+
+*Consulter les travaux en cours ou à venir
+
+Hypothèses :
+Les données sur les travaux publics et privés sont régulièrement mises à jour dans l'application.
+L'application peut accéder à une base de données contenant des informations sur les travaux planifiés ou en cours.
+Le résident a bien saisi l'adresse de la zone de recherche(code postal , adresse).
+
+*Recevoir des notifications personnalisées
+
+Hypothèses :
+Le résident a correctement paramétré ses centres d'intérets(lieu de residence, travail).
+Les notifications sont envoyées à temps pour permettre au résident de s'organiser.
+
+*Soumettre une requête de travail
+
+Hypothèses :
+La ville a donnée son accord quand à la récéption des requetes de travail depuis l'application.
+Le résident soumet des informations complètes et précises sur le projet .
+
+*Signaler un problème ou autre
+
+Hypothèses :
+L'application permet un signalement facile(photo,texte,video).
+Les acteurs concernés reçoivent ces signalements et sont en mesure de les traiter.
+
+*S'inscrire comme intervenant
+
+Hypothèses :
+L'adresse de l'intervenant est valide  avant inscription.
+L'intervenant dispose des autorisations légales pour soumettre des projets.
+
+*Soumettre un nouveau projet de travaux
+
+Hypothèses :
+La ville en collaboration avec les résidents valide les projets de travaux avant de les rendre visibles aux résidents.
+L’intervenant doit fournir des informations complètes et précises (adresse, dates, horaires).
+Le projet soumis par l'intervenant est conforme aux réglementations de la ville.
+
+*Mettre à jour les informations d'un chantier
+
+Hypothèses :
+L’application informe les résidents de ces changements (modifications de dates, horaires, etc.).
