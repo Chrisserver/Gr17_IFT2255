@@ -12,13 +12,13 @@ Le résident a accès à une connexion internet pour s'inscrire via l'applicatio
 
 Hypothèses :
 Les données sur les travaux publics et privés sont régulièrement mises à jour dans l'application.
-L'application peut accéder à une base de données contenant des informations sur les travaux planifiés ou en cours.
+L'application peut accéder à une base de données contenant des informations sur les travaux planifiés.
 Le résident a bien saisi l'adresse de la zone de recherche(code postal , adresse).
 
 *Recevoir des notifications personnalisées
 
 Hypothèses :
-Le résident a correctement paramétré ses centres d'intérets(lieu de residence, travail).
+Le résident a correctement entré ses centres d'intérets(lieu de residence, travail).
 Les notifications sont envoyées à temps pour permettre au résident de s'organiser.
 
 *Soumettre une requête de travail
@@ -39,12 +39,11 @@ Hypothèses :
 L'adresse de l'intervenant est valide  avant inscription.
 L'intervenant dispose des autorisations légales pour soumettre des projets.
 
-*Soumettre un nouveau projet de travaux
+*Soumettre un nouveau projet de travail
 
 Hypothèses :
 La ville en collaboration avec les résidents valide les projets de travaux avant de les rendre visibles aux résidents.
 L’intervenant doit fournir des informations complètes et précises (adresse, dates, horaires).
-Le projet soumis par l'intervenant est conforme aux réglementations de la ville.
 
 *Mettre à jour les informations d'un chantier
 
