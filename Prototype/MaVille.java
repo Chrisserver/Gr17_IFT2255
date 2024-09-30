@@ -156,7 +156,7 @@ public class MaVille {
         int choice = 17;
         while(choice!=0){
             System.out.println("----Menu Résident---");
-            System.out.print("Choisissez une option:");
+            System.out.println("Choisissez une option:");
             System.out.println("1. Consulter les travaux en cours ou à venir");
             System.out.println("2. Recevoir des notifications personnalisées");
             System.out.println("3. Soumettre une requête de travail ou signaler un problème");
@@ -188,7 +188,7 @@ public class MaVille {
         int choice = 17;
         while(choice!=0){
             System.out.println("--- Menu Intervenant ---");
-            System.out.print("Choisissez une option:");
+            System.out.println("Choisissez une option:");
             System.out.println("1. Soumettre un nouveau projet de travaux");
             System.out.println("2. Mettre à jour les informations d'un chantier");
             System.out.println("3. Consulter la liste de requêtes de travail");
