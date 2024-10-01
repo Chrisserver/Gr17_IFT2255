@@ -38,7 +38,7 @@ Pas de travail prévu : Si aucun travail n'est prévu dans la zone sélectionné
 	• Acteur principal : Résident
 	• Description : Le resident souhaitre soumettre une requête de travail (ex:construire une canalisation)
 	• Préconditions : Le résident est connecté à l'application Maville.
-    • Postconditions: Le résident soumet sa requête de travail à la Ville avec réussite.
+    • Postconditions: Le résident soumet sa requête de travail à la Ville avec réussite et des intervenants peuvent voir cette requête de travail.
 
 - Signaler un problème ou autre :
 	• Acteur principal : Résident
