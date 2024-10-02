@@ -66,7 +66,7 @@ Pas de travail prévu : Si aucun travail n'est prévu dans la zone sélectionné
  	• Acteur principal : Intervenant
 	• Description : L'intervenant souhaite s'inscrire à l'application Maville en tant que résident.
 	• Préconditions : L'intervenant doit se rendre sur la page d'acceuil de l'application.
-    • Postconditions: L'intervenant peut se connecter à l'application et avoir accès au menu résident.
+    • Postconditions: L'intervenant peut se connecter à l'application et avoir accès au menu intervenant.
 
 - Soumettre un nouveau projet de travaux
 	• Acteur principal : Intervenant
@@ -74,10 +74,10 @@ Pas de travail prévu : Si aucun travail n'est prévu dans la zone sélectionné
 	• Description : L'intervenant souhaite soumettre un nouveau projet de travaux à un lieu et une date précise.Il devra rentrer
 	les informations relatifs au projet(adresse , date debut/fin , horaire des travaux).
 	• Préconditions : L'intervenant est connecté à l'application Maville.
-    • Postconditions: Le nouveau projet est soumis pour validation à la ville et les résidents.
+    • Postconditions: Le nouveau projet est soumis pour validation à la ville et aux résidents.
 
 - Mettre à jour les informations d'un chantier
 	• Acteur principal : Intervenant
 	• Description : L'intervenant souhaite mettre à jour les informations d'un chantier.
-	• Préconditions : L'intervenant est connecté à l'application MaVille.
-    • Postconditions: Les informationsdu chantier sont mises à jour.
+	• Préconditions : L'intervenant est connecté à l'application MaVille et a accès aux informations projet qu'il veut mettre à jour.
+    • Postconditions: Les informations du chantier sont mises à jour.
