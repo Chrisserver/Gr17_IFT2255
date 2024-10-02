@@ -1,5 +1,7 @@
 package src;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MaVille {
-
+    static ArrayList<ProjetTravaux> Travaux = new ArrayList<ProjetTravaux>();
     public static void main(String[] args) throws IOException {
         ArrayList<Resident> residents = new ArrayList<>();
         ArrayList<Intervenant> intervenants = new ArrayList<>();
@@ -77,7 +79,7 @@ public class MaVille {
                         System.out.println("Rôle non reconnu. Veuillez réessayer.");
                     }
 
-                    menu();
+                    menu();// Pour rester connecter à l'appli et l'acceuil
                     break;
 
                 case 2:
@@ -95,7 +97,8 @@ public class MaVille {
                         if (resident.getCourriel().equalsIgnoreCase(emailConnexion) && resident.getMotDePasse().equals(mdpConnexion)) {
                             System.out.println("Connexion réussie en tant que Resident!");
                             connexionReussie = true;
-                            resident_menu(scanner);
+                            ResidentMenu residentMenu = new ResidentMenu(Travaux);
+                            residentMenu.afficherMenu(scanner);
                             break;
                         }
                     }
@@ -106,7 +109,8 @@ public class MaVille {
                             if (intervenant.getCourriel().equalsIgnoreCase(emailConnexion) && intervenant.getMotDePasse().equals(mdpConnexion)) {
                                 System.out.println("Connexion réussie en tant qu'Intervenant!");
                                 connexionReussie = true;
-                                intervenant_menu(scanner);
+                                IntervenantMenu intervenantMenu = new IntervenantMenu(Travaux);
+                                intervenantMenu.afficherMenu(scanner);
                                 break;
                             }
                         }
@@ -134,6 +138,7 @@ public class MaVille {
     }
 
     // Méthode pour valider l'adresse courriel
+    // source: https://stackoverflow.com/questions/8204680/java-regex-email
     public static boolean validerCourriel(String courriel) {
         String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
         Pattern pattern = Pattern.compile(regex);
@@ -152,68 +157,26 @@ public class MaVille {
         System.out.println("3. Quitter l'application");
     }
 
-    public static void resident_menu(Scanner scanner){
-        int choice = 17;
-        while(choice!=0){
-            System.out.println("----Menu Résident---");
-            System.out.println("Choisissez une option:");
-            System.out.println("1. Consulter les travaux en cours ou à venir");
-            System.out.println("2. Recevoir des notifications personnalisées");
-            System.out.println("3. Soumettre une requête de travail ou signaler un problème");
-            System.out.println("0. Se déconnecter");
-            choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    System.out.println("Consultation des travaux en cours ou à venir...");
-                    // Simulation de la consultation
-                    break;
-                case 2:
-                    System.out.println("Configuration des notifications personnalisées...");
-                    // Simulation de la configuration des notifications
-                    break;
-                case 3:
-                    System.out.println("Soumission d'une requête ou signalement d'un problème...");
-                    // Simulation de la soumission
-                    break;
-                case 0:
-                    System.out.println("Déconnexion...");
-                    break;
-                default:
-                    System.out.println("Option invalide. Veuillez réessayer.");
-                    break;
 
-            }}
+// deux methodes pour stocker les listes de residents et intervenants sous forme de fichier text.
+    public static void saveResidentAsText(ArrayList<Resident> residents) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("residents.txt"))) {
+            for (Resident resident : residents) {
+                writer.write(resident.getNomComplet()+","+resident.getCourriel()+","+resident.getMotDePasse()+","+resident.getDateDeNaissance()+","+resident.getTelephone()+","+resident.getAdresseResidentielle());
+                writer.newLine(); // Ajouter un saut de ligne entre chaque utilisateur
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     };
-    public static void intervenant_menu(Scanner scanner){
-        int choice = 17;
-        while(choice!=0){
-            System.out.println("--- Menu Intervenant ---");
-            System.out.println("Choisissez une option:");
-            System.out.println("1. Soumettre un nouveau projet de travaux");
-            System.out.println("2. Mettre à jour les informations d'un chantier");
-            System.out.println("3. Consulter la liste de requêtes de travail");
-            System.out.println("0. Se déconnecter");
-            choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    System.out.println("Soumettre un nouveau projet de travaux");
-                    // Simulation de la consultation
-                    break;
-                case 2:
-                    System.out.println("Mettre à jour les informations d'un chantier");
-                    // Simulation de la configuration des notifications
-                    break;
-                case 3:
-                    System.out.println("Consulter la liste de requêtes de travail");
-                    // Simulation de la soumission
-                    break;
-                case 0:
-                    System.out.println("Déconnexion...");
-                    break;
-                default:
-                    System.out.println("Option invalide. Veuillez réessayer.");
-                    break;
-
-            }}
-    };
+    public static void saveIntervenantAsText(ArrayList<Intervenant> intervenants) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("intervenants.txt"))) {
+            for (Intervenant intervenant : intervenants) {
+                writer.write(intervenant.getNomComplet()+","+intervenant.getCourriel()+","+intervenant.getMotDePasse()+","+intervenant.getType()+","+intervenant.getIdentifiantVille());
+                writer.newLine(); // Ajouter un saut de ligne entre chaque utilisateur
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
