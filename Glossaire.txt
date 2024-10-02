@@ -8,4 +8,4 @@ Glossaire:
 
 *Planification participative: Une planification des travaux publics faisant participer les intervenants(effectuant les travaux) et les résidents(impactés par ces travaux).
 
-*Notifications personalisées: Alerte de travaux publics, proche du lieu d'habitation ou autre centres d'intérêts du résident.
+*Notifications personalisées: Alerte de nouveaux ou des modifications des travaux publics, proche du lieu d'habitation ou autre centres d'intérêts du résident.
