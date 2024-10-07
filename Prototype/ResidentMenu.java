@@ -7,8 +7,8 @@ public class ResidentMenu {
     private ArrayList<RequeteTravail> requetes;
     private ArrayList<ProjetTravaux> travaux;
 
-    public ResidentMenu(ArrayList<ProjetTravaux> travaux) {
-        this.requetes = new ArrayList<>();
+    public ResidentMenu(ArrayList<ProjetTravaux> travaux,ArrayList<RequeteTravail> requetes) {
+        this.requetes = requetes;
         this.travaux = travaux;
     }
 
@@ -18,9 +18,10 @@ public class ResidentMenu {
             System.out.println("----Menu Résident---");
             System.out.println("Choisissez une option:");
             System.out.println("1. Consulter les travaux en cours ou à venir");
-            System.out.println("2. Recevoir des notifications personnalisées");
-            System.out.println("3. Soumettre une requête de travail");
-            System.out.println("4. Signaler un problème à la ville");
+            System.out.println("2. Rechercher des travaux");
+            System.out.println("3. Recevoir des notifications personnalisées");
+            System.out.println("4. Soumettre une requête de travail");
+            System.out.println("5. Signaler un problème à la ville");
             System.out.println("0. Se déconnecter");
             choice = scanner.nextInt();
             scanner.nextLine(); // Consommer la ligne restante
@@ -30,12 +31,14 @@ public class ResidentMenu {
                     consulterTravaux();
                     break;
                 case 2:
-                    System.out.println("Recevoir notifications personalisées");
+                    rechercherTravaux(scanner);
                     break;
                 case 3:
+                    System.out.println("Recevoir des notifications personnalisées");
+                case 4:
                     soumettreRequete(scanner);
                     break;
-                case 4:
+                case 5:
                     System.out.println("Signaler un problème à a ville");
                     break;
                 case 0:
@@ -84,4 +87,94 @@ public class ResidentMenu {
         System.out.println("Votre requête a été soumise.");
     }
 
+    private void rechercherTravaux(Scanner scanner){
+        System.out.println("Choisissez un filtre pour rechercher travaux:\n1.titre\n2.Type travaux\n3.Quartier");
+        int choix = scanner.nextInt();
+        switch (choix){
+            case 1:
+                System.out.println("Quel titre?");
+                String titre = scanner.nextLine();
+                for(ProjetTravaux projet: travaux){
+                    if(projet.getTitre().equalsIgnoreCase(titre)){
+                        System.out.println(projet.toString());
+                    }
+                }
+            case 2:
+                System.out.println("Quel type de travaux?:\nTravaux routiers\n–" +
+                        "\nTravaux de gaz ou électricité\n–" +
+                        "\nConstruction ou rénovation\n–" +
+                        "\nEntretien paysager\n–" +
+                        "\nTravaux liés aux transports en commun\n–" +
+                        "\nTravaux de signalisation et éclairage\n–" +
+                        "\nTravaux souterrains" +
+                        "\n–" +
+                        "\nTravaux résidentiel" +
+                        "\n–" +
+                        "\nEntretien urbain\n–" +
+                        "\nEntretien des réseaux de télécommunication");
+                String type = scanner.nextLine();
+                for(ProjetTravaux projet: travaux){
+                    if(projet.getTypeTravaux().equalsIgnoreCase(type)){
+                        System.out.println(projet.toString());
+                    }
+                }
+            case 3:
+                System.out.println("Quel Quartier ou arrondissement?\nAhuntsic-Cartierville +\n" +
+                        "    \"Anjou\\n\" +\n" +
+                        "    \"Côte-des-Neiges–Notre-Dame-de-Grâce\\n\" +\n" +
+                        "    \"Lachine\\n\" +\n" +
+                        "    \"LaSalle\\n\" +\n" +
+                        "    \"Le Plateau-Mont-Royal\\n\" +\n" +
+                        "    \"Le Sud-Ouest\\n\" +\n" +
+                        "    \"L'Île-Bizard–Sainte-Geneviève\\n\" +\n" +
+                        "    \"Mercier–Hochelaga-Maisonneuve\\n\" +\n" +
+                        "    \"Montréal-Nord\\n\" +\n" +
+                        "    \"Outremont\\n\" +\n" +
+                        "    \"Pierrefonds-Roxboro\\n\" +\n" +
+                        "    \"Rivière-des-Prairies–Pointe-aux-Trembles\\n\" +\n" +
+                        "    \"Rosemont–La Petite-Patrie\\n\" +\n" +
+                        "    \"Saint-Laurent\\n\" +\n" +
+                        "    \"Saint-Léonard\\n\" +\n" +
+                        "    \"Verdun\\n\" +\n" +
+                        "    \"Ville-Marie\\n\" +\n" +
+                        "    \"Villeray–Saint-Michel–Parc-Extension\"");
+        }
+    };
+
+
+        // Méthode pour signaler un problème
+        public static void signalerProbleme(Scanner scanner) {
+            // Recueillir les informations auprès du résident
+            System.out.print("Nom du résident : ");
+            String nomResident = scanner.nextLine();
+
+            System.out.print("Adresse courriel : ");
+            String adresseCourriel = scanner.nextLine();
+
+            System.out.print("Adresse de résidence : ");
+            String adresseResidence = scanner.nextLine();
+
+            System.out.print("Type de problème : ");
+            String typeProbleme = scanner.nextLine();
+
+            System.out.print("Description du problème : ");
+            String descriptionProbleme = scanner.nextLine();
+
+            // Créer un nouvel objet Probleme avec les informations saisies
+            Probleme probleme = new Probleme(nomResident, adresseCourriel, adresseResidence, typeProbleme, descriptionProbleme);
+
+            // Afficher les détails du problème signalé
+            System.out.println("\nProblème signalé :");
+            System.out.println(probleme.toString());
+        }
+
+
+
+    public ArrayList<ProjetTravaux> getTravaux() {
+        return travaux;
+    }
+
+    public ArrayList<RequeteTravail> getRequetes() {
+        return requetes;
+    }
 }
