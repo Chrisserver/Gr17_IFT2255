@@ -7,8 +7,9 @@ public class IntervenantMenu {
     private ArrayList<RequeteTravail> requetes;
     private ArrayList<ProjetTravaux> travaux;
 
-    public IntervenantMenu(ArrayList<ProjetTravaux> travaux) {
-        this.requetes = new ArrayList<>();
+
+    public IntervenantMenu(ArrayList<ProjetTravaux> travaux,ArrayList<RequeteTravail> requetes) {
+        this.requetes =requetes;
         this.travaux = travaux;
     }
 
@@ -86,7 +87,9 @@ public class IntervenantMenu {
         // Ajouter le projet de travaux
         ProjetTravaux nouveauProjet = new ProjetTravaux(titre, description, typeTravaux, quartiersAffectes, ruesAffectees,dateDebut,dateFin,horaireTravaux);
         travaux.add(nouveauProjet);
-        System.out.println("Projet de travaux soumis.");
+        String msgNotif = "Projet ajouté\nInformations sur le projet:\n"+nouveauProjet.toString();
+        Notification notification = new Notification(msgNotif);
+        System.out.println(notification.toString());
     }
 
     private void mettreAJourChantier(Scanner scanner) {
@@ -96,12 +99,13 @@ public class IntervenantMenu {
         }
 
         System.out.println("Choisissez un chantier à mettre à jour:");
+        // liste des travaux
         for (int i = 0; i < travaux.size(); i++) {
             System.out.println((i + 1) + ". " + travaux.get(i).getTitre());
         }
 
-        int choixChantier = scanner.nextInt() - 1;
-        scanner.nextLine(); // Consommer la ligne restante
+        int choixChantier = scanner.nextInt() - 1;// rentrer numéro pour choisir le chantier à mettre à jour
+        scanner.nextLine();
 
         if (choixChantier >= 0 && choixChantier < travaux.size()) {
             ProjetTravaux projet = travaux.get(choixChantier);
@@ -117,8 +121,10 @@ public class IntervenantMenu {
             if (!nouvelleDescription.isEmpty()) {
                 projet.setDescription(nouvelleDescription);
             }
-
-            System.out.println("Chantier mis à jour.");
+            String msgNotif = "Chantier mise à jour\nNouveaux informations du chantier:\n"+ projet.toString();
+            Notification notification = new Notification(msgNotif);
+            System.out.println("Notification envoyée:");
+            System.out.println(notification.toString());
         } else {
             System.out.println("Chantier invalide.");
         }
@@ -129,8 +135,12 @@ public class IntervenantMenu {
             System.out.println("Aucune requête de travail disponible.");
         } else {
             for (RequeteTravail requete : requetes) {
-                System.out.println(requete);
+                System.out.println(requete.toString());
             }
         }
+    }
+
+    public ArrayList<RequeteTravail> getRequetes() {
+        return requetes;
     }
 }
