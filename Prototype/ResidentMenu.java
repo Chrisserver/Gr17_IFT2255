@@ -7,9 +7,18 @@ public class ResidentMenu {
     private ArrayList<RequeteTravail> requetes;
     private ArrayList<ProjetTravaux> travaux;
 
+    private static ArrayList<Notification> notifications;
     public ResidentMenu(ArrayList<ProjetTravaux> travaux,ArrayList<RequeteTravail> requetes) {
         this.requetes = requetes;
         this.travaux = travaux;
+    }
+
+    public static ArrayList<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public static void setNotifications(ArrayList<Notification> notifications) {
+        ResidentMenu.notifications = notifications;
     }
 
     public void afficherMenu(Scanner scanner) {
@@ -34,12 +43,12 @@ public class ResidentMenu {
                     rechercherTravaux(scanner);
                     break;
                 case 3:
-                    System.out.println("Recevoir des notifications personnalisées");
+                    recevoirNotifs();// envoi tous es changements d'infos de chantier et informations sur nouveaux projet soumiss
                 case 4:
                     soumettreRequete(scanner);
                     break;
                 case 5:
-                    System.out.println("Signaler un problème à a ville");
+                    signalerProbleme(scanner);
                     break;
                 case 0:
                     System.out.println("Déconnexion...");
@@ -169,7 +178,11 @@ public class ResidentMenu {
         }
 
 
-
+    public void recevoirNotifs(){
+        for(Notification notif: notifications){
+            System.out.println(notif.toString());
+        }
+    };
     public ArrayList<ProjetTravaux> getTravaux() {
         return travaux;
     }
