@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 public class MaVille {
     static ArrayList<ProjetTravaux> Travaux = new ArrayList<ProjetTravaux>();
+    static ArrayList<RequeteTravail> requetes = new ArrayList<RequeteTravail>();
     public static void main(String[] args) throws IOException {
         ArrayList<Resident> residents = new ArrayList<>();
         ArrayList<Intervenant> intervenants = new ArrayList<>();
@@ -97,7 +98,7 @@ public class MaVille {
                         if (resident.getCourriel().equalsIgnoreCase(emailConnexion) && resident.getMotDePasse().equals(mdpConnexion)) {
                             System.out.println("Connexion réussie en tant que Resident!");
                             connexionReussie = true;
-                            ResidentMenu residentMenu = new ResidentMenu(Travaux);
+                            ResidentMenu residentMenu = new ResidentMenu(Travaux,requetes);
                             residentMenu.afficherMenu(scanner);
                             break;
                         }
@@ -109,7 +110,7 @@ public class MaVille {
                             if (intervenant.getCourriel().equalsIgnoreCase(emailConnexion) && intervenant.getMotDePasse().equals(mdpConnexion)) {
                                 System.out.println("Connexion réussie en tant qu'Intervenant!");
                                 connexionReussie = true;
-                                IntervenantMenu intervenantMenu = new IntervenantMenu(Travaux);
+                                IntervenantMenu intervenantMenu = new IntervenantMenu(Travaux,requetes);
                                 intervenantMenu.afficherMenu(scanner);
                                 break;
                             }
@@ -158,7 +159,7 @@ public class MaVille {
     }
 
 
-// deux methodes pour stocker les listes de residents et intervenants sous forme de fichier text.
+
     public static void saveResidentAsText(ArrayList<Resident> residents) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("residents.txt"))) {
             for (Resident resident : residents) {
