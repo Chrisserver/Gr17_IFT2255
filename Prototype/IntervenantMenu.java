@@ -7,6 +7,8 @@ public class IntervenantMenu {
     private ArrayList<RequeteTravail> requetes;
     private ArrayList<ProjetTravaux> travaux;
 
+    private ArrayList<Notification> new_notifications = ResidentMenu.getNotifications();
+
 
     public IntervenantMenu(ArrayList<ProjetTravaux> travaux,ArrayList<RequeteTravail> requetes) {
         this.requetes =requetes;
@@ -89,7 +91,9 @@ public class IntervenantMenu {
         travaux.add(nouveauProjet);
         String msgNotif = "Projet ajouté\nInformations sur le projet:\n"+nouveauProjet.toString();
         Notification notification = new Notification(msgNotif);
-        System.out.println(notification.toString());
+        new_notifications.add(notification);
+        ResidentMenu.setNotifications(new_notifications);
+
     }
 
     private void mettreAJourChantier(Scanner scanner) {
@@ -123,8 +127,8 @@ public class IntervenantMenu {
             }
             String msgNotif = "Chantier mise à jour\nNouveaux informations du chantier:\n"+ projet.toString();
             Notification notification = new Notification(msgNotif);
-            System.out.println("Notification envoyée:");
-            System.out.println(notification.toString());
+            new_notifications.add(notification);
+            ResidentMenu.setNotifications(new_notifications);
         } else {
             System.out.println("Chantier invalide.");
         }
