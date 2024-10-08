@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Pages in One with Tabs</title>
+    <style>
+        /* Basic styles for the tabs */
+        .tab {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background-color: #666;
+        }
+
+        /* Hide all content sections initially */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        /* Show only the active content */
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tabs for navigation -->
+    <div class="tab" onclick="openSection(event, 'section1')">Section 1</div>
+    <div class="tab" onclick="openSection(event, 'section2')">Section 2</div>
+    <div class="tab" onclick="openSection(event, 'section3')">Section 3</div>
+
+    <!-- Tab content -->
+    <div id="section1" class="tab-content">
+        <h1>Section 1</h1>
+        <p>This is the content of the first section.</p>
+    </div>
+
+    <div id="section2" class="tab-content">
+        <h1>Section 2</h1>
+        <p>This is the content of the second section.</p>
+    </div>
+
+    <div id="section3" class="tab-content">
+        <h1>Section 3</h1>
+        <p>This is the content of the third section.</p>
+    </div>
+
+    <script>
+        // Function to open the selected section and hide the others
+        function openSection(event, sectionId) {
+            // Hide all sections
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            // Show the selected section and highlight the clicked tab
+            document.getElementById(sectionId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Show the first section by default
+        document.addEventListener("DOMContentLoaded", function() {
+            openSection(null, 'section1');
+        });
+    </script>
+
+</body>
+</html>
