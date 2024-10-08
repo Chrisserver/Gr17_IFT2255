@@ -7,7 +7,7 @@ public class ResidentMenu {
     private ArrayList<RequeteTravail> requetes;
     private ArrayList<ProjetTravaux> travaux;
 
-    private static ArrayList<Notification> notifications;
+    private static ArrayList<Notification> notifications = new ArrayList<Notification>();
     public ResidentMenu(ArrayList<ProjetTravaux> travaux,ArrayList<RequeteTravail> requetes) {
         this.requetes = requetes;
         this.travaux = travaux;
@@ -33,7 +33,7 @@ public class ResidentMenu {
             System.out.println("5. Signaler un problème à la ville");
             System.out.println("0. Se déconnecter");
             choice = scanner.nextInt();
-            scanner.nextLine(); // Consommer la ligne restante
+            //scanner.nextLine(); // Consommer la ligne restante
 
             switch (choice) {
                 case 1:
@@ -43,7 +43,8 @@ public class ResidentMenu {
                     rechercherTravaux(scanner);
                     break;
                 case 3:
-                    recevoirNotifs();// envoi tous es changements d'infos de chantier et informations sur nouveaux projet soumiss
+                    recevoirNotifs();
+                    break;// envoi tous es changements d'infos de chantier et informations sur nouveaux projet soumiss
                 case 4:
                     soumettreRequete(scanner);
                     break;
