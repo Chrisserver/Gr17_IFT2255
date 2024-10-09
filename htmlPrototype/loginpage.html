@@ -15,15 +15,6 @@
             <option value="Resident">Résident</option>
             <option value="Intervenant">Intervenant</option>
         </select>
-        <!--
-        <div class="dropdown">
-          <button class="dropbtn">Rôle</button>
-          <div class="dropdown-content">
-            <a href="#">Résident</a>
-            <a href="#">Intervenant</a>
-          </div>
-        </div>
-        -->
         <br><br>
         <form id="loginForm">
             <label for="username">Username:</label>
@@ -39,46 +30,33 @@
 
     <script src="script.js"></script>
     <style>
-        .dropbtn {
-            background-color: #113589;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
+        option {
+            font-size: 18px;
+            background-color: #ffffff;
         }
 
-        .dropdown {
-            position: center;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .dropdown-content {
+        option:before {
+            content: ">";
+            font-size: 20px;
             display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+            padding-right: 10px;
+            padding-left: 5px;
+            color: #fff;
         }
 
-        .dropdown-content a {
-            text-align: center;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
+        option:hover:before {
+            display: inline;
         }
 
-        .dropdown-content a:hover {background-color: #f1f1f1}
-
-        .dropdown:hover .dropdown-content {
-            display: block;
+        select {
+            width: 10rem;
+            background-color: #113589;
+            border: #b2eeac 2px solid;
+            color:#ffffff
         }
 
-        .dropdown:hover .dropbtn {
-            background-color: #147cb8;
+        select>option {
+            background-color: #425cb8;
         }
     </style>
 </body>
