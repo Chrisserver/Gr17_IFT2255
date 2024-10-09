@@ -9,6 +9,13 @@
 <body>
     <div class="login-container">
         <h1>Login</h1>
+        <div class="label" id="utilisateur-label">Selectionner rôle</div>
+        <select name="utils" id="idUtilisateur" onchange="onChangeEvent();"
+            class="select-input">
+            <option value="Resident">Résident</option>
+            <option value="Intervenant">Intervenant</option>
+        </select>
+        <!--
         <div class="dropdown">
           <button class="dropbtn">Rôle</button>
           <div class="dropdown-content">
@@ -16,6 +23,7 @@
             <a href="#">Intervenant</a>
           </div>
         </div>
+        -->
         <br><br>
         <form id="loginForm">
             <label for="username">Username:</label>
