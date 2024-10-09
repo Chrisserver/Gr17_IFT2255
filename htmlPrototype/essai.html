@@ -33,26 +33,39 @@
     </style>
 </head>
 <body>
-
+    
     <!-- Tabs for navigation -->
-    <div class="tab" onclick="openSection(event, 'section1')">Section 1</div>
-    <div class="tab" onclick="openSection(event, 'section2')">Section 2</div>
-    <div class="tab" onclick="openSection(event, 'section3')">Section 3</div>
+    <div class="tab" onclick="openSection(event, 'section1')">Général</div>
+    <div class="tab" onclick="openSection(event, 'section2')">Projets en cours</div>
+    <div class="tab" onclick="openSection(event, 'section3')">Notifications</div>
 
     <!-- Tab content -->
     <div id="section1" class="tab-content">
-        <h1>Section 1</h1>
-        <p>This is the content of the first section.</p>
+        <h1>Informations personnelles</h1>
+        <p>Nom</p>
+        <p>Nom de famille</p>
+        <p>Courriel</p>
+        <p>Addresse</p>
+        <p>Date de naissance</p>
+        <button id="boutonDeconnexion">Déconnexion</button>
     </div>
 
     <div id="section2" class="tab-content">
-        <h1>Section 2</h1>
-        <p>This is the content of the second section.</p>
+        <h1>Projets en cours</h1>
+        <p>Voici les projets en cours dans vos régions sauvegardées</p>
+        <a href="">carte</a>
+        <h1>Requêtes</h1>
+        <p>En attente</p>
+        <a href="">pdfs des projets</a>
+        <p>En cours</p>
+        <a href="">pdfs des projets</a>
+        <p>Finis</p>
+        <a href="">pdfs des projets</a>
     </div>
 
     <div id="section3" class="tab-content">
-        <h1>Section 3</h1>
-        <p>This is the content of the third section.</p>
+        <h1>Notifications</h1>
+        <a href="">notifs des requetes envoyés</a>
     </div>
 
     <script>
