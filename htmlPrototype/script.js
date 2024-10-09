@@ -51,3 +51,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("boutonDeconnexion").addEventListener("click", function() {
+        alert("Vous êtes déconnecté");
+    });
+});
+
