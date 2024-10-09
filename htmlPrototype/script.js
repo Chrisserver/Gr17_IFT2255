@@ -49,7 +49,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("boutonDeconnexion").addEventListener("click", function() {
         alert("Vous êtes déconnecté");
     });
-    
+});
+
+document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("clickMeButton").addEventListener("click", function() {
         alert("Nous aussi!");
     });    
