@@ -46,12 +46,12 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("clickMeButton").addEventListener("click", function() {
-        alert("You clicked the button!");
-    });
-
     document.getElementById("boutonDeconnexion").addEventListener("click", function() {
         alert("Vous êtes déconnecté");
     });
+    
+    document.getElementById("clickMeButton").addEventListener("click", function() {
+        alert("You clicked the button!");
+    });    
 });
 
