@@ -15,6 +15,18 @@ document.getElementById("loginForm").addEventListener("submit", function() {
 });
 **/
 
+function onChangeEvent() {
+	var selectOption = document.getElementById("idUtilisateur").value;
+	var result = document.getElementById("utilisateur-label");
+	if (selectOption == "Resident") {
+		var english = document.getElementById("resident").value;
+		result.innerHTML = resident;
+	} else if (selectOption == "Intervenant") {
+		var germen = document.getElementById("intervenant").value;
+		result.innerHTML = intervenant;
+	}
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     function myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
