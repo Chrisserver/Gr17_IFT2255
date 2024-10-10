@@ -1086,24 +1086,43 @@
                             D’autres fichiers peuvent inclure projets.csv pour les projets en cours et évaluations.csv pour les évaluations des projets ou utilisateurs. 
                         </em>
                     </p>
-
                     <p>
                         <em>
                             Les fichiers CSV offrent une solution de stockage légère et universelle, compatible avec de nombreux logiciels de traitement de données comme Excel ou Google Sheets. Leur format simple et non volumineux permet une gestion facile des données tout en assurant une bonne portabilité entre différents systèmes.
+                        </em>
+                    </p>                 
+                    <p>
+                        <em>
                             Cette approche permet une séparation claire des données, facilitant la gestion et la mise à jour des fichiers. Chaque fichier sera interconnecté par des champs clés, comme l’ID utilisateur, qui servira à lier les différents jeux de données.
                             Par exemple, en reliant l’ID utilisateur dans utilisateurs.csv à l’ID responsable dans travaux.csv, on pourra associer les utilisateurs aux travaux qu’ils supervisent. Cela simplifie l’analyse et permet de travailler avec des outils qui supportent les formats CSV,
                             tout en restant léger et compatible avec les logiciels de traitement de données classiques.
                         </em>
                     </p>
-                    
                 </div>
 
                 <div>
                     <h3 class="subsection-title">Solution d'intégration</h3>
 
                     <p>
-                        <em>Description de votre solution d'intégration...</em>
+                        <em>Pour intégrer notre application avec les systèmes déjà existants de la ville, comme l’application Infos Entrave, il est crucial de favoriser la communication entre les différentes plateformes sans avoir à tout redévelopper.
+                            Nous pourrions commencer par étudier les API disponibles de ces systèmes, qui permettent d’accéder aux données et fonctionnalités qu’ils offrent.
+                            Cela nous permettrait de récupérer, par exemple, des informations en temps réel sur les travaux ou les fermetures de rues, sans avoir à redévelopper ces modules.
+                        </em>
                     </p>
+
+                    <p>
+                        <em>En évaluant ces API ou services tiers, nous pourrions également standardiser les formats d’échange de données, comme l’utilisation du JSON ou XML, afin de garantir une compatibilité entre les systèmes.
+                             Par ailleurs, l’intégration pourrait se faire via des solutions d’interopérabilité qui connectent différents systèmes entre eux tout en assurant la cohérence des données.</em>
+                    </p>
+
+                    <p>
+                        <em>Une autre approche serait de s’assurer que les flux d’information sont harmonisés entre les différentes applications pour éviter les doublons ou les erreurs de données. 
+                            Par exemple, plutôt que de réintégrer manuellement des données déjà présentes dans d’autres systèmes, nous pourrions synchroniser notre application avec les bases de données existantes. 
+                            Cela réduirait les risques de divergences entre les systèmes et faciliterait la gestion des informations en centralisant les mises à jour. 
+                            Enfin, en travaillant avec les services informatiques de la ville, nous pourrions optimiser la compatibilité technique et garantir que les nouvelles données générées par notre application s’intègrent harmonieusement dans l’écosystème numérique déjà en place.
+                        </em>
+                    </p>
+                    
                 </div>
             </section>
 
