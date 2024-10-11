@@ -687,7 +687,7 @@
                     </em>
                 </p>
 
-                <h3 class="subsection-title">Hypothèses (optionnel)</h3>
+                <h3 class="subsection-title">Hypothèses</h3>
                 <p>
                      <h2>S'inscrire comme résident</h2>
     <ul>
@@ -733,6 +733,14 @@
     <h2>Mettre à jour les informations d'un chantier</h2>
     <ul>
         <li>L’application informe les résidents de ces changements (modifications de dates, horaires, etc.).</li>
+    </ul>
+
+    <h2>Compte d'un utilisateur du secteur public</h2>
+    <ul>
+        <li>Les utilisateurs auront une meilleure cohésion entre eux avec l'ajout de ce type de compte.</li>
+        <li>La municipalité/ville peut se représenter avec son propre compte et discuter des projets en cours ou prévus dans le secteur sur leur page profil.</li>
+        <li>Les représentants de ce compte peuvent répondre aux questions des résidents sur les travaux en cours et le processus d'envoi des fichiers de 
+        requête de projets faits par les compagnies privées serait plus efficace en la conservant sur une seule plateforme.</li>
     </ul>
 
                 </p>
@@ -823,7 +831,7 @@
                 <div class="scenario" id="cu-1">
                     <div class="scenario-meta">
                         <h4 class="cu-name">
-                            <strong>CU:</strong> Soumettre un requête
+                            <strong>CU:</strong> Soumettre un requête de travail
                         </h4>
                         <p class="cu-goal">
                             <strong>Objectif:</strong> Un résident souhaite soumettre un projet de réparation, de construction, d'entretien, etc. pour un endroit près de chez lui.
@@ -842,7 +850,7 @@
                         <div class="cu-part">
                             <h5 class="cu-part-title">Préconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Le résident a un compte d'ouvert et est dans le périmètre de sa résidence.</li>
+                                <li class="dash">Le résident a un compte d'ouvert.</li>
                             </ul>
                         </div>
                         
@@ -880,15 +888,15 @@
                                 <li class="scenario-main-step">Si cela s'applique: Le traffic que ce problème cause, si ça bloque des piétons ou des cyclistes.</li>
                             </ol></li>
                             <li class="scenario-main-step">Le résident rajoute des photos à ce rapport si nécessaire.</li>
-                            <li class="scenario-main-step">Le résident soumet la requête
+                            <li class="scenario-main-step">Le résident soumet la requête de travail
                             <ol>
                                 <li class="scenario-main-step">Les informations de base (nom, prénom, courriel, numéro de téléphone, addresse) sont déjà inscrit dans l'envoi du formulaire.</li>
                             </ol></li>
-                            <li class="scenario-main-step">Le système reçoit la requête et l'envoie à la ville concernée, l'arrondissement concernée et aux différents contracteurs privés de cette région qui ont les capacités de remédier au problème.</li>
+                            <li class="scenario-main-step">Le système reçoit la requête et l'envoie à la ville concernée, l'arrondissement concernée et aux différentes compagnies privées de cette région qui ont les capacités de remédier au problème.</li>
                             <li class="scenario-main-step">Le résident reçoit également une notification sur son compte de la requête soumise.</li>
                             <li class="scenario-main-step">Le système ajoute cette requête dans les projets en devenir.
                             <ol>
-                                <li>La requête est ajoutée au cartes, dans flux de notifications des résidents aux alentours d'où cette requête aura lieu et dans la liste de nouveaux projets à consulter</li>
+                                <li>La requête est ajoutée dans le flux de notifications des résidents aux alentours d'où cette requête aura lieu et dans la liste de futurs travaux à consulter</li>
                             </ol></li>
                         </ol>
 
@@ -945,7 +953,7 @@
                         <div class="cu-part">
                             <h5 class="cu-part-title">Postconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Aucune</li>
+                                <li class="dash">Le contracteur en charge du travail où le problème a été signalé répond au problème.</li>
                             </ul>
                         </div>
                         
@@ -996,7 +1004,7 @@
                             <h5 class="cu-part-title">Acteurs</h5>
                             <ul class="bare-list cu-actors">
                                 <li class="cu-actor">Intervenant (Principal)</li>
-                                <li class="cu-actor">Municipalité/ville/province (Secondaire)</li>
+                                <li class="cu-actor">Municipalité/ville (Secondaire)</li>
                             </ul>
                         </div>
                         
@@ -1031,7 +1039,7 @@
                             </ol></li>
                             <li class="scenario-main-step">L'intervenant envoit le formulaire</li>
                             <li class="scenario-main-step">Le système rattache ce document avec les documents d'informations de bases de cette entreprise de construction (nom de l'entreprise, courriel, numéro de téléphone, adresse, date et certifications de la compagnie).</li>
-                            <li class="scenario-main-step">Le système envoie ce dossier à l'arrondissement/ville/province (dépendemment du type de projet)</li>
+                            <li class="scenario-main-step">Le système envoie ce dossier à l'arrondissement/ville (dépendemment du type de projet)</li>
                             <li class="scenario-main-step">L'intervenant reçoit une notification du formulaire officiel qu'il a envoyé.</li>
                         </ol>
                     </div>
