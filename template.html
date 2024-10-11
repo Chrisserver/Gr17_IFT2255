@@ -1034,6 +1034,222 @@
                         </ol>
                     </div>
                 </div>
+                <div class="scenario" id="cu-3">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> S'inscrire comme résident
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Le résident souhaite s'inscrire à l'application MaVille en tant que résident.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Résident (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident doit se rendre sur la page d'accueil de l'application.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident peut se connecter à l'application et avoir accès au menu résident.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Le résident sélectionne "s'inscrire" sur le menu.</li>
+                            <li class="scenario-main-step">Le résident entre un e-mail et mot de passe valide.</li>
+                            <li class="scenario-main-step">Le résident entre ensuite ses informations personnelles.</li>
+                            <li class="scenario-main-step">Le résident revient au menu principal où il peut s'inscrire, se connecter ou quitter l'application.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step">
+                                Le résident entre un e-mail invalide
+                                <ol class="bare-list">
+                                    <li>Le système lui demande de réessayer jusqu'à succès ou de quitter et revenir au menu principal.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-4">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Consulter les travaux en cours ou à venir
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Le résident va consulter les travaux publics et privés en cours dans une certaine zone.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Résident (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident doit être connecté à l'application.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident voit la liste des travaux dans la zone voulue.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Le résident se connecte à l'application.</li>
+                            <li class="scenario-main-step">Le résident choisit l'option "Consulter les travaux" dans le menu résident.</li>
+                            <li class="scenario-main-step">Le résident entre une zone précise (adresse ou code postal).</li>
+                            <li class="scenario-main-step">L'application cherche et affiche une liste des travaux en cours ou à venir dans la zone.</li>
+                            <li class="scenario-main-step">Le résident consulte les informations et les détails des travaux.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step">
+                                Pas de travail prévu dans la zone
+                                <ol class="bare-list">
+                                    <li>Aucun travail n'est prévu dans la zone sélectionnée, l'application affiche un message indiquant "Aucun travail en cours ou à venir dans cette zone".</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-5">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Envoyer notifications
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Le résident souhaite recevoir des notifications personnalisées en fonction des informations qu'il a rentrées (lieu de résidence, centres d'intérêts, etc.).
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Intervenant (Principal)</li>
+                                <li class="cu-actor">Résident (Secondaire)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident doit se connecter à l'application MaVille.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident reçoit une ou des notifications de travaux dans les zones qui l'intéressent s'il y a un changement ou ajout de travaux dans cette zone.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Un intervenant se connecte à MaVille.</li>
+                            <li class="scenario-main-step">Un intervenant met à jour ou soumet un projet de travaux avec les fonctionnalités mises à jour de chantier ou soumet un nouveau projet de travaux.</li>
+                            <li class="scenario-main-step">Le système enregistre les informations du projet nouvellement soumis ou modifié.</li>
+                            <li class="scenario-main-step">Le système envoie la notification au résident(s) concerné(s).</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step">
+                                L'intervenant entre des informations erronées dans les fonctionnalités soumettre un nouveau projet ou mise à jour chantier
+                                <ol class="bare-list">
+                                    <li>Le système invite à ressaisir les informations ou revenir au menu principal.</li>
+                                    <li>Aucune notification n'est envoyée.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-6">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Afficher notifications
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Le système affiche toutes les notifications de travaux soumis ou modifiés dans la zone d'intérêt du résident.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Résident (Principal)</li>
+                                <li class="cu-actor">Intervenant (Secondaire)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident est connecté à MaVille et a rentré ses lieux d'intérêts.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le système affiche toutes les notifications dans les zones d'intérêts du résident.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Le résident se connecte à l'application.</li>
+                            <li class="scenario-main-step">Le résident sélectionne l'option "Afficher les notifications" dans le menu.</li>
+                            <li class="scenario-main-step">Le système affiche toutes les notifications pertinentes basées sur les informations fournies.</li>
+                            <li class="scenario-main-step">Le résident consulte la liste des notifications.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step">
+                                Pas de notification disponible
+                                <ol class="bare-list">
+                                    <li>Le système affiche un message indiquant "Aucune notification disponible dans cette zone".</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
                   
                 <h3 class="subsection-title">Diagramme d'activités</h3>
                 <div class="activity">
@@ -1309,7 +1525,6 @@
                 <p>
                     <em>
                         Indiquez ici les informations nécessaires (commande d'exécution, comptes préconfigurées) pour exécuter et tester le prototype</em>.
-                    <h1>Instructions MaVille</h1>
 
     <h2>Premièrement</h2>
     <p>
