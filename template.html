@@ -1507,6 +1507,61 @@
                         </ol>
                     </div>
                 </div>
+
+                <div class="scenario" id="cu-11">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> S'inscrire comme utilisateur du secteur public
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong>L'utilisateur représentant la ville ou la municipalité désire s'inscrire.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur du secteur public (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur doit se rendre sur la page d'accueil pour ensuite s'inscrire</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur peut ensuite se connecter comme une entité représentant son arrondissement/ la ville et accéder aux services de l'application.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur sélectionne "s'inscrire" sur le menu.</li>
+                            <li class="scenario-main-step">L'utilisateur entre un e-mail et un mot de passe valide.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit "intervenant" comme rôle.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit ensuite "Secteur public" pour être celui représenté dans son comté.</li>
+                            <li class="scenario-main-step">L'utilisateur entre ses informations personnelles, surtout le code identifiant sa place dans l'administration.</li>
+                            <li class="scenario-main-step">L'utilisateur revient au menu principal où il peut s'inscrire, se connecter ou quitter l'application.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="2">
+                                L'utilisateur entre un e-mail ou mot de passe invalide
+                                <ol class="bare-list">
+                                    <li>L'application demande de réessayer jusqu'à succès ou de quitter et revenir au menu principal.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
                 
                 
                   
