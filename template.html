@@ -1638,6 +1638,67 @@
                         </ol>
                     </div>
                 </div>
+
+                <div class="scenario" id="cu-16">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong>Se connecter
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong>Un utilisateur veut se connecter à son compte
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur doit aller à la page principale qui mentionne l'inscription ou la connexion d'un compte.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur aura accès à son compte</li>
+                            </ul>
+                        </div>
+
+                        <div class="cu-part cu-part--notes">
+                            <h5 class="cu-part-title">Notes</h5>
+                            <p class="cu-notes">Dans les versions futures, nous pouvons ajouter les comptes par une application tierce (e.g. Google, Facebook, Instagram, ...).</p>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur accède à la page principale de connexion et d'inscription.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit de se connecter à son compte.</li>
+                            <li class="scenario-main-step">Le système affiche une nouvelle page montrant deux boîtes de texte, une pour son identifiant, l'autre pour son mot de passe.</li>
+                            <li class="scenario-main-step">L'utilisateur entre ses informations personnelles.</li>
+                            <li class="scenario-main-step">Le système vérifie les informations données.</li>
+                            <li class="scenario-main-step">Le système affiche un message disant que les données sont valides et affiche ensuite le menu principal de son compte.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="6">
+                                Les informations entrées sont invalides.
+                                <ol class="bare-list">
+                                    <li>Le système renvoie un message d'erreur disant que le procédé n'a pas pu être exécuté et que les informations doivent être entrées de nouveau</li>
+                                    <li>Après trois tentatives, le système revient à la page principale d'inscription et de connexion.</li>
+                                </ol>
+                            </li> 
+                        </ol>
+                    </div>
+                </div>
                 
                 
                   
