@@ -1562,6 +1562,82 @@
                         </ol>
                     </div>
                 </div>
+
+                <div class="scenario" id="cu-12">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Approuver les requêtes de projets
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong>L'utilisateur représentant la ville veut approuver les requêtes de projets envoyées par les différents intervenants.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur du secteur public (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur doit aller à sa page personnelle pour trouver ses notifications des dossiers de requêtes de projets.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Aucune</li>
+                            </ul>
+                        </div>
+
+                        <div class="cu-part cu-part--notes">
+                            <h5 class="cu-part-title">Notes</h5>
+                            <p class="cu-notes">Les intervenants mentionnés dans ce scénario sont à la fois les intervenants des compagnies privées voulant faire approuver leurs projets et les utilisateurs représentant la municipalité qui ont des projets qu'ils veulent faire approuver.</p>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur ouvre son centre de notifications où se trouve toutes les requêtes de projets remplies par les intervenants.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit une requête et le système lui affiche la requête sélectionnée.</li>
+                            <li class="scenario-main-step">L'utilisateur analyse la requête.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit ensuite d'approuver ou de refuser cette demande de projet.</li>
+                            <li class="scenario-main-step">Après que l'utilisateur ait choisi, le système envoie des notifications</li>
+                            <ul>
+                                  <li>Un message est envoyé à chaque utilisateur concerné au projet (ceux qui ont débuter la requête et commenter sur la requête). Ce message mentionne l'approbation ou non de la requête.</li>
+                                  <li>Un message est envoyé à l'intervenant ayant accepter cette requête de travail sur les spécifications du début des travaux, du budget autorisé, etc.</li>
+                            </ul>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="4">
+                                L'utilisateur veut imprimer la requête
+                                <ol class="bare-list">
+                                    <li>L'application offre l'option d'imprimer le dossier de tous les documents contenus.</li>
+                                </ol>
+                            </li> 
+                            <li class="scenario-alt-step" value="4">
+                                L'utilisateur veut quitter
+                                <ol class="bare-list">
+                                    <li>L'application offre de retourner sans nécessairement avoir besoin d'approuver ou de refuser un requête.</li>
+                                    <li>Le système rajoute cette requête dans l'historique des requêtes récemment consultés.</li>
+                                </ol>
+                            </li>
+                            <li class="scenario-alt-step" value="4">
+                                L'utilisateur veut apporter des modifications à cette requête.
+                                <ol class="bare-list">
+                                    <li>L'application montre une option de contacter la personne demandant cette requête et lui dire ce que la ville voudrait avoir comme changements.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
                 
                 
                   
