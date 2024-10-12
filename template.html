@@ -1638,7 +1638,192 @@
                         </ol>
                     </div>
                 </div>
-
+            <div class="scenario" id="cu-13">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Accéder au profil
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'utilisateur souhaite accéder au profil
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur(prinicpal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur possède un compte existant avec un profil associé.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur accède à sa page de profil.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur se connecte à MaVille</li>
+                            <li class="scenario-main-step">L'utilisateur choisit l'option "accéder au profil"</li>
+                            <li class="scenario-main-step">Le système affiche le premier niveau de la page de profil(Général qui va contenir ses informations personelles,Projet en cours qui va contenir les projets en cours dans les zones sauvegardées et Notifiactions qui va afficher les notifications recues)</li>
+                            <li class="scenario-main-step">L'utilisateur choisit soit general,projet en cours ou notifiactions</li>
+                            <li class="scenario-main-step">Le système affiche les informations relatif au choix fait.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="5">
+                                Pas d'informations dans la section Notifications
+                                <ol class="bare-list">
+                                    <li>Le système n'affiche pas de notifications</li>
+                                    <li>Le système demande à l'utilisateur de retourner au profil</li>
+                                </ol>
+                            </li>
+                            <li class="scenario-alt-step" value="5">
+                                Pas d'informations dans la section Projet en Cours
+                                <ol class="bare-list">
+                                    <li>Le système n'affiche pas de projet en cours</li>
+                                    <li>Le système demande à l'utilisateur de retourner au profil</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                
+                <div class="scenario" id="cu-14">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Modifier profil
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'utilisateur souhaite modifier le profil
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur(prinicpal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur possède un compte existant avec un profil associé.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur a modifié son profil.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur se connecte à MaVille</li>
+                            <li class="scenario-main-step">L'utilisateur choisit l'option "modifier son profil"</li>
+                            <li class="scenario-main-step">L'utilisateur choisit la section du profil à modifier</li>
+                            <li class="scenario-main-step">L'utilisateur entre les nouvelles informations</li>
+                            <li class="scenario-main-step">Le système valide les informations</li>
+                            <li class="scenario-main-step">Le système enregistre ces nouvelles informations.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="5">
+                                L'utilisateur entre des informations erronées
+                                <ol class="bare-list">
+                                    <li>Le système n'enregistre pas les informations et sont laisées comme avant</li>
+                                    <li>Le système demande à l'utilisateur de resaisir les données ou de revenir en arrière(modifier profil).</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-15">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Commenter les projets
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'utilisateur souhaite commenter des projets en cours ou à venir.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur(prinicpal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur possède un compte existant avec un profil associé.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur a commenté le projet souhaité.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur se connecte à MaVille</li>
+                            <li class="scenario-main-step">L'utilisateur choisit l'option "Commenter les projets"</li>
+                            <li class="scenario-main-step">Le système le renvoi vers la carte des travaux en cours avec l'option de rechercher(travaux a venir ou en cours)</li>
+                            <li class="scenario-main-step">L'utilisateur choisit le travail sur la map ou en le recherchant</li>
+                            <li class="scenario-main-step">Le système enregistre le travail</li>
+                            <li class="scenario-main-step">Le système demande à l'utilisateur de donner une description de son commentaire</li>
+                            <li class="scenario-main-step">L'utilisateur entre la description</li>
+                            <li class="scenario-main-step">Le système enregistre le commentaire dans la base de données.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="5">
+                                Aucun travaux en cours ou à venir
+                                <ol class="bare-list">
+                                    <li>Le système affiche"Pas de travaux en cours,commentaire indisponible"</li>
+                                    <li>L'utilisateur retourne au menu.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="5">
+                                Description contraire aux règles de l'application
+                                <ol class="bare-list">
+                                    <li>Le système affiche "Commentaire non conforme aux regles , veuillez respectez les règles suivantes:......"</li>
+                                    <li>L'utilisateur refait son commentaire ou retourne en arrière.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
                 <div class="scenario" id="cu-16">
                     <div class="scenario-meta">
                         <h4 class="cu-name">
