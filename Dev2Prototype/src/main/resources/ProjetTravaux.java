@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,11 +8,11 @@ public class ProjetTravaux {
     private String typeTravaux;
     private ArrayList<String> quartiersAffectes;
     private ArrayList<String> ruesAffectees;
-    private String dateDebut;
-    private String dateFin;
+    private LocalDate dateDebut;
+    private LocalDate dateFin;
     private String horaireTravaux;
     private String id; // Identifiant unique du projet
-    private List<Entrave> entraves; // Liste des entraves associées
+    private ArrayList<Entrave> entraves; // Liste des entraves associées
 
     // Constructeur
     public ProjetTravaux(String id,String titre, String description, String typeTravaux, ArrayList<String> quartiersAffectes,

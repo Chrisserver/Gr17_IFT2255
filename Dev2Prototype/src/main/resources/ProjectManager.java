@@ -10,6 +10,27 @@ public class ProjectManager {
     private String ressourceIdTravaux = "cc41b532-f12d-40fb-9f55-eb58c9a2b12b";// ID du JSON contenant les travaux
     private String ressourceIdEntraves = "a2bc8014-488c-495d-941b-e7ae1999d1bd";
     private ArrayList<String> TypesTravaux = new ArrayList<>();
+    private static ArrayList<String> quartiers = new ArrayList<>();
+        quartiers.add("Ahuntsic-Cartierville");
+        quartiers.add("Anjou");
+        quartiers.add("Côte-des-Neiges–Notre-Dame-de-Grâce");
+        quartiers.add("Lachine");
+        quartiers.add("LaSalle");
+        quartiers.add("Le Plateau-Mont-Royal");
+        quartiers.add("Le Sud-Ouest");
+        quartiers.add("L'Île-Bizard–Sainte-Geneviève");
+        quartiers.add("Mercier–Hochelaga-Maisonneuve");
+        quartiers.add("Montréal-Nord");
+        quartiers.add("Outremont");
+        quartiers.add("Pierrefonds-Roxboro");
+        quartiers.add("Rivière-des-Prairies–Pointe-aux-Trembles");
+        quartiers.add("Rosemont–La Petite-Patrie");
+        quartiers.add("Saint-Laurent");
+        quartiers.add("Saint-Léonard");
+        quartiers.add("Verdun");
+        quartiers.add("Ville-Marie");
+        quartiers.add("Villeray–Saint-Michel–Parc-Extension");
+
 
     // Constructeur
     public ProjectManager() {
