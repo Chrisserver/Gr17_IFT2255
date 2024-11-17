@@ -42,11 +42,11 @@ public class ProjetTravaux {
         return typeTravaux;
     }
 
-    public List<String> getQuartiersAffectes() {
+    public ArrayList<String> getQuartiersAffectes() {
         return quartiersAffectes;
     }
 
-    public List<String> getRuesAffectees() {
+    public ArrayList<String> getRuesAffectees() {
         return ruesAffectees;
     }
 

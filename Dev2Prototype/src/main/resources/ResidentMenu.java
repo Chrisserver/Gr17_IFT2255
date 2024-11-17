@@ -109,18 +109,7 @@ public class ResidentMenu {
                     }
                 }
             case 2:
-                System.out.println("Quel type de travaux?:\nTravaux routiers\n–" +
-                        "\nTravaux de gaz ou électricité\n–" +
-                        "\nConstruction ou rénovation\n–" +
-                        "\nEntretien paysager\n–" +
-                        "\nTravaux liés aux transports en commun\n–" +
-                        "\nTravaux de signalisation et éclairage\n–" +
-                        "\nTravaux souterrains" +
-                        "\n–" +
-                        "\nTravaux résidentiel" +
-                        "\n–" +
-                        "\nEntretien urbain\n–" +
-                        "\nEntretien des réseaux de télécommunication");
+               for(String typeTravaux: ProjectManager.get)
                 String type = scanner.nextLine();
                 for(ProjetTravaux projet: ProjectManager.getProjets()){
                     if(projet.getTypeTravaux().equalsIgnoreCase(type)){
@@ -128,25 +117,32 @@ public class ResidentMenu {
                     }
                 }
             case 3:
-                System.out.println("Quel Quartier ou arrondissement?\nAhuntsic-Cartierville +\n" +
-                        "    \"Anjou\\n\" +\n" +
-                        "    \"Côte-des-Neiges–Notre-Dame-de-Grâce\\n\" +\n" +
-                        "    \"Lachine\\n\" +\n" +
-                        "    \"LaSalle\\n\" +\n" +
-                        "    \"Le Plateau-Mont-Royal\\n\" +\n" +
-                        "    \"Le Sud-Ouest\\n\" +\n" +
-                        "    \"L'Île-Bizard–Sainte-Geneviève\\n\" +\n" +
-                        "    \"Mercier–Hochelaga-Maisonneuve\\n\" +\n" +
-                        "    \"Montréal-Nord\\n\" +\n" +
-                        "    \"Outremont\\n\" +\n" +
-                        "    \"Pierrefonds-Roxboro\\n\" +\n" +
-                        "    \"Rivière-des-Prairies–Pointe-aux-Trembles\\n\" +\n" +
-                        "    \"Rosemont–La Petite-Patrie\\n\" +\n" +
-                        "    \"Saint-Laurent\\n\" +\n" +
-                        "    \"Saint-Léonard\\n\" +\n" +
-                        "    \"Verdun\\n\" +\n" +
-                        "    \"Ville-Marie\\n\" +\n" +
-                        "    \"Villeray–Saint-Michel–Parc-Extension\"");
+                System.out.println("Quel Quartier ou arrondissement?\nVoici ceux disponibles:\n1.Ahuntsic-Cartierville +\n" +
+                        "    \"2.Anjou\\n\" +\n" +
+                        "    \"3.Côte-des-Neiges–Notre-Dame-de-Grâce\\n\" +\n" +
+                        "    \"4.Lachine\\n\" +\n" +
+                        "    \"5.LaSalle\\n\" +\n" +
+                        "    \"6.Le Plateau-Mont-Royal\\n\" +\n" +
+                        "    \"7.Le Sud-Ouest\\n\" +\n" +
+                        "    \"8.L'Île-Bizard–Sainte-Geneviève\\n\" +\n" +
+                        "    \"9.Mercier–Hochelaga-Maisonneuve\\n\" +\n" +
+                        "    \"10.Montréal-Nord\\n\" +\n" +
+                        "    \"11.Outremont\\n\" +\n" +
+                        "    \"12.Pierrefonds-Roxboro\\n\" +\n" +
+                        "    \"13.Rivière-des-Prairies–Pointe-aux-Trembles\\n\" +\n" +
+                        "    \"14.Rosemont–La Petite-Patrie\\n\" +\n" +
+                        "    \"15.Saint-Laurent\\n\" +\n" +
+                        "    \"16.Saint-Léonard\\n\" +\n" +
+                        "    \"17.Verdun\\n\" +\n" +
+                        "    \"18.Ville-Marie\\n\" +\n" +
+                        "    \"19.Villeray–Saint-Michel–Parc-Extension\"");
+                String quartier = scanner.nextLine();
+                for(ProjetTravaux projet: ProjectManager.getProjets()){
+                        if(projet.getQuartierAffectes.contains(quartier)){
+                        System.out.println(projet.toString());
+                    }
+                    }
+
         }
     };
 

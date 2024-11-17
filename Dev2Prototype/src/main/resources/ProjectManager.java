@@ -44,6 +44,7 @@ public class ProjectManager {
                 ArrayList<String> quartiersAffectes = new ArrayList<>();
                 quartiersAffectes.add(quartier);
 
+
                 String rue = record.optString("occupancy_name", "Non spécifié");
                 ArrayList<String> ruesAffectees = new ArrayList<>();
                 ruesAffectees.add(rue);
