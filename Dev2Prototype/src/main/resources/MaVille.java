@@ -155,27 +155,4 @@ public class MaVille {
         System.out.println("2. Se connecter");
         System.out.println("3. Quitter l'application");
     }
-
-
-
-    /*public static void saveResidentAsText(ArrayList<Resident> residents) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("residents.txt"))) {
-            for (Resident resident : residents) {
-                writer.write(resident.getNomComplet()+","+resident.getCourriel()+","+resident.getMotDePasse()+","+resident.getDateDeNaissance()+","+resident.getTelephone()+","+resident.getAdresseResidentielle());
-                writer.newLine(); // Ajouter un saut de ligne entre chaque utilisateur
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    };
-    public static void saveIntervenantAsText(ArrayList<Intervenant> intervenants) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("intervenants.txt"))) {
-            for (Intervenant intervenant : intervenants) {
-                writer.write(intervenant.getNomComplet()+","+intervenant.getCourriel()+","+intervenant.getMotDePasse()+","+intervenant.getType()+","+intervenant.getIdentifiantVille());
-                writer.newLine(); // Ajouter un saut de ligne entre chaque utilisateur
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 }

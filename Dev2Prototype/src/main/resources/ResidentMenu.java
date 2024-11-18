@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -112,16 +111,20 @@ public class ResidentMenu {
                for(String typeTravaux: ProjectManager.get)
                 String type = scanner.nextLine();
                 for(ProjetTravaux projet: ProjectManager.getProjets()){
-                    if(projet.getTypeTravaux().equalsIgnoreCase(type)){
+                    if(projet.getTypeTravaux().equalsI){
                         System.out.println(projet.toString());
                     }
                 }
             case 3:
                 System.out.println("Quel Quartier ou arrondissement?");
-                for(String quartier: ProjectManager.)
-                int quartier = scanner.nextInt();
+                int count = 1;
+                for(String quartier: ProjectManager.getQuartiers()){
+                System.out.println(""+count+"."+quartier);
+                count++;
+                }
+                int indice = scanner.nextInt();
                 for(ProjetTravaux projet: ProjectManager.getProjets()){
-                        if(projet.getQuartierAffectes.contains(quartier)){
+                        if(projet.getQuartierAffectes.contains(ProjectManager.getQuartiers().get(indice))){
                         System.out.println(projet.toString());
                     }
                     }

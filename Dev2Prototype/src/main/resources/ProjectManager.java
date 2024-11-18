@@ -3,14 +3,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
 public class ProjectManager {
     private ArrayList<ProjetTravaux> projets = new ArrayList<>();
     private HttpClientApi api = new HttpClientApi();
     private String ressourceIdTravaux = "cc41b532-f12d-40fb-9f55-eb58c9a2b12b";// ID du JSON contenant les travaux
     private String ressourceIdEntraves = "a2bc8014-488c-495d-941b-e7ae1999d1bd";
     private ArrayList<String> TypesTravaux = new ArrayList<>();
-    private static ArrayList<String> quartiers = new ArrayList<>();
+    private  ArrayList<String> quartiers = new ArrayList<>();
         quartiers.add("Ahuntsic-Cartierville");
         quartiers.add("Anjou");
         quartiers.add("Côte-des-Neiges–Notre-Dame-de-Grâce");
@@ -157,7 +156,24 @@ public class ProjectManager {
         return projets;
     };
 
+    public static ArrayList<String> getQuartiers() {
+        return quartiers;
+    }
 
+    public ArrayList<String> getTypesTravaux() {
+        return TypesTravaux;
+    }
 
+    public String getRessourceIdEntraves() {
+        return ressourceIdEntraves;
+    }
+
+    public void setTypesTravaux(ArrayList<String> typesTravaux) {
+        TypesTravaux = typesTravaux;
+    }
+
+    public void setProjets(ArrayList<ProjetTravaux> projets) {
+        this.projets = projets;
+    }
 
 }
