@@ -1,174 +1,91 @@
+package org.example;
 
-import java.util.ArrayList;
+import java.net.http.HttpResponse;
 import java.util.Scanner;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class IntervenantMenu {
-    private ArrayList<RequeteTravail> requetes;
-    private ProjectManager ProjectManager = new ProjectManager();
-    private ArrayList<Notification> new_notifications = ResidentMenu.getNotifications();
-
-
-    public IntervenantMenu(ArrayList<RequeteTravail> requetes) {
-        this.requetes =requetes;
+    public IntervenantMenu() {
     }
 
     public void afficherMenu(Scanner scanner) {
         int choice = -1;
-        while (choice != 0) {
+
+        while(choice != 0) {
             System.out.println("--- Menu Intervenant ---");
             System.out.println("Choisissez une option:");
             System.out.println("1. Soumettre un nouveau projet de travaux");
             System.out.println("2. Mettre à jour les informations d'un chantier");
             System.out.println("3. Consulter la liste de requêtes de travail");
             System.out.println("0. Se déconnecter");
-            choice = scanner.nextInt();
-            scanner.nextLine(); // Consommer la ligne restante
+            if (scanner.hasNextInt()) {
+                choice = scanner.nextInt();
+                scanner.nextLine();
+            } else {
+                System.out.println("Veuillez entrer un nombre valide (1, 2 ou 3).");
+                scanner.nextLine();
+            }
 
             switch (choice) {
-                case 1:
-                    soumettreProjet(scanner);
-                    break;
-                case 2:
-                    mettreAJourChantier(scanner);
-                    break;
-                case 3:
-                    consulterRequetes();
-                    break;
                 case 0:
                     System.out.println("Déconnexion...");
                     break;
+                case 1:
+                    this.soumettreProjet(scanner);
+                    break;
+                case 2:
+                    this.mettreAJourChantier(scanner);
+                    break;
+                case 3:
+                    this.consulterRequetes();
+                    break;
                 default:
                     System.out.println("Option invalide. Veuillez réessayer.");
-                    break;
             }
         }
+
     }
 
     private void soumettreProjet(Scanner scanner) {
-        System.out.println("Titre du projet:");
-        String titre = scanner.nextLine();
-
-        System.out.println("Description du projet:");
-        String description = scanner.nextLine();
-
-        System.out.println("Type de travaux:");
-        String typeTravaux = scanner.nextLine();
-
-        ArrayList<String> quartiersAffectes = new ArrayList<>();
-        System.out.println("Entrez les quartiers affectés (tapez 'fin' pour terminer):");
-        while (true) {
-            String quartier = scanner.nextLine();
-            if (quartier.equalsIgnoreCase("fin")) {
-                break;
-            }
-            quartiersAffectes.add(quartier);
-        }
-
-        ArrayList<String> ruesAffectees = new ArrayList<>();
-        System.out.println("Entrez les rues affectées (tapez 'fin' pour terminer):");
-        while (true) {
-            String rue = scanner.nextLine();
-            if (rue.equalsIgnoreCase("fin")) {
-                break;
-            }
-            ruesAffectees.add(rue);
-        }
-
-        System.out.print("Date de début (AAAA-MM-JJ): ");
-        String dateDebut = scanner.nextLine();
-
-        System.out.print("Date de fin (AAAA-MM-JJ): ");
-        String dateFin = scanner.nextLine();
-
-        System.out.print("Horaire des travaux: ");
-        String horaireTravaux = scanner.nextLine();
-        String id = ProjectManager.GenerateId();
-        // Créer le projet de travaux
-        ProjetTravaux nouveauProjet = new ProjetTravaux(id,titre, description, typeTravaux, quartiersAffectes, ruesAffectees, dateDebut, dateFin, horaireTravaux);
-        ProjectManager.addProjet(nouveauProjet);
-
-        // Créer les entraves associées
-        System.out.println("Ajout des entraves associées au projet.");
-        while (true) {
-            System.out.println("Voulez-vous ajouter une nouvelle entrave ? (oui/non)");
-            String reponse = scanner.nextLine();
-            if (reponse.equalsIgnoreCase("non")) {
-                break;
-            }
-
-            System.out.print("Identifiant de la rue (streetId) : ");
-            String streetId = scanner.nextLine();
-
-            System.out.print("Nom court de la rue (shortName) : ");
-            String shortName = scanner.nextLine();
-
-            System.out.print("Type d'impact sur la rue (streetImpactType) : ");
-            String streetImpactType = scanner.nextLine();
-
-            // Créer une entrave
-            Entrave nouvelleEntrave = new Entrave(nouveauProjet.getId(), streetId, shortName, streetImpactType);
-
-            // Associer l'entrave au projet
-            nouveauProjet.ajouterEntrave(nouvelleEntrave);
-        }
-
-        // Ajouter une notification pour les résidents
-        String msgNotif = "Projet ajouté\nInformations sur le projet :\n" + nouveauProjet.toString();
-        Notification notification = new Notification(msgNotif);
-        new_notifications.add(notification);
-        ResidentMenu.setNotifications(new_notifications);
+        System.out.println("Soumettre Projet...");
     }
 
-
     private void mettreAJourChantier(Scanner scanner) {
-        if (ProjectManager.getProjets().isEmpty()) {
-            System.out.println("Aucun chantier disponible pour mise à jour.");
-            return;
-        }
-
-        System.out.println("Choisissez un chantier à mettre à jour:");
-        // liste des travaux
-        for (int i = 0; i < ProjectManager.getProjets().size(); i++) {
-            System.out.println((i + 1) + ". " + ProjectManager.getProjets().get(i).getTitre());
-        }
-
-        int choixChantier = scanner.nextInt() - 1;// rentrer numéro pour choisir le chantier à mettre à jour
-        scanner.nextLine();
-
-        if (choixChantier >= 0 && choixChantier < ProjectManager.getProjets().size()) {
-            ProjetTravaux projet = ProjectManager.getProjets().get(choixChantier);
-
-            System.out.println("Nouveau titre (laissez vide pour ne pas changer):");
-            String nouveauTitre = scanner.nextLine();
-            if (!nouveauTitre.isEmpty()) {
-                projet.setTitre(nouveauTitre);
-            }
-
-            System.out.println("Nouvelle description (laissez vide pour ne pas changer):");
-            String nouvelleDescription = scanner.nextLine();
-            if (!nouvelleDescription.isEmpty()) {
-                projet.setDescription(nouvelleDescription);
-            }
-            String msgNotif = "Chantier mise à jour\nNouveaux informations du chantier:\n"+ projet.toString();
-            Notification notification = new Notification(msgNotif);
-            new_notifications.add(notification);
-            ResidentMenu.setNotifications(new_notifications);
-        } else {
-            System.out.println("Chantier invalide.");
-        }
+        System.out.println("Mettre à jour Chantier");
     }
 
     private void consulterRequetes() {
-        if (requetes.isEmpty()) {
-            System.out.println("Aucune requête de travail disponible.");
-        } else {
-            for (RequeteTravail requete : requetes) {
-                System.out.println(requete.toString());
-            }
-        }
-    }
+        System.out.println("Consulter les requêtes de travail:");
+        String url = "http://localhost:7002/requetes";
+        HttpResponse<String> response = HttpClientMaVille.get(url);
+        if (response != null && response.statusCode() == 200) {
+            String responseBody = (String)response.body();
+            JSONArray requetesArray = new JSONArray(responseBody);
+            if (requetesArray.length() == 0) {
+                System.out.println("Aucune requête de travail disponible.");
+            } else {
+                int compteur = 1;
 
-    public ArrayList<RequeteTravail> getRequetes() {
-        return requetes;
+                for(int i = 0; i < requetesArray.length(); ++i) {
+                    JSONObject requeteJson = requetesArray.getJSONObject(i);
+                    String titre = requeteJson.getString("titre");
+                    String description = requeteJson.getString("description");
+                    String type = requeteJson.getString("type");
+                    String dateDebut = requeteJson.getString("dateDebut");
+                    RequeteTravail requete = new RequeteTravail(titre, description, type, dateDebut);
+                    int var10001 = compteur++;
+                    System.out.println("---- Requête " + var10001 + " ----");
+                    System.out.println("Titre : " + requete.getTitreTravail());
+                    System.out.println("Description : " + requete.getDescriptionDetaillee());
+                    System.out.println("Type de travaux : " + requete.getTypeTravaux());
+                    System.out.println("Date début : " + requete.getDateDebutEsperee());
+                    System.out.println();
+                }
+            }
+        } else {
+            System.out.println("Erreur lors de la récupération des requêtes.");
+        }
+
     }
 }
