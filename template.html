@@ -2189,7 +2189,7 @@
             </section>
 
             <section class="main-section">
-                <h2 id="analysis" class="section-title">Analyse</h2>
+                <h2 id="archit" class="section-title">Architecture</h2>
              <div>
                   <p> <em>
                   Le système commence avec le menu, qui affiche une carte de Montréal. Un API est utilisé pour prendre les informations de la carte, de les afficher, et un autre API pour mettre les zones, les travaux, les endroits à problème, bref, un API servant à afficher des données supplémentaires sur la carte.
@@ -2275,6 +2275,9 @@ Base de données
               - Vérification des droits d’accès (RBAC).
 
              </p>
+              <div class="architecture">
+                    <img class="class-diagram" src="diagrammes/Architecture.svg" alt="Diagramme du type d'architecture" style="max-width: 100%;">
+              </div>
 
 
 
@@ -2282,6 +2285,15 @@ Base de données
              Nous choisissons un design modulaire où la cohésion dans la classe est forte, les relations entre les classes sont faibles et les séparations sont claires visuellement afin d’avoir un programme plus compréhensible. Nous implémentons des classes abstraites car nous avons des modules ayant des similarités, comme les résidents, les compagnies privées et les agents publics, qui ont des éléments en commun, par exemple, le nom, l’adresse, le courriel, le numéro de téléphone et quelques autres. Des classes d’instanciations comme Requetes et Travaux utilise l’encapsulation, afin de créer de nouvelles instances où les informations ne peuvent pas être modifiées sans utiliser les setters données par la classe, et les informations ne peuvent pas être vus sans utiliser les getters. Avec toutes ces fonctionnalités que nous utilisons, une conception qui permet une plus grande docilité dans les changements futurs sur les classes, les méthodes et les variables est donc plus facile à gérer que d’autres modèles qui restreint les modifications possible sur le système. Les répercussions sur des nouveautés apportées au programme sont alors moins négatives et plus simple à régler en suivant ce design. Si de plus gros changements ont besoin d’être faits, par exemple rajouter des villes autres que Montréal dans notre système, rajouter d’autres types d’utilisateurs, modifier les envois des requêtes et des travaux pour qu’ils soient aussi envoyés par lettre, alors notre choix initial permet de faire ces modifications avec une plus grande facilité.
              </p>
                 </div>
+             <div class="classes">
+                    <img class="class-diagram" src="diagrammes/Class Diagram1.svg" alt="Diagramme de classe" style="max-width: 100%;">
+              </div>
+             <div class="sequence">
+                    <img class="class-diagram" src="diagrammes/SequenceDiagramConsultation.svg" alt="Diagramme de séquence de consultation de travaux" style="max-width: 100%;">
+                    <img class="class-diagram" src="diagrammes/SequenceDiagramConsulterRequetes.svg" alt="Diagramme de séquence de consultation de requêtes" style="max-width: 100%;">
+                    <img class="class-diagram" src="diagrammes/SequenceDiagramSoumettreRequeteTravail.svg" alt="Diagramme de séquence de soumission de requete de travail" style="max-width: 100%;">
+                    <img class="class-diagram" src="diagrammes/SequenceDiagramConsultation.svg" alt="Diagramme de séquence d'inscription et de connexion" style="max-width: 100%;">
+              </div>
  
             </section>
 
