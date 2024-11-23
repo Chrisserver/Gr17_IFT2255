@@ -2190,11 +2190,12 @@
 
             <section class="main-section">
                 <h2 id="analysis" class="section-title">Analyse</h2>
+                  <p>
                   Le système commence avec le menu, qui affiche une carte de Montréal. Un API est utilisé pour prendre les informations de la carte, de les afficher, et un autre API pour mettre les zones, les travaux, les endroits à problème, bref, un API servant à afficher des données supplémentaires sur la carte.
 
-Ensuite, on demande de voir les projets de requêtes, ce qui nécessite un API pour aller chercher les informations sur le site « Infos entraves et travaux ». Après avoir reçu l’information, on enregistre ces données dans la base de données MaVille, par un API, s’appelant « Requête ». Ensuite, cette série de données est affichée pour l’utilisateur.
+                  Ensuite, on demande de voir les projets de requêtes, ce qui nécessite un API pour aller chercher les informations sur le site « Infos entraves et travaux ». Après avoir reçu l’information, on enregistre ces données dans la base de données MaVille, par un API, s’appelant « Requête ». Ensuite, cette série de données est affichée pour l’utilisateur.
 
-Comme autre possibilité, il aurait pu vouloir avoir des projets de travaux, qui eux aussi ont besoin d’un accès à « Infos entraves et travaux ». Mais, ce qui semble être plus important dans notre projet, est que cette information vient de la base de donnés de la ville de Montréal.
+                  Comme autre possibilité, il aurait pu vouloir avoir des projets de travaux, qui eux aussi ont besoin d’un accès à « Infos entraves et travaux ». Mais, ce qui semble être plus important dans notre projet, est que cette information vient de la base de donnés de la ville de Montréal.
 
 Ainsi, à partir de maintenant, nous n’allons que chercher ces informations à une certaine intervalle de temps afin qu’on soit mise à jour avec le système de la ville qui est malheureusement pas entièrement sur le système MaVille car les requêtes et les travaux peuvent encore être faits de d’autres façons, comme par version papier directement. Nous allons maintenant parler d’une base de donnée de requête et une de travaux et la base de données requête est celle du projet, celle de MaVille, qui se fait mettre à jour à un intervalle de temps prédéfini, et une base de données travaux, qui est appelée la base de données de la ville de Montréal car ces travaux sont officiels et sont prêt à être exécuté par des compagnies privées et par la ville.
 
@@ -2213,7 +2214,8 @@ Des APIs qui vont servir de distributeur de traffic afin d’éviter les surchar
 
 Nous avons un API pour enregistrer les informations personnelles des utilisateurs, surtout ceux des compagnies privées et des agents du secteur public. Un API pour sauvegarder le cache dans un serveur le plus près de l’utilisateur sera mis en place et un gestionnaire de ces caches serait aussi installé.
 
-Il ne reste plus que le front-end du système à implémenter, ce qui requiert un API d’affichage approprié pour le système MaVille.
+Il ne reste plus que le front-end du système à implémenter, ce qui requiert un API d’affichage approprié pour le système MaVille. 
+                  </p>
  
 Architecture du système : Microservices
 L’architecture microservices permet de créer des systèmes à plus grande échelle, car elle peut être divisée en plusieurs fonctionnalités qui travaillent en services indépendants. Ceci améliore donc la scalabilité, facilite la correction des problèmes et les nouvelles mises à jour, et permet de mieux gérer les situations de panne d’un service spécifique.
@@ -2246,26 +2248,26 @@ Base de données
 3. Base orientée graphe (Neo4j) :
    - Pour modéliser les connexions complexes entre les projets, les compagnies, et les zones géographiques.
 
-API et intégrations
-- Intègre un API Gateway (par exemple, Kong, AWS API Gateway) pour centraliser les appels API et assurer la sécurité.
-- Communication entre services via gRPC ou REST (en fonction des besoins de performance).
+              API et intégrations
+              - Intègre un API Gateway (par exemple, Kong, AWS API Gateway) pour centraliser les appels API et assurer la sécurité.
+              - Communication entre services via gRPC ou REST (en fonction des besoins de performance).
 
-Technologies possibles
-- Backend : Node.js, Python (FastAPI, Django), ou Java (Spring Boot).
-- Frontend : Frameworks comme React ou Angular.
-- Infrastructure : Kubernetes pour l'orchestration des conteneurs et Docker pour le packaging.
-- Messagerie : RabbitMQ ou Kafka pour les notifications asynchrones.
-- Cloud : AWS, Azure, ou GCP pour l’hébergement scalable.
+              Technologies possibles
+              - Backend : Node.js, Python (FastAPI, Django), ou Java (Spring Boot).
+              - Frontend : Frameworks comme React ou Angular.
+              - Infrastructure : Kubernetes pour l'orchestration des conteneurs et Docker pour le packaging.
+              - Messagerie : RabbitMQ ou Kafka pour les notifications asynchrones.
+              - Cloud : AWS, Azure, ou GCP pour l’hébergement scalable.
 
-Résilience et scalabilité
-- Mise en cache : Utilise Redis ou Memcached pour réduire les temps de réponse.
-- Monitoring : Installe des outils comme Prometheus et Grafana pour surveiller la performance et l’activité.
-- CI/CD : Automatise les déploiements avec des outils comme GitHub Actions, Jenkins, ou GitLab CI/CD.
+              Résilience et scalabilité
+              - Mise en cache : Utilise Redis ou Memcached pour réduire les temps de réponse.
+              - Monitoring : Installe des outils comme Prometheus et Grafana pour surveiller la performance et l’activité.
+              - CI/CD : Automatise les déploiements avec des outils comme GitHub Actions, Jenkins, ou GitLab CI/CD.
 
-Sécurité
-- Chiffrement des communications avec HTTPS.
-- Authentification via JWT ou OAuth 2.0.
-- Vérification des droits d’accès (RBAC).
+              Sécurité
+              - Chiffrement des communications avec HTTPS.
+              - Authentification via JWT ou OAuth 2.0.
+              - Vérification des droits d’accès (RBAC).
 
 
 
