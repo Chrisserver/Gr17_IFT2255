@@ -2243,38 +2243,44 @@ a.	Génère des rapports sur les travaux terminés, les requêtes en attente, et
 a.	Permet à la ville de superviser les projets et de configurer les priorités</p></ol>
  </ol>
 
-             Base de données<ol><p>
-             1. Base NoSQL (MongoDB, DynamoDB) :</p><ol><p>
-                 - Pour stocker les données des travaux et des requêtes (rapides, flexibles).</p></ol><p>
-             2. Base relationnelle (PostgreSQL, MySQL) :
-                 - Pour gérer les utilisateurs et les relations entre les projets, requêtes, et compagnies.
-             3. Base orientée graphe (Neo4j) :
-                 - Pour modéliser les connexions complexes entre les projets, les compagnies, et les zones géographiques.
-                 </p>
+             <h2 id="archit" class="subsection-title">Base de données</h2><ol><ol>
+             1. Base NoSQL (MongoDB, DynamoDB) :<ol>
+                 - Pour stocker les données des travaux et des requêtes (rapides, flexibles).</ol></ol>
+              <ol>
+             2. Base relationnelle (PostgreSQL, MySQL) : <ol>
+                 - Pour gérer les utilisateurs et les relations entre les projets, requêtes, et compagnies.</ol></ol>
+              <ol>
+             3. Base orientée graphe (Neo4j) :<ol>
+                 - Pour modéliser les connexions complexes entre les projets, les compagnies, et les zones géographiques.</ol></ol>
+                 </ol>
 
-              API et intégrations
+              <h2 id="archit" class="subsection-title">API et intégrations</h2><ol><ol>
                    
-              - Intègre un API Gateway (par exemple, Kong, AWS API Gateway) pour centraliser les appels API et assurer la sécurité.
-                   
+              - Intègre un API Gateway (par exemple, Kong, AWS API Gateway) pour centraliser les appels API et assurer la sécurité.</ol>
+              <ol>
               - Communication entre services via gRPC ou REST (en fonction des besoins de performance).
+              </ol></ol>
                    
 
-              Technologies possibles
-              - Backend : Node.js, Python (FastAPI, Django), ou Java (Spring Boot).
-              - Frontend : Frameworks comme React ou Angular.
-              - Infrastructure : Kubernetes pour l'orchestration des conteneurs et Docker pour le packaging.
-              - Messagerie : RabbitMQ ou Kafka pour les notifications asynchrones.
-              - Cloud : AWS, Azure, ou GCP pour l’hébergement scalable.
+              <h2 id="archit" class="subsection-title">Technologies possibles</h2><ol><ol>
+              - Backend : Node.js, Python (FastAPI, Django), ou Java (Spring Boot).</ol><ol>
+              - Frontend : Frameworks comme React ou Angular.</ol><ol>
+              - Infrastructure : Kubernetes pour l'orchestration des conteneurs et Docker pour le packaging.</ol><ol>
+              - Messagerie : RabbitMQ ou Kafka pour les notifications asynchrones.</ol><ol>
+              - Cloud : AWS, Azure, ou GCP pour l’hébergement scalable.</ol><ol>
+              </ol>
 
-              Résilience et scalabilité
-              - Mise en cache : Utilise Redis ou Memcached pour réduire les temps de réponse.
-              - Monitoring : Installe des outils comme Prometheus et Grafana pour surveiller la performance et l’activité.
-              - CI/CD : Automatise les déploiements avec des outils comme GitHub Actions, Jenkins, ou GitLab CI/CD.
+              <h2 id="archit" class="subsection-title">Résilience et scalabilité</h2></ol><ol>
+              - Mise en cache : Utilise Redis ou Memcached pour réduire les temps de réponse.</ol><ol>
+              - Monitoring : Installe des outils comme Prometheus et Grafana pour surveiller la performance et l’activité.</ol><ol>
+              - CI/CD : Automatise les déploiements avec des outils comme GitHub Actions, Jenkins, ou GitLab CI/CD.</ol><ol>
+              </ol>
 
-              Sécurité
-              - Chiffrement des communications avec HTTPS.
-              - Authentification via JWT ou OAuth 2.0.
-              - Vérification des droits d’accès (RBAC).
+              <h2 id="archit" class="subsection-title">Sécurité</h2></ol><ol>
+              - Chiffrement des communications avec HTTPS.</ol><ol>
+              - Authentification via JWT ou OAuth 2.0.</ol><ol>
+              - Vérification des droits d’accès (RBAC).</ol><ol>
+              </ol>
 
              </p>
               <div class="architecture">
