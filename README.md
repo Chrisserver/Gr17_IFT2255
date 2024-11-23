@@ -7,6 +7,8 @@ Le projet ci-haut consiste à améliorer l'unicité entre la ville de Montréal 
 - Dans le dossier "htmlPrototype", c'est un site web de base représentant certains éléments de base de l'allure de l'application/page web désirée.
 - Le dossier "images" rassemble les images des cas d'utilisation et des diagrammes d'activité.
 - Le fichier "template.html" est le document d'analyse du projet que nous avons réalisé, et le lien est au bas de ce README.
+- Dans le dossier "Devoir 2 Documents", nous avons les images des diagrammes de classes, des 3 diagrammes de séquence et le diagramme d'architecture. Il contient également le fichier décrivant le type de style d'architecture choisi ainsi que la justification du type de modèle.
+- Le dossier "PrototypeDev2" contient une implémentation reflétant le diagramme de classe dans les plus grandes lignes avec des classes fonctionnelles pour la plupart d'entre elles. Nous avons également une classe, la classe "CentralAPI" qui est la classe servant de REST API pour les autres classes ayant besoin d'un accès aux APIs du système.
 
 Voici la <a href="https://chrisserver.github.io/Gr17_IFT2255/template.html" target="_blank" rel="noopener noreferrer">page du livrable.</a>
 
