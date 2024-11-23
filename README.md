@@ -9,6 +9,7 @@ Le projet ci-haut consiste à améliorer l'unicité entre la ville de Montréal 
 - Le fichier "template.html" est le document d'analyse du projet que nous avons réalisé, et le lien est au bas de ce README.
 - Dans le dossier "Devoir 2 Documents", nous avons les images des diagrammes de classes, des 3 diagrammes de séquence et le diagramme d'architecture. Il contient également le fichier décrivant le type de style d'architecture choisi ainsi que la justification du type de modèle.
 - Le dossier "PrototypeDev2" contient une implémentation reflétant le diagramme de classe dans les plus grandes lignes avec des classes fonctionnelles pour la plupart d'entre elles. Nous avons également une classe, la classe "CentralAPI" qui est la classe servant de REST API pour les autres classes ayant besoin d'un accès aux APIs du système.
+- Dans le dossier "PrototypeDev2/Application" se trouve le fichier jar PrototypeDev2.jar et les fichiers externes json neccaires a son execution.
 
 Les mêmes méthodes sont utilisées pour utiliser l'application que dans le devoir 1. On vous donne donc la référence mentionné dans le template du devoir précédent <a  href="https://chrisserver.github.io/Gr17_IFT2255/template.html#prototype" target="_blank" rel="noopener noreferrer">[1].</a>
 
