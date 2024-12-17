@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Pages in One with Tabs</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styles for the tabs */
+        .tab {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background-color: #666;
+        }
+
+        /* Hide all content sections initially */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        /* Show only the active content */
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Tabs for navigation -->
+    <div class="tab" onclick="openSection(event, 'section1')">Cadre</div>
+    <div class="tab" onclick="openSection(event, 'section2')">Exigences</div>
+    <div class="tab" onclick="openSection(event, 'section3')">Analyse</div>
+    <div class="tab" onclick="openSection(event, 'section4')">Conception</div>
+    <div class="tab" onclick="openSection(event, 'section5')">Implémentation</div>
+    <div class="tab" onclick="openSection(event, 'section6')">Tests unitaires</div>
+    <div class="tab" onclick="openSection(event, 'section7')">Documentation</div>
+    <div class="tab" onclick="openSection(event, 'section8')">Démonstration</div>
+
+    <!-- Tab content -->
+    <div id="section1" class="tab-content">
+            <div>
+                <h1 class="report-title">Rapport du livrable 1</h1>
+                <p class="report-summary">
+                    <em>Court résumé du rapport</em> &ndash; Ce livrable se concentre sur l'élaboration d'une projet afin d'améliorer la diffusion de données 
+                    au grand public concernant le secteur de travaux publics et privés.
+                </p>
+            </div>
+
+            <ul class="bare-list report-resources">
+                <li class="report-resource">
+                    <a class="report-resource-link" href="https://github.com/Chrisserver/Gr17_IFT2255.git" target="_blank">
+                        Répertoire GitHub
+                    </a>
+                </li>
+            </ul>
+      <h2 class="team-title">Équipe #17</h2>
+            <ul class="bare-list members">
+                <li class="member">
+                    <div class="member-identification">
+                        <span class="member-name">Rim El Harras</span>
+                        <span class="member-id">20248496</span>
+                    </div> 
+                    <span>Discord: @rimelh</span>
+                    <a href="mailto:prenom.nom@umontreal.ca">rim.el.harras@umontreal.ca</a>
+                </li>
+                <li class="member">
+                    <div class="member-identification">
+                        <span class="member-name">Ratzy-Chris Ndikumasabo</span>
+                        <span class="member-id">1034870</span>
+                    </div> 
+                    <span>Discord: @hunter_ratzy</span>
+                    <a href="mailto:prenom.nom@umontreal.ca">ratzy-chris.ndikumasabo@umontreal.ca</a>
+                </li>
+                <li class="member">
+                    <div class="member-identification">
+                        <span class="member-name">Christopher Servant</span>
+                        <span class="member-id">20268916</span>
+                    </div> 
+                    <span>Discord: @gordo31415926535</span>
+                    <a href="mailto:prenom.nom@umontreal.ca">christopher.servant@umontreal.ca</a>
+                </li>
+            </ul>
+      <h2 id="plan" class="section-title">Cadre du projet</h2>
+                <h3 class="subsection-title">Introduction</h3>
+                <p>
+                    <em>
+                        Plusieurs travaux de construction, de réparation et d'entretien de routes se passent partout au Québec, et bien qu'il y en ait plusieurs, avec chacun leur niveau de difficulté et de temps requis, les citoyens n'en sont pas toujours avertis ou informés.
+                        Ce projet établira une connexion entre l'utilisateur du réseau routier et les différentes compagnies privées s'occupant des rues, des boulevards, des autoroutes et autres dans le but d'aider les individus dans leurs déplacements habituels.
+                    </em>
+                </p>
+                <h3 class="subsection-title">Échéancier</h3>
+               <pre>
+                ___________|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 |
+                CN, CS, RE |####(Étude du domaine)
+                CN,CS,RE   |  ##(Préparation des questions)
+                CN         |    ##### (Glossaire)
+                CS,RE      |    ################### (Diagramme de CUs + scénarios)
+                CN,RE      |    ################### (Diagramme d'activités)
+                CN         |        ############## (Prototype)
+                CS         |                  #### (README)
+                RE         |              ######## (Analyse)
+                CS,RE,CN   |              ######### (Rédaction du rapport)
+                CS, RE     |                                          ########### (Diagramme de classe)
+                CS         |                                          ########### (Diagramme de séquence + architecture)
+                CN         |                                                ##### (Mis à jour)
+                CN         |                                          ########### (Implémentation)
+                           |                                                      ################## (Implémentation et tests)
+                           |                                                      ###   ##   ##   ## (Documentation)
+
+            ********Légende*********
+
+            RE: Rim El Harras,CN: Ratzy-Chris Ndikumasabo , CS: Christopher Servant    
+               </pre>
+    </div>
+    
+
+    <div id="section2" class="tab-content">
+        <h1>Projets en cours</h1>
+        <p>Voici les projets en cours dans vos régions sauvegardées</p>
+        <a href="">carte</a>
+        <h1>Requêtes</h1>
+        <p>Remplir une formulaire de requête <a href="">ici</a></p>
+        <p>En attente</p>
+        <a href="">pdfs des projets</a>
+        <p>En cours</p>
+        <a href="">pdfs des projets</a>
+        <p>Finis</p>
+        <a href="">pdfs des projets</a>
+    </div>
+
+    <div id="section3" class="tab-content">
+        <h1>Notifications</h1>
+        <a href="">notifs des requetes envoyés</a>
+    </div>
+
+    <div id="section4" class="tab-content">
+        <h1>Informations personnelles</h1>
+        <p>Nom</p>
+        <p>Nom de famille</p>
+        <p>Courriel</p>
+        <p>Addresse</p>
+        <p>Date de naissance</p>
+        <button id="boutonDeconnexion">Déconnexion</button>
+    </div>
+
+    <div id="section5" class="tab-content">
+        <h1>Informations personnelles</h1>
+        <p>Nom</p>
+        <p>Nom de famille</p>
+        <p>Courriel</p>
+        <p>Addresse</p>
+        <p>Date de naissance</p>
+        <button id="boutonDeconnexion">Déconnexion</button>
+    </div>
+
+    <div id="section6" class="tab-content">
+        <h1>Informations personnelles</h1>
+        <p>Nom</p>
+        <p>Nom de famille</p>
+        <p>Courriel</p>
+        <p>Addresse</p>
+        <p>Date de naissance</p>
+        <button id="boutonDeconnexion">Déconnexion</button>
+    </div>
+    <div id="section7" class="tab-content">
+        <h1>Informations personnelles</h1>
+        <p>Nom</p>
+        <p>Nom de famille</p>
+        <p>Courriel</p>
+        <p>Addresse</p>
+        <p>Date de naissance</p>
+        <button id="boutonDeconnexion">Déconnexion</button>
+    </div>
+    <div id="section8" class="tab-content">
+        <h1>Informations personnelles</h1>
+        <p>Nom</p>
+        <p>Nom de famille</p>
+        <p>Courriel</p>
+        <p>Addresse</p>
+        <p>Date de naissance</p>
+        <button id="boutonDeconnexion">Déconnexion</button>
+    </div>
+
+    <script>
+        // Function to open the selected section and hide the others
+        function openSection(event, sectionId) {
+            // Hide all sections
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            // Show the selected section and highlight the clicked tab
+            document.getElementById(sectionId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Show the first section by default
+        document.addEventListener("DOMContentLoaded", function() {
+            openSection(null, 'section1');
+        });
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
