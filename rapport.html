@@ -1604,9 +1604,12 @@
                   
                   </p>
 
-                  <h2 id="archit" class="subsection-title">Architecture du système : Microservices</h2> <p>
+                  <h2 id="archit" class="subsection-title">Architecture principale du système : Hybride</h2> <p>
                    L’architecture microservices permet de créer des systèmes à plus grande échelle, car elle peut être divisée en plusieurs fonctionnalités qui travaillent en services indépendants. Ceci améliore donc la scalabilité, facilite la correction des problèmes et les nouvelles mises à jour, et permet de mieux gérer les situations de panne d’un service spécifique.
-
+                   Comme autre architecture, on ajoute aussi le MVC car nous jouons avec du frontend dans l'application. Nous avons la vue où les résidents et les intervenants intéragissent avec l'interface, le modèle qui gère la récupération des données via les microservices et les contrôleurs qui eux vont gérer les actions des utilisateurs et la communication avec les microservices par des APIs.
+                   Nous ajoutons également une approche en couches, avec une couche de présentation, qui marque le frontend, une couche de services, où toutes les demandes de traitements des microservices sont faites, et une couche de données, où nous avons les bases de données spécialisées.
+                   Également, une architecture client-serveur est ajouté, afin de réduire la complexité de certaines tâches plus simple. Le serveur central redirige les requêtes vers les microservices qui sont concernés par des APIs
+                   Nous choisissons cette combinaison car elle apporte une plus grande flexibilité, ce qui pourrait nous aider au niveau de la maintenance et si nous voulons agrandir le projet pour qu'elle ne soit pas seulement focaliser sur la ville de Montréal. La performance est également grandement amélioré par l'utilisation des APIs par les microservices et par les opérations parfois plus simple de l'interaction clien-serveur. L'architecture MVC apporte une simplicét au niveau frontend du système pour l'application. L'approche en couches permet une organisation plus claire du système et va aider avec la mainteance du système également.
 Organisation des services <ol> <p>
 1.	Service Utilisateurs: </p><ol><p>
 a.	Gère les résidents, les compagnies privées, et les agents publics</p><p>
