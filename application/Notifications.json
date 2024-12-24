@@ -1,0 +1,18 @@
+[
+    {
+        "id": "45681216",
+        "idUtilisateur": "11223344",
+        "titre":"Nouveau projet de Jean Inspecteur",
+        "message": "Jean Inspecteur vous envoie un nouveau projet",
+        "idDocument": "11223344",
+        "vue": false
+    },
+    {
+        "id": "321021498",
+        "idUtilisateur": "058de5f3-3774-497e-b6fc-ad01c422e92a",
+        "titre":"Nouvelle requête de Alice Dupont",
+        "message": "Alice Dupont vous envoie une nouvelle requête",
+        "idDocument": "d94cc751-85bf-4b94-ac6e-484982b56674",
+        "vue": false
+    }
+]

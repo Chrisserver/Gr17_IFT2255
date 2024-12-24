@@ -1,0 +1,158 @@
+[
+    {
+        "ruesAffectees": [
+            "Rue de la Liberté",
+            "Avenue de la République"
+        ],
+        "dateDebut": "2024-09-01",
+        "horaireTravaux": "08:00 - 17:00",
+        "titre": "Rénovation de la place centrale",
+        "quartiersAffectes": [
+            "Centre-ville",
+            "Place de la République"
+        ],
+        "typeTravaux": "Réhabilitation",
+        "description": "Réhabilitation de la place centrale avec de nouveaux équipements.",
+        "id": "11223344",
+        "dateFin": "2024-12-15",
+        "statut": "En cours"
+    },
+    {
+        "ruesAffectees": [
+            "Boulevard Industriel",
+            "Route de l'Est"
+        ],
+        "dateDebut": "2024-11-01",
+        "horaireTravaux": "07:00 - 18:00",
+        "titre": "Extension de la ligne de tramway",
+        "quartiersAffectes": [
+            "Quartier Est",
+            "Zone Industrielle"
+        ],
+        "typeTravaux": "Construction",
+        "description": "Construction d'une nouvelle extension de la ligne de tramway vers l'est.",
+        "id": "12345678",
+        "dateFin": "2025-05-30",
+        "statut": "Annulé"
+    },
+    {
+        "ruesAffectees": [
+            "Pont du Nord",
+            "Pont de la Liberté"
+        ],
+        "dateDebut": "2024-10-10",
+        "horaireTravaux": "09:00 - 16:00",
+        "titre": "Réparation des ponts urbains",
+        "quartiersAffectes": [
+            "Rive gauche",
+            "Rive droite"
+        ],
+        "typeTravaux": "Réparation",
+        "description": "Travaux de réparation des ponts endommagés suite aux intempéries.",
+        "id": "11223344",
+        "dateFin": "2024-12-25",
+        "statut": "En cours"
+    },
+    {
+        "ruesAffectees": [
+            "Rue des Jardins",
+            "Avenue des Plantes"
+        ],
+        "dateDebut": "2024-06-01",
+        "horaireTravaux": "08:00 - 17:00",
+        "titre": "Aménagement d'un nouveau parc",
+        "quartiersAffectes": [
+            "Quartier Vert",
+            "Les Jardins"
+        ],
+        "typeTravaux": "Aménagement",
+        "description": "Création d'un nouveau parc urbain pour améliorer les espaces verts.",
+        "id": "11223344",
+        "dateFin": "2024-09-30",
+        "statut": "Terminé"
+    },
+    {
+        "ruesAffectees": [
+            "Chemin des Énergies",
+            "Rue des Innovations"
+        ],
+        "dateDebut": "2024-07-15",
+        "horaireTravaux": "09:00 - 17:00",
+        "titre": "Modernisation du réseau électrique",
+        "quartiersAffectes": [
+            "Zone Électrique",
+            "Technopôle"
+        ],
+        "typeTravaux": "Modernisation",
+        "description": "Remplacement des équipements du réseau électrique pour améliorer la fiabilité.",
+        "id": "12345678",
+        "dateFin": "2024-12-20",
+        "statut": "Annulé"
+    },
+    {
+        "ruesAffectees": ["Rue venise"],
+        "dateDebut": "2025-01-12",
+        "horaireTravaux": "Matin",
+        "titre": "Réparation du pont cartier",
+        "quartiersAffectes": ["Hochelaga"],
+        "typeTravaux": "Réparation",
+        "description": "Travaux de réparation du pont après tempete.",
+        "id": "12345678",
+        "dateFin": "2025-01-30",
+        "statut": "Prévu"
+    },
+    {
+        "ruesAffectees": ["Rue venise"],
+        "dateDebut": "2025-02-12",
+        "horaireTravaux": "Soir",
+        "titre": "1",
+        "quartiersAffectes": [
+            "Outremont",
+            "Ville-Marie"
+        ],
+        "typeTravaux": "Réparation",
+        "description": "1",
+        "id": "12345678",
+        "dateFin": "2025-02-31",
+        "statut": "Prévu"
+    },
+    {
+        "ruesAffectees": ["Non spécifié"],
+        "dateDebut": "2024-10-31",
+        "horaireTravaux": "Non spécifié",
+        "titre": "Construction/rénovation sans excavation situé à Ville-Marie",
+        "quartiersAffectes": ["Ville-Marie"],
+        "typeTravaux": "Construction/rénovation sans excavation",
+        "description": "",
+        "id": "98b28651-81bb-4a25-bf6f-b5d062a98da1",
+        "dateFin": "2024-12-31",
+        "statut": "Prévu"
+    },
+    {
+        "ruesAffectees": ["Non spécifié"],
+        "dateDebut": "2025-02-13",
+        "horaireTravaux": "9:00 - 17:00",
+        "titre": "Construction maire",
+        "quartiersAffectes": ["Outremont"],
+        "typeTravaux": "Construction",
+        "description": "Nouvelle mairie en construction près du parc cartier",
+        "id": "551a4f87-d185-40d2-9e00-d82d757b1e36",
+        "dateFin": "2025-02-31",
+        "statut": "Prévu"
+    },
+    {
+        "ruesAffectees": ["1"],
+        "dateDebut": "1",
+        "horaireTravaux": "1",
+        "titre": "1",
+        "quartiersAffectes": [
+            "Outremont",
+            "Ville-Marie"
+        ],
+        "typeTravaux": "1",
+        "description": "1",
+        "id": "9d821b7a-2a96-41be-aa48-40a697e14bed",
+        "dateFin": "1",
+        "statut": "Prévu"
+    }
+]
