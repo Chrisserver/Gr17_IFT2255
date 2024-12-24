@@ -15,9 +15,9 @@ Nous utilisons des fichiers .json pour les bases de données, ce qui nous permet
 
 Nous utilisons des librairies Maven, ce qui explique le fichier pom.xml que nous avons. Alors, dans ce document, nous voyons que nous utilisons le JUnit, le Jupiter, le JSON, le GSON, le FasterXML, le Javalin et le SLF4J.
 
-Pour exécuter l'application, il faut simplement accéder au projet, plus spécifiquement au fichier .jar, il faut aller dans le répertoire application/org/example/.
+Pour exécuter l'application, il faut simplement accéder au projet, plus spécifiquement au fichier .jar, il faut aller dans le répertoire application directement avec les fichiers de base de données et le fichier postale .csv.
 
-Et pour exécuter les tests, nous devons utiliser 
+Et pour exécuter les tests, nous avons le fichier ActionProviderTests.java avec le index 1.html qui permet de voir les tests et leur exécution avec JaCoCo.
 
 Les mêmes méthodes sont utilisées pour utiliser l'application que dans le devoir 2. On vous donne donc la référence mentionné dans le template du devoir précédent <a  href="https://chrisserver.github.io/Gr17_IFT2255/rapport.html" target="_blank" rel="noopener noreferrer">[1].</a>
 
