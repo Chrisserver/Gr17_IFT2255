@@ -1,0 +1,50 @@
+[
+    {
+        "motDePasse": "abcSecure",
+        "identifiantVille": "12345678",
+        "nomComplet": "Entreprise ABC",
+        "requetesCandidate": [],
+        "type": "Entreprise publique",
+        "courriel": "contact@abc.com"
+    },
+    {
+        "motDePasse": "xyzPass123",
+        "identifiantVille": "87654321",
+        "nomComplet": "Entrepreneur privé",
+        "requetesCandidate": [],
+        "type": "Entrepreneur privé",
+        "courriel": "xyz@entrepreneur.com"
+    },
+    {
+        "motDePasse": "villeSecure",
+        "identifiantVille": "11223344",
+        "nomComplet": "Jean Inspecteur",
+        "requetesCandidate": [],
+        "type": "Particulier",
+        "courriel": "inspecteur@ville.com"
+    },
+    {
+        "motDePasse": "password0!",
+        "identifiantVille": "cbf24804",
+        "nomComplet": "Entreprise Public",
+        "requetesCandidate": [],
+        "type": "Entreprise publique",
+        "courriel": "contact0@entreprise0.com"
+    },
+    {
+        "motDePasse": "password1!",
+        "identifiantVille": "98a8dca6",
+        "nomComplet": "Entreprise Privée",
+        "requetesCandidate": [],
+        "type": "Entrepreneur privé",
+        "courriel": "contact1@entreprise1.com"
+    },
+    {
+        "motDePasse": "oliestbizz",
+        "identifiantVille": "9988312",
+        "nomComplet": "Olivia Servant",
+        "requetesCandidate": [],
+        "type": "OrangeMoutarde",
+        "courriel": "oli@gmail.com"
+    }
+]
