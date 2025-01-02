@@ -1,0 +1,2447 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFT2255 | Rapport DM1</title>
+    <link rel="shortcut icon" href="./../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            font: normal 10px 'Segoe UI', 'Droid Sans', Ubuntu, 'Lucida Grande', Arial, Helvetica, sans-serif;
+            scroll-behavior: smooth;
+            background: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        h1, h2 { margin: 0; }
+
+        h1 { font-size: 4em; font-weight: normal; }
+
+        h2 { font-size: 3em; }
+
+        h3 { font-size: 2.2em; font-weight: normal; }
+
+        h4 { font-size: 1.8em }
+
+        h5 { font-size: 1.6em; }
+
+        h6 { font-size: 1.5em; margin-top: 0; }
+
+        p, li, td, th { font-size: 1.5em; }
+
+        td p, td li, th li,
+        li li, li p, li td, li th { font-size: 1em; }
+
+        table, th, td { border: 1px solid #555; border-collapse: collapse; }
+
+        th { text-align: center; }
+
+        .btn {
+            font-family: 'Segoe UI', 'Droid Sans', Ubuntu, 'Lucida Grande', Arial, sans-serif;
+            text-decoration: none; text-align: center;
+            border: none;
+            background: none;
+            outline-width: 0;
+        }
+
+        .font-ui { font-family: 'Segoe UI', 'Droid Sans', Ubuntu, 'Lucida Grande', Arial, sans-serif; }
+
+
+        /* Organization
+        ---------------------------------------------------------------------------- */
+
+        .left { float: left; }
+
+        .right { float: right; }
+
+        .clear-fix { clear: both; display: block; }
+            .clear-fix:after {
+                content: ".";
+                clear: both;
+                display: block;
+                height: 0;
+                visibility: hidden;
+            }
+
+        .row { display: table-row; }
+
+        .cell { display: table-cell; }
+
+        /* Reset */
+
+        .bare-list { margin: 0; padding: 0; list-style: none; }
+
+        .bare-link { text-decoration: none; color: inherit; }
+
+        .bare-table { border: none; table-layout: fixed; }
+
+        .bare-table td,
+        .bare-table th { 
+            border: none;
+        }
+
+        .bare-table th {
+            vertical-align: top;
+            text-align: left;
+        }
+
+
+        .inline-link { text-decoration: underline; }
+
+        .output { text-decoration: none; font-style: normal; }
+
+        /* State
+        ---------------------------------------------------------------------------- */
+
+        .hidden { display: none; }
+
+        .fit-content { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .helper {
+            position: absolute;
+            top: 100%; left: 0;
+            min-width: 60px;
+            padding: 3px 6px 4px;
+            border-radius: 1px;
+            font-size: 1.3rem; font-weight: 500; font-style: normal;
+            color: #555;
+            background-color: #e5e4e2;
+            box-shadow: 0 1px 2px -1px #999;
+            opacity: 0;
+            transition: .2s;
+            transform: scale(0); transition-property: opacity, transform;
+            z-index: 20;
+        }
+
+        .ico-helper {
+            display: inline-block;  text-align: center;
+            font-size: 1.2rem; font-weight: bold;
+            height: 18px; width: 18px;
+            color: #fff;
+            border-radius: 50%;
+            background-color: #6667AB;
+            font-style: normal;
+        }
+
+        .has-helper {
+            position: relative;
+        }
+
+            .has-helper:hover > .helper {
+                opacity: 1;   
+                transform: scale(1) translateY(2px);
+            }
+            .ico-helper:focus + .helper {
+                opacity: 1;   
+                transform: scale(1) translateY(2px);
+            }
+
+        .has-def {
+            position: relative;
+            display: inline-block;
+        }
+
+        .def-term {
+            position: relative;
+            display: flex; align-items: center;
+            color: #6667AB;
+            padding-left: 2px; padding-right: 2px;
+            border-bottom: 3px solid currentColor;
+            cursor: default;
+            font-style: normal; font-weight: 500;
+        }
+            .def-term:after {
+                content: "?";
+                text-align: center;
+                font-weight: bold;
+                margin-left: 3px;
+                height: 18px; width: 18px;
+                font-size: 1.2rem; 
+                border-radius: 50%;
+                background-color: #6667AB;
+                color: #fff;
+            }
+
+
+        .def {
+            position: absolute;
+            top: 100%; left: 0;
+            min-width: 300px;
+            padding: 3px 6px 4px;
+            border-radius: 1px;
+            font-size: 1.3rem; font-weight: 500; font-style: normal;
+            color: #fff;
+            background-color: #232425;
+            box-shadow: 0 1px 2px -1px #999;
+            opacity: 0;
+            transform: scale(0); 
+            transition: .2s; transition-property: opacity, transform;
+            z-index: 20;
+        }
+
+            .has-def:hover > .def {
+                opacity: 1;   
+                transform: scale(1) translateY(2px);
+            }
+
+        .report-header {
+            padding-top: 24px; padding-bottom: 24px;
+            background-color: #fff;
+        }
+
+        .title-section {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+
+        .report-title {
+            color: royalblue;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .report-summary {
+            max-width: 800px;
+            font-size: 1.4em;
+            color: #555;
+        }
+        
+        .report-resources {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+            .report-resource {
+                margin-left: 12px;
+            }
+
+            .report-resource-link {
+                padding: 8px 12px;
+                font-weight: bold;
+                color: #fff;
+                border-radius: 2px;
+                text-decoration: none;
+                background-color: #232425;
+            }
+                .report-resource-link:hover {
+                    background-color: #1b1f23;
+                }
+
+        .section-title {
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-size: 2.4em; font-weight: 300;
+        }
+
+        .subsection-title {
+            margin-bottom: 3px;
+            font-size: 2em; font-weight: bold;
+            color: #555;
+        }
+
+        .team-section {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+
+            .team-title {
+                font-weight: 500;
+                margin-bottom: 12px;
+                color: #1C3A94;
+            }
+
+            .members {
+                display: flex; flex-direction: row;
+            }
+
+            .member {
+                display: flex; flex-direction: column;
+            }
+                .member:not(:last-child) {
+                    margin-right: 12px;
+                }
+
+                .member-pic {
+                    display: block;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                }
+
+                .member-role {
+                    font-size: 0.9em; font-weight: 500;
+                    color: #555;
+                }
+
+        .report-body {
+            display: flex;
+        }
+
+        .report-aside {
+            padding-top: 24px; padding-right: 12px; padding-left: 5vw;
+            min-width: 300px;
+            background-color: #6667AB;
+        }
+            .report-aside .section-title {
+                color: #fff;
+            }
+
+        .report-main {
+            padding-top: 24px; padding-left: 2%; padding-right: 5vw;
+        }
+
+        .main-section {
+            margin-bottom: 24px;
+        }
+
+        .nav {
+            color: #E87429;
+        }
+
+            .nav-item-title {
+                font-size: 1.1em;
+                margin: 0;
+            }
+
+            .nav-item-title__link {
+                display: block;
+                color: #fff;
+                font-weight: 500;
+                padding: 6px;
+                text-decoration: none;
+            }
+
+            .nav-item-details {
+                color: #f5f5f5;
+                padding-left: 6px;
+                line-height: 1.5;
+            }
+
+        .glossary-term {
+            font-weight: bold;
+            background: #222;
+            padding: 3px 6px;
+            display: inline-block;
+            border-radius: 2px;
+            color: #fff;
+        }
+
+        .glossary-def {
+            margin-top: -6px; margin-left: 6px; margin-bottom: 6px;
+            padding: 12px 6px 4px;
+            background-color: #e5e4e2;
+            border-radius: 4px;
+        }
+
+        .personas {
+            display: flex;
+        }
+
+            .persona {
+                position: relative;
+                display: flex; flex-direction: column;
+                margin-right: 12px;
+                max-width: 360px;
+                padding: 6px 12px;
+                border-radius: 2px;
+                box-shadow: 0 1px 2px -1px #999;
+                background-color: #fff;
+                z-index: 2;
+            }
+
+            .persona-stat {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .persona-type {
+                display: flex; align-items: center; justify-content: center;
+                height: 40px; width: 40px; 
+                font-size: 1.3rem; font-weight: bold; 
+                border-radius: 50%;
+            }
+
+            .persona-type--pp {
+                background-color: #FF6F61;
+            }
+
+            .persona-type--eco {
+                background-color: #88B04B;
+            }
+
+            .persona-market {
+                display: flex; align-items: center; justify-content: center;
+                margin-left: 6px;
+                height: 40px; width: 40px; 
+                color: #444;
+                font-size: 1.3rem; font-weight: bold; 
+                border-radius: 50%;
+                background-color: #d5d5d5;
+            }
+
+            .persona-color {
+                display: flex; align-items: center; justify-content: center;
+                background-color: #FF6F61;
+                height: 42px; width: 42px; font-weight: bold;
+                justify-self: center; align-self: center;
+                font-size: 1.3rem;
+                border-radius: 50%;
+            }
+
+            .persona-identity {
+                display: flex; 
+            }
+            
+            .persona-name {
+                font-size: 1.2em; font-weight: 300;
+                flex-grow: 2;
+            }
+
+            .persona-demography-line {
+                display: flex;
+            }
+
+            .persona-background {
+                padding: 6px;
+                color: #555;
+            }
+
+            .persona-title {
+                margin-top: 6px; margin-bottom: 3px;
+                color: #222;
+                font-size: 1.1em; font-weight: 500;
+            }
+
+        .use-case {
+            display: flex; flex-wrap: wrap;
+        }
+
+        .use-case-diagram {
+            display: block;
+            height: 100%;
+            width: auto;
+            min-height: 800px;
+            min-width: 600px;
+            border-radius: 4px;
+            background-color: #d5d5d5;
+        }
+
+        .use-case-notes {
+            margin-left: 12px;
+        }
+
+        .scenario {
+            display: flex;
+            margin-bottom: 12px;
+            background-color: #fff;
+            border-radius: 3px;
+            box-shadow: 0 1px 2px #a9a9a9;
+        }
+
+        .scenario-meta {
+            padding: 12px;
+            max-width: 40%;
+            background-color: #e5e4e2;
+        }
+
+        .scenario-main {
+            flex-grow: 3;
+            padding: 12px;
+            margin-left: 12px;
+        }
+
+        .scenario-main-title {
+            margin: 0;
+            color: royalblue;
+        }
+
+        .scenario-alt-title {
+            margin: 0;
+            color: #FF6F61;
+        }
+        
+        .cu-actors {
+            display: flex;
+        }
+
+        .cu-actor {
+            margin-right: 6px;
+            padding: 4px 6px;
+            color: #fff; font-weight: 500;
+            background-color: #6667AB;
+            border-radius: 1px;
+        }
+
+        .cu-name {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .cu-goal {
+            margin: 0;
+            font-size: 1.6em;
+        }
+
+        .cu-part--notes {
+            margin-top: 12px;
+        }
+
+        .cu-part-title {
+            margin: 0;
+            margin-top: 6px;
+        }
+
+        .cu-conditions {
+            font-weight: 500;
+        }
+
+        .cu-notes {
+            color: #555;
+            margin: 0;
+            font-size: 1.4em;
+        }
+
+        .scenario-main-steps {
+            margin: 0; padding-left: 16px;        
+        }
+
+        .scenario-alt {
+            margin-top: 6px;
+        }
+
+        .scenario-alt p { margin: 0; }
+
+        .scenario-alt-steps { counter-reset: topLevel; }
+            .scenario-alt-steps:not(:last-child) { margin-bottom: 6px; }
+            .scenario-alt-step { counter-increment: topLevel; font-weight: 500; }
+            .scenario-alt-step:before { content: attr(value) counter(topLevel, lower-alpha) '. '; }
+            .scenario-alt-steps ol { font-weight: 400; counter-reset: secondLevel; }
+                .scenario-alt-steps ol li { counter-increment: secondLevel; margin-left: 12px; }
+                    .scenario-alt-steps ol li:before { content: attr(value) counter(topLevel, lower-alpha) '.' counter(secondLevel, decimal) '. '}
+
+        .glossary {
+            font-size: 1.4em;
+        }
+
+        .preview-img {
+            display: block;
+            width: 600px;
+            height: auto;
+        }
+
+        .report-footer {
+            padding: 24px 5vw 24px;
+            color: #fff;
+            background-color: #292723;
+        }
+
+            .report-footer p {
+                margin: 0; margin-bottom: 6px;
+            }
+
+        .activity-diagram {
+            display: block;
+            min-height: 600px;
+            min-width: 600px;
+            height: 100%;
+            width: auto;
+            background-color: #d5d5d5;
+        }
+
+        .dash:before { 
+            content: '-'; 
+            margin-left: 4px;
+            margin-right: 8px; 
+            font-weight: bold;
+            color: currentColor;
+        } 
+
+        .check:before {
+            margin-left: 2px;
+            margin-right: 4px; 
+            font-weight: bold;
+            content: '🗸'; 
+            color: currentColor;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="report-header">
+        <div class="title-section">
+            <div>
+                <h1 class="report-title">Rapport du livrable 1</h1>
+                <p class="report-summary">
+                    <em>Court résumé du rapport</em> &ndash; Ce livrable se concentre sur l'élaboration d'une projet afin d'améliorer la diffusion de données 
+                    au grand public concernant le secteur de travaux publics et privés.
+                </p>
+            </div>
+
+            <ul class="bare-list report-resources">
+                <li class="report-resource">
+                    <a class="report-resource-link" href="https://github.com/Chrisserver/Gr17_IFT2255.git" target="_blank">
+                        Répertoire GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="team-section">
+            <h2 class="team-title">Équipe #17</h2>
+            <ul class="bare-list members">
+                <li class="member">
+                    <div class="member-identification">
+                        <span class="member-name">Rim El Harras</span>
+                        <span class="member-id">20248496</span>
+                    </div> 
+                    <span>Discord: @rimelh</span>
+                    <a href="mailto:prenom.nom@umontreal.ca">rim.el.harras@umontreal.ca</a>
+                </li>
+                <li class="member">
+                    <div class="member-identification">
+                        <span class="member-name">Ratzy-Chris Ndikumasabo</span>
+                        <span class="member-id">1034870</span>
+                    </div> 
+                    <span>Discord: @hunter_ratzy</span>
+                    <a href="mailto:prenom.nom@umontreal.ca">ratzy-chris.ndikumasabo@umontreal.ca</a>
+                </li>
+                <li class="member">
+                    <div class="member-identification">
+                        <span class="member-name">Christopher Servant</span>
+                        <span class="member-id">20268916</span>
+                    </div> 
+                    <span>Discord: @gordo31415926535</span>
+                    <a href="mailto:prenom.nom@umontreal.ca">christopher.servant@umontreal.ca</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main class="report-body">
+        <aside class="report-aside">
+            <nav>
+                <h2 class="section-title">Contenu</h2>
+                <ul class="bare-list nav">
+                    <li class="nav-item">
+                        <h3 class="nav-item-title"><a class="nav-item-title__link" href="#plan">Cadre du projet</a></h3>
+                        <ul class="bare-list nav-item-details">
+                            <li class="dash">Introduction</li>
+                            <li class="dash">Échéancier</li>
+                            <li class="dash">Hypothèses</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <h3 class="nav-item-title"><a class="nav-item-title__link" href="#requirements">Exigences</a></h3>
+                        <ul class="bare-list nav-item-details">
+                            <li class="dash">Glossaire</li>
+                            <li class="dash">Cas d'utilisation</li>
+                            <li class="dash">Diagramme d'activités</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <h3 class="nav-item-title"><a class="nav-item-title__link" href="#analysis">Analyse</a></h3>
+                        <ul class="bare-list nav-item-details">
+                            <li class="dash">Risques</li>
+                            <li class="dash">Besoins non fonctionnels</li>
+                            <li class="dash">Besoins matériels</li>
+                            <li class="dash">Stockage</li>
+                            <li class="dash">Intégration</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <h3 class="nav-item-title"><a class="nav-item-title__link" href="#prototype">Prototype</a> </h3>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="report-main">
+            <section class="main-section">
+                <h2 id="plan" class="section-title">Cadre du projet</h2>
+                <h3 class="subsection-title">Introduction</h3>
+                <p>
+                    <em>
+                        Plusieurs travaux de construction, de réparation et d'entretien de routes se passent partout au Québec, et bien qu'il y en ait plusieurs, avec chacun leur niveau de difficulté et de temps requis, les citoyens n'en sont pas toujours avertis ou informés.
+                        Ce projet établira une connexion entre l'utilisateur du réseau routier et les différentes compagnies privées s'occupant des rues, des boulevards, des autoroutes et autres dans le but d'aider les individus dans leurs déplacements habituels.
+                    </em>
+                </p>
+                <h3 class="subsection-title">Échéancier</h3>
+               <pre>
+                ___________|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 |
+                CN, CS, RE |####(Étude du domaine)
+                CN,CS,RE   |  ##(Préparation des questions)
+                CN         |    ##### (Glossaire)
+                CS,RE      |    ################### (Diagramme de CUs + scénarios)
+                CN,RE      |    ################### (Diagramme d'activités)
+                CN         |        ############## (Prototype)
+                CS         |                  #### (README)
+                RE         |              ######## (Analyse)
+                CS,RE,CN   |              ######### (Rédaction du rapport)
+                CS, RE     |                                          ########### (Diagramme de classe)
+                CS         |                                          ########### (Diagramme de séquence + architecture)
+                CN         |                                                ##### (Mis à jour)
+                CN         |                                          ########### (Implémentation)
+                           |                                                      ################## (Implémentation et tests)
+                           |                                                      ###   ##   ##   ## (Documentation)
+
+            ********Légende*********
+
+            RE: Rim El Harras,CN: Ratzy-Chris Ndikumasabo , CS: Christopher Servant    
+               </pre>
+                
+
+                <h3 class="subsection-title">Hypothèses</h3>
+                <p>
+                     <h2>S'inscrire comme résident</h2>
+    <ul>
+        <li>Le résident possède une adresse valide dans la ville ou région couverte par l'application.</li>
+        <li>Le résident a accès à une connexion internet pour s'inscrire via l'application.</li>
+    </ul>
+
+    <h2>Consulter les travaux en cours ou à venir</h2>
+    <ul>
+        <li>Les données sur les travaux publics et privés sont régulièrement mises à jour dans l'application.</li>
+        <li>Le résident a bien saisi l'adresse de la zone de recherche (code postal, adresse).</li>
+    </ul>
+
+    <h2>Recevoir des notifications personnalisées</h2>
+    <ul>
+        <li>Le résident a correctement entré ses centres d'intérêts (lieu de résidence, travail).</li>
+        <li>Les notifications sont envoyées à temps pour permettre au résident de s'organiser.</li>
+    </ul>
+
+    <h2>Soumettre une requête de travail</h2>
+    <ul>
+        <li>Le résident soumet des informations complètes et précises sur le projet.</li>
+    </ul>
+
+    <h2>Signaler un problème ou autre</h2>
+    <ul>
+        <li>L'application permet un signalement facile (photo, texte, vidéo).</li>
+        <li>Les acteurs concernés reçoivent ces signalements et sont en mesure de les traiter.</li>
+    </ul>
+
+    <h2>S'inscrire comme intervenant</h2>
+    <ul>
+        <li>L'adresse de l'intervenant est valide avant inscription.</li>
+        <li>L'intervenant dispose des autorisations légales pour soumettre des projets.</li>
+    </ul>
+
+    <h2>Soumettre un nouveau projet de travail</h2>
+    <ul>
+        <li>La ville en collaboration avec les résidents valide les projets de travaux avant de les rendre visibles aux résidents.</li>
+        <li>L’intervenant doit fournir des informations complètes et précises (adresse, dates, horaires).</li>
+    </ul>
+
+    <h2>Mettre à jour les informations d'un chantier</h2>
+    <ul>
+        <li>L’application informe les résidents de ces changements (modifications de dates, horaires, etc.).</li>
+    </ul>
+
+    <h2>Compte d'un utilisateur du secteur public</h2>
+    <ul>
+        <li>Les utilisateurs auront une meilleure cohésion entre eux avec l'ajout de ce type de compte.</li>
+        <li>La municipalité/ville peut se représenter avec son propre compte et discuter des projets en cours ou prévus dans le secteur sur leur page profil.</li>
+        <li>Les représentants de ce compte peuvent répondre aux questions des résidents sur les travaux en cours et le processus d'envoi des fichiers de 
+        requête de projets faits par les compagnies privées serait plus efficace en la conservant sur une seule plateforme.</li>
+    </ul>
+
+                </p>
+            </section>
+
+            <section class="main-section">
+                <h2 id="requirements" class="section-title">Exigences</h2>
+                <p>
+                    Après une discussion avec le client, nous avons préparé un glossaire rassemblant les termes et expressions clés caractérisant le projet.
+                </p>
+
+               <h3 class="subsection-title">Glossaire</h3>
+    <dl class="glossary">
+        <dt class="glossary-term">Résident</dt>
+        <dd class="glossary-def">Citoyen(ne) qui habite dans la ville et à qui les travaux publics peuvent poser problème.</dd>
+        
+        <dt class="glossary-term">Intervenants</dt>
+        <dd class="glossary-def">Toute organisation ou personne effectuant un travail public.</dd>
+        
+        <dt class="glossary-term">Travaux publics</dt>
+        <dd class="glossary-def">Travaux se déroulant sur l'espace public (ex : route, autoroute, passage piéton, place publique) et qui bloquent une certaine zone de ces lieux.</dd>
+        
+        <dt class="glossary-term">Planification participative</dt>
+        <dd class="glossary-def">Une planification des travaux publics faisant participer les intervenants (effectuant les travaux) et les résidents (impactés par ces travaux).</dd>
+        
+        <dt class="glossary-term">Notifications personnalisées</dt>
+        <dd class="glossary-def">Alerte de travaux publics, proche du lieu d'habitation ou autres centres d'intérêts du résident.</dd>
+        <dt class="glossary-term">Projet</dt>
+        <dd class="glossary-def">Travail municipal pouvant causer des entraves à la circulation routière ou des piétons(exemple:Travaux routiers,Construction ou rénovation,Travaux liés aux transports en commun etc...)</dd>
+        <dt class="glossary-term">Plages horaires</dt>
+        <dd class="glossary-def"> Date de début et date de fin d'un projet de travaux.</dd>     
+    </dl>
+                <!--
+                <h3 class="subsection-title">Persona (optionnel)</h3>
+
+                <ul class="bare-list personas">
+                    <li class="persona">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <span class="persona-name">Bob &ndash; <em>Comptable</em></span>
+                            <div class="persona-stat">
+                                <span class="persona-type persona-type--pp" title="Pratico-pratique">PP</span>
+                                <span class="persona-market">40%</span>
+                            </div>
+                        </div>
+                        <span class="persona-info">Homme célibataire de 42 ans vivant au Canada</span>
+                        <div class="persona-goal">
+                            <h4 class="persona-title">Buts</h4>
+                            <ul class="bare-list">
+                                <li class="check">But principal</li>
+                                <li class="check">But secondaire</li>
+                                <li class="check">Avantages</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="persona">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                            <span class="persona-name">Eva &ndash; <em>Pharmacienne</em></span>
+                            <div class="persona-stat">
+                                <span class="persona-type persona-type--eco" title="Ecolo">ECO</span>
+                                <span class="persona-market">20%</span>
+                            </div>
+                        </div>
+                        <span class="persona-info">Femme mariée de 34 ans vivant au Canada</span>
+                        <div class="persona-goal">
+                            <h4 class="persona-title">Buts</h4>
+                            <ul class="bare-list">
+                                <li class="check">But principal</li>
+                                <li class="check">But secondaire</li>
+                                <li class="check">Avantages</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                -->
+             
+                <h3 class="subsection-title">Cas d'utilisation</h3>
+                <div class="use-case">
+                    <img class="use-case-diagram" src="images/UseCaseUpdate.png" alt="Diagramme de cas d'utilisation" style="max-width: 100%;">
+                    <!--
+                    <p class="use-case-notes">
+                        <em>
+                            Notes à propos du diagramme <br>
+                            - choix des acteurs <br>
+                            - choix des relations
+                        </em>
+                    </p>
+                    -->
+                </div>
+
+                <h3 class="subsection-title">Scénarios</h3>
+
+                <div class="scenario" id="cu-1">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Soumettre un requête de travail
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Un résident souhaite soumettre un projet de réparation, de construction, d'entretien, etc. pour un endroit près de chez lui.
+                        </p>
+                        
+                        <hr>
+
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Résident (Principal)</li>
+                                <li class="cu-actor">Intervenant (Secondaire)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident a un compte d'ouvert.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Les autres résidents du périmètre autour de l'endroit de cette requête ont le droit d'y donner leur avis.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part cu-part--notes">
+                            <h5 class="cu-part-title">Notes</h5>
+                            <p class="cu-notes">Ces requêtes sont différentes entre les résidents et les intervenants. Les intervenants doivent mentionner les points énoncés dans le scénario "Accepter une requête" pour la soumettre. Cette requête soumise par les intervenants sont à la fois affichée pour que les autres utilisateurs puissent la voir et elle est envoyée à la municipalité/ville</p>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Le résident se rend dans la section pour compléter un formulaire et choisi quel type de formulaire il désire remplir (entretien, réparation, construction, ou autres).</li>
+                            <li class="scenario-main-step">Le résident nomme l'emplacement exacte du problème à résoudre.</li>
+                            <li class="scenario-main-step">Le système valide si l'emplacement est près de chez lui.</li>
+                            <li class="scenario-main-step">Le résident donne une description détaillée des travaux à faire. (e.g. nid de poule)</li>
+                            <li class="scenario-main-step">Le résident écrit l'état actuel du problème. (e.g. profondeur, largeur)
+                            <ol>
+                                <li class="scenario-main-step">Description de l'état de dégradation et des risques</li>
+                                <li class="scenario-main-step">Si cela s'applique: Si des gens se sont blessés à cet endroit et/ou ont eu un accident.</li>
+                            </ol></li>
+                            <li class="scenario-main-step">Le résident renseigne l'ampleur du problème. (e.g. quelques mètres dans la rue, toute la rue, etc.).</li>
+                            <li class="scenario-main-step">Le résident mentionne si des travaux ont déjà eu lieu à cet endroit pour une raison similaire.
+                            <ol>
+                                <li class="scenario-main-step">Date ou approximation de la date de la dernière fois qu'ils sont venus faire des travaux à cet endroit.</li>
+                            </ol></li>
+                            <li class="scenario-main-step">Le résident élabore sur le problème qui peut en être engendré et l'urgence de cette requête.
+                            <ol>
+                                <li class="scenario-main-step">Si cela s'applique: Le traffic que ce problème cause, si ça bloque des piétons ou des cyclistes.</li>
+                            </ol></li>
+                            <li class="scenario-main-step">Le résident rajoute des photos à ce rapport si nécessaire.</li>
+                            <li class="scenario-main-step">Le résident soumet la requête de travail.
+                            <ol>
+                                <li class="scenario-main-step">Les informations de base (nom, prénom, courriel, numéro de téléphone, addresse) sont déjà inscrit dans l'envoi du formulaire.</li>
+                            </ol></li>
+                            <li class="scenario-main-step">Le système reçoit la requête et l'envoie à la ville concernée, l'arrondissement concernée et aux différentes compagnies privées de cette région qui ont les capacités de remédier au problème.</li>
+                            <li class="scenario-main-step">Le résident reçoit également une notification sur son compte de la requête soumise.</li>
+                            <li class="scenario-main-step">Le système ajoute cette requête dans les projets en devenir.
+                            <ol>
+                                <li>La requête est ajoutée dans le flux de notifications des résidents aux alentours d'où cette requête aura lieu et dans la liste de futurs travaux à consulter</li>
+                            </ol></li>
+                        </ol>
+
+                        <div class="scenario-alt">
+                            <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+                            <ol class="bare-list scenario-alt-steps">
+                                <li class="scenario-alt-step" value="2">
+                                    Sélectionner "Autre"
+                                    <ol class="bare-list">
+                                        <li value="2">Si le type de service est "Autre", il doit mentionner de quel type il s'agit avant de procéder.</li>
+                                        <li value="2">Le formulaire "Autre" s'affiche.</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                            <ol class="bare-list scenario-alt-steps">
+                                <li class="scenario-alt-step" value="4">
+                                    L'emplacement est erroné
+                                    <ol class="bare-list">
+                                        <li value="4">Si l'emplacement est erroné, ce serait pour deux raisons valables; soit l'endroit n'est pas dans le périmètre auxquels il peut soumettre la requête, soit il remplit le formulaire "Autre" et l'emplacement n'est pas adéquat au service.</li>
+                                        <li value="4">Le système renvoie une erreur en demandant de changer la zone où se situerait cette requête.</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenario" id="cu-2">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Signaler un problème
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'utilisateur peut dire s'il y a un problème a un endroit précis d'un travail en cours.
+                        </p>
+                        
+                        <hr>
+
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur (Principal)</li>
+                                <li class="cu-actor">Intervenant (Secondaire)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Un travail doit être en cours dans ce lieu.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le contracteur en charge du travail où le problème a été signalé répond au problème.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part cu-part--notes">
+                            <h5 class="cu-part-title">Notes</h5>
+                            <p class="cu-notes">Notes additionnelles et hypothèses</p>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur se rend à la section où il peut signaler un problème</li>
+                            <li class="scenario-main-step">Le système affiche une carte des chantiers de construction en cours</li>
+                            <li class="scenario-main-step">L'utilisateur choisit un chantier de construction où il y a un problème.</li>
+                            <li class="scenario-main-step">L'utilisateur mentionne quel est le problème</li>
+                            <li class="scenario-main-step">L'utilisateur envoit cette réclamation.</li>
+                            <li class="scenario-main-step">Le système envoit cet avertissement à l'intervenant en charge du projet.</li>
+                            <li class="scenario-main-step">Le système renouvelle le projet en ajoutant ce problème.</li>
+                        </ol>
+
+                        <div class="scenario-alt">
+                            <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+                            <ol class="bare-list scenario-alt-steps">
+                                <li class="scenario-alt-step" value="3">
+                                    Localisation automatique activée
+                                    <ol class="bare-list">
+                                        <li value="3">Si cette fonctionnalité est activée, le système accède directement la localisation de l'utilisateur</li>
+                                        <li value="3">Le système montre sur la carte où l'utilisateur se trouve et il sélectionne le chantier de construction</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenario" id="cu-3">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Accepter une requête de travail
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Un intervenant désire accepter une requête de travail créé par un résident.
+                        </p>
+                        
+                        <hr>
+
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Intervenant (Principal)</li>
+                                <li class="cu-actor">Représentant de la municipalité/ville (Secondaire)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Une requête de travail doit être fait par un résident pour que les compagnies privées puissent l'accepter.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Les intervenants doivent garder un suivi avec la ville pour exécuter ce projet. La ville reçoit une notification d'une nouvelle requête de projet qu'une compagnie privée désire réaliser.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part cu-part--notes">
+                            <h5 class="cu-part-title">Notes</h5>
+                            <p class="cu-notes">Puisque la ville de Montréal a un compte d'utilisateur qui permet de recevoir ces requêtes des compagnies privées, il n'y a pas besoin de passer par un autre moyen pour envoyer ces requêtes de projets.</p>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'intervenant va sur sa page personnel et sélectionne la requête qu'il veut faire.</li>
+                            <li class="scenario-main-step">L'intervenant remplit un formulaire officiel.
+                            <ol>
+                                <li class="scenario-main-step">L'intervenant doit élaborer un plan d'exécution des travaux, l'échéancier et les équipements a utiliser</li>
+                                <li class="scenario-main-step">L'intervenant estime les coûts de cette requête, des moyens de paiements et des garanties et assurances à faire ce projet.</li>
+                                <li class="scenario-main-step">L'intervenant mentionne les membres de l'équipe qui vont travailler sur le projet.</li>
+                            </ol></li>
+                            <li class="scenario-main-step">L'intervenant termine le formulaire et appuie sur "Envoyer la requête de projet".</li>
+                            <li class="scenario-main-step">Le système rattache ce document avec les documents d'informations de bases de cette entreprise de construction (nom de l'entreprise, courriel, numéro de téléphone, adresse, date et certifications de la compagnie).</li>
+                            <li class="scenario-main-step">Le système envoie ce dossier à l'utilisateur de l'application représentant la ville (dépendemment du type de projet)</li>
+                            <li class="scenario-main-step">L'intervenant reçoit dans ses notifications le formulaire officiel qui a été envoyé à l'utilisateur de la ville de Montréal.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="scenario" id="cu-3">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> S'inscrire comme résident
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Le résident souhaite s'inscrire à l'application MaVille en tant que résident.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Résident (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident doit se rendre sur la page d'accueil de l'application.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident peut se connecter à l'application et avoir accès au menu résident.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Le résident sélectionne "s'inscrire" sur le menu.</li>
+                            <li class="scenario-main-step">Le résident entre un e-mail et mot de passe valide.</li>
+                            <li class="scenario-main-step">Le résident entre ensuite ses informations personnelles.</li>
+                            <li class="scenario-main-step">Le résident revient au menu principal où il peut s'inscrire, se connecter ou quitter l'application.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="2">
+                                Le résident entre un e-mail invalide
+                                <ol class="bare-list">
+                                    <li>Le système lui demande de réessayer jusqu'à succès ou de quitter et revenir au menu principal.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-4">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Consulter les travaux en cours ou à venir
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Le résident va consulter les travaux publics et privés en cours dans une certaine zone.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Résident (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident doit être connecté à l'application.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident voit la liste des travaux dans la zone voulue.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Le résident se connecte à l'application.</li>
+                            <li class="scenario-main-step">Le résident choisit l'option "Consulter les travaux" dans le menu résident.</li>
+                            <li class="scenario-main-step">Le résident entre une zone précise (adresse ou code postal).</li>
+                            <li class="scenario-main-step">L'application cherche et affiche une liste des travaux en cours ou à venir dans la zone.</li>
+                            <li class="scenario-main-step">Le résident consulte les informations et les détails des travaux.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="4">
+                                Pas de travail prévu dans la zone
+                                <ol class="bare-list">
+                                    <li>Aucun travail n'est prévu dans la zone sélectionnée, l'application affiche un message indiquant "Aucun travail en cours ou à venir dans cette zone".</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-5">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Envoyer notifications
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Le résident souhaite recevoir des notifications personnalisées en fonction des informations qu'il a rentrées (lieu de résidence, centres d'intérêts, etc.).
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Intervenant (Principal)</li>
+                                <li class="cu-actor">Résident (Secondaire)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident doit se connecter à l'application MaVille.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident reçoit une ou des notifications de travaux dans les zones qui l'intéressent s'il y a un changement ou ajout de travaux dans cette zone.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Un intervenant se connecte à MaVille.</li>
+                            <li class="scenario-main-step">Un intervenant met à jour ou soumet un projet de travaux avec les fonctionnalités mises à jour de chantier ou soumet un nouveau projet de travaux.</li>
+                            <li class="scenario-main-step">Le système enregistre les informations du projet nouvellement soumis ou modifié.</li>
+                            <li class="scenario-main-step">Le système envoie la notification au résident(s) concerné(s).</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value ="2">
+                                L'intervenant entre des informations erronées dans les fonctionnalités soumettre un nouveau projet ou mise à jour chantier
+                                <ol class="bare-list">
+                                    <li>Le système invite à ressaisir les informations ou revenir au menu principal.</li>
+                                    <li>Aucune notification n'est envoyée.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-6">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Afficher notifications
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Le système affiche toutes les notifications de travaux soumis ou modifiés dans la zone d'intérêt du résident.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Résident (Principal)</li>
+                                <li class="cu-actor">Intervenant (Secondaire)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident est connecté à MaVille et a rentré ses lieux d'intérêts.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le système affiche toutes les notifications dans les zones d'intérêts du résident.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Le résident se connecte à l'application.</li>
+                            <li class="scenario-main-step">Le résident sélectionne l'option "Afficher les notifications" dans le menu.</li>
+                            <li class="scenario-main-step">Le système affiche toutes les notifications pertinentes basées sur les informations fournies.</li>
+                            <li class="scenario-main-step">Le résident consulte la liste des notifications.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="3">
+                                Pas de notification disponible
+                                <ol class="bare-list">
+                                    <li>Le système affiche un message indiquant "Aucune notification disponible dans cette zone".</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="scenario" id="cu-7">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Rechercher des travaux
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> Le résident souhaite rechercher des travaux n'importe où dans la ville.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Résident (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident est connecté à l'application MaVille.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le résident trouve les travaux potentiels dans la zone filtrée lors de la recherche.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">Le résident se connecte à MaVille.</li>
+                            <li class="scenario-main-step">Le résident choisit l'option "rechercher des travaux" dans le menu.</li>
+                            <li class="scenario-main-step">Le résident entre le filtre de recherche pour les travaux (titre, type de travaux, quartier affecté).</li>
+                            <li class="scenario-main-step">Le système affiche les travaux correspondants au filtre.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="3">
+                                Le résident entre un filtre non valide
+                                <ol class="bare-list">
+                                    <li>Le système demande au résident de réentrer le filtre ou de quitter et revenir au menu.</li>
+                                    <li>Le système n'affiche aucun travaux.</li>
+                                </ol>
+                            </li>
+                            <li class="scenario-alt-step" value="4">
+                                Aucun travaux correspondant au filtre valide entré
+                                <ol class="bare-list">
+                                    <li>Le système affiche "Aucun travaux correspondant à votre recherche".</li>
+                                    <li>Le système propose au résident de retourner au menu ou de faire une nouvelle recherche.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-8">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> S'inscrire comme intervenant
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'intervenant souhaite s'inscrire à l'application MaVille en tant qu'intervenant.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Intervenant (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'intervenant doit se rendre sur la page d'accueil de l'application.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'intervenant peut se connecter à l'application et avoir accès au menu intervenant.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'intervenant sélectionne "s'inscrire" sur le menu.</li>
+                            <li class="scenario-main-step">L'intervenant entre un e-mail et un mot de passe valide.</li>
+                            <li class="scenario-main-step">L'intervenant choisit "intervenant" comme rôle et spécifier que c'est pour une compagnie privée.</li>
+                            <li class="scenario-main-step">L'intervenant entre ses informations personnelles, comme les informations de base de la compagnie et l'identification de la compagnie.</li>
+                            <li class="scenario-main-step">L'intervenant revient au menu principal où il peut s'inscrire, se connecter ou quitter l'application.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="2">
+                                L'intervenant entre un e-mail ou mot de passe invalide
+                                <ol class="bare-list">
+                                    <li>L'application demande de réessayer jusqu'à succès ou de quitter et revenir au menu principal.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-9">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Soumettre un nouveau projet de travaux
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'intervenant souhaite soumettre un nouveau projet de travaux à un lieu et une date précise.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Intervenant (Principal)</li>
+                                <li class="cu-actor">Municipalité/Ville (Secondaire)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'intervenant est connecté à l'application MaVille.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Le nouveau projet est soumis pour validation à la ville et les résidents sont notifiés si nécessaire.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'intervenant se connecte à MaVille.</li>
+                            <li class="scenario-main-step">L'intervenant choisit l'option "Soumettre une requête de travail".</li>
+                            <li class="scenario-main-step">L'intervenant entre les informations relatives au projet (titre, description, type de travaux, quartiers et rues affectées, dates, horaires).</li>
+                            <li class="scenario-main-step">Le formulaire est envoyé à la ville pour validation.</li>
+                            <li class="scenario-main-step">L'intervenant est retourné au menu principal.</li>
+                            <li class="scenario-main-step">Après validation, le projet est enregistré et visible dans la liste des projets en cours ou à venir.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="3">
+                                L'intervenant entre des informations erronées
+                                <ol class="bare-list">
+                                    <li>Le système demande de ressaisir les informations ou de quitter la fonctionnalité.</li>
+                                    <li>Le projet n'est pas enregistré.</li>
+                                </ol>
+                            </li>
+                            <li class="scenario-alt-step" value="6">
+                                Le projet n'est pas validé par la Ville
+                                <ol class="bare-list">
+                                    <li>Le projet n'est pas enregistré et n'apparaît pas sur la carte des projets de la ville.</li>
+                                    <li>L'intervenant est informé par notification.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-10">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Mettre à jour les informations d'un chantier
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'intervenant souhaite mettre à jour les informations d'un chantier.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Intervenant (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'intervenant est connecté à l'application MaVille.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Les informations du chantier sont mises à jour et les notifications aux résidents sont planifiées si nécessaire.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'intervenant se connecte à MaVille.</li>
+                            <li class="scenario-main-step">L'intervenant choisit l'option "Mettre à jour les informations d'un chantier".</li>
+                            <li class="scenario-main-step">L'intervenant entre les nouvelles informations du chantier.</li>
+                            <li class="scenario-main-step">Les modifications sont enregistrées.</li>
+                            <li class="scenario-main-step">L'intervenant est retourné au menu principal.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="3">
+                                L'intervenant entre des informations erronées
+                                <ol class="bare-list">
+                                    <li>Les informations ne sont pas enregistrées.</li>
+                                    <li>Le système demande de ressaisir les informations ou de quitter la fonctionnalité.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="scenario" id="cu-11">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> S'inscrire comme utilisateur du secteur public
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong>L'utilisateur représentant la ville ou la municipalité désire s'inscrire.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur du secteur public (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur doit se rendre sur la page d'accueil pour ensuite s'inscrire</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur peut ensuite se connecter comme une entité représentant son arrondissement/ la ville et accéder aux services de l'application.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur sélectionne "s'inscrire" sur le menu.</li>
+                            <li class="scenario-main-step">L'utilisateur entre un e-mail et un mot de passe valide.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit "intervenant" comme rôle.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit ensuite "Secteur public" pour être celui représenté dans son comté.</li>
+                            <li class="scenario-main-step">L'utilisateur entre ses informations personnelles, surtout le code identifiant sa place dans l'administration.</li>
+                            <li class="scenario-main-step">L'utilisateur revient au menu principal où il peut s'inscrire, se connecter ou quitter l'application.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="2">
+                                L'utilisateur entre un e-mail ou mot de passe invalide
+                                <ol class="bare-list">
+                                    <li>L'application demande de réessayer jusqu'à succès ou de quitter et revenir au menu principal.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="scenario" id="cu-12">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Approuver les requêtes de projets
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong>L'utilisateur représentant la ville veut approuver les requêtes de projets envoyées par les différents intervenants.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur du secteur public (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur doit aller à sa page personnelle pour trouver ses notifications des dossiers de requêtes de projets.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">Aucune</li>
+                            </ul>
+                        </div>
+
+                        <div class="cu-part cu-part--notes">
+                            <h5 class="cu-part-title">Notes</h5>
+                            <p class="cu-notes">Les intervenants mentionnés dans ce scénario sont à la fois les intervenants des compagnies privées voulant faire approuver leurs projets et les utilisateurs représentant la municipalité qui ont des projets qu'ils veulent faire approuver.</p>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur ouvre son centre de notifications où se trouve toutes les requêtes de projets remplies par les intervenants.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit une requête et le système lui affiche la requête sélectionnée.</li>
+                            <li class="scenario-main-step">L'utilisateur analyse la requête.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit ensuite d'approuver ou de refuser cette demande de projet.</li>
+                            <li class="scenario-main-step">Après que l'utilisateur ait choisi, le système envoie des notifications</li>
+                            <ul>
+                                  <li>Un message est envoyé à chaque utilisateur concerné au projet (ceux qui ont débuter la requête et commenter sur la requête). Ce message mentionne l'approbation ou non de la requête.</li>
+                                  <li>Un message est envoyé à l'intervenant ayant accepter cette requête de travail sur les spécifications du début des travaux, du budget autorisé, etc.</li>
+                            </ul>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="4">
+                                L'utilisateur veut imprimer la requête
+                                <ol class="bare-list">
+                                    <li>L'application offre l'option d'imprimer le dossier de tous les documents contenus.</li>
+                                </ol>
+                            </li> 
+                            <li class="scenario-alt-step" value="4">
+                                L'utilisateur veut quitter
+                                <ol class="bare-list">
+                                    <li>L'application offre de retourner sans nécessairement avoir besoin d'approuver ou de refuser un requête.</li>
+                                    <li>Le système rajoute cette requête dans l'historique des requêtes récemment consultés.</li>
+                                </ol>
+                            </li>
+                            <li class="scenario-alt-step" value="4">
+                                L'utilisateur veut apporter des modifications à cette requête.
+                                <ol class="bare-list">
+                                    <li>L'application montre une option de contacter la personne demandant cette requête et lui dire ce que la ville voudrait avoir comme changements.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            <div class="scenario" id="cu-13">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Accéder au profil
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'utilisateur souhaite accéder au profil
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur(prinicpal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur possède un compte existant avec un profil associé.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur accède à sa page de profil.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur se connecte à MaVille</li>
+                            <li class="scenario-main-step">L'utilisateur choisit l'option "accéder au profil"</li>
+                            <li class="scenario-main-step">Le système affiche le premier niveau de la page de profil(Général qui va contenir ses informations personelles,Projet en cours qui va contenir les projets en cours dans les zones sauvegardées et Notifiactions qui va afficher les notifications recues)</li>
+                            <li class="scenario-main-step">L'utilisateur choisit soit general,projet en cours ou notifiactions</li>
+                            <li class="scenario-main-step">Le système affiche les informations relatif au choix fait.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="5">
+                                Pas d'informations dans la section Notifications
+                                <ol class="bare-list">
+                                    <li>Le système n'affiche pas de notifications</li>
+                                    <li>Le système demande à l'utilisateur de retourner au profil</li>
+                                </ol>
+                            </li>
+                            <li class="scenario-alt-step" value="5">
+                                Pas d'informations dans la section Projet en Cours
+                                <ol class="bare-list">
+                                    <li>Le système n'affiche pas de projet en cours</li>
+                                    <li>Le système demande à l'utilisateur de retourner au profil</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                
+                <div class="scenario" id="cu-14">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Modifier profil
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'utilisateur souhaite modifier le profil
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur(prinicpal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur possède un compte existant avec un profil associé.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur a modifié son profil.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur se connecte à MaVille</li>
+                            <li class="scenario-main-step">L'utilisateur choisit l'option "modifier son profil"</li>
+                            <li class="scenario-main-step">L'utilisateur choisit la section du profil à modifier</li>
+                            <li class="scenario-main-step">L'utilisateur entre les nouvelles informations</li>
+                            <li class="scenario-main-step">Le système valide les informations</li>
+                            <li class="scenario-main-step">Le système enregistre ces nouvelles informations.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="5">
+                                L'utilisateur entre des informations erronées
+                                <ol class="bare-list">
+                                    <li>Le système n'enregistre pas les informations et sont laisées comme avant</li>
+                                    <li>Le système demande à l'utilisateur de resaisir les données ou de revenir en arrière(modifier profil).</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="scenario" id="cu-15">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong> Commenter les projets
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong> L'utilisateur souhaite commenter des projets en cours ou à venir.
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur(prinicpal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur possède un compte existant avec un profil associé.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur a commenté le projet souhaité.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur se connecte à MaVille</li>
+                            <li class="scenario-main-step">L'utilisateur choisit l'option "Commenter les projets"</li>
+                            <li class="scenario-main-step">Le système le renvoi vers la carte des travaux en cours avec l'option de rechercher(travaux a venir ou en cours)</li>
+                            <li class="scenario-main-step">L'utilisateur choisit le travail sur la map ou en le recherchant</li>
+                            <li class="scenario-main-step">Le système enregistre le travail</li>
+                            <li class="scenario-main-step">Le système demande à l'utilisateur de donner une description de son commentaire</li>
+                            <li class="scenario-main-step">L'utilisateur entre la description</li>
+                            <li class="scenario-main-step">Le système enregistre le commentaire dans la base de données.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="5">
+                                Aucun travaux en cours ou à venir
+                                <ol class="bare-list">
+                                    <li>Le système affiche"Pas de travaux en cours,commentaire indisponible"</li>
+                                    <li>L'utilisateur retourne au menu.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="5">
+                                Description contraire aux règles de l'application
+                                <ol class="bare-list">
+                                    <li>Le système affiche "Commentaire non conforme aux regles , veuillez respectez les règles suivantes:......"</li>
+                                    <li>L'utilisateur refait son commentaire ou retourne en arrière.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="scenario" id="cu-16">
+                    <div class="scenario-meta">
+                        <h4 class="cu-name">
+                            <strong>CU:</strong>Se connecter
+                        </h4>
+                        <p class="cu-goal">
+                            <strong>Objectif:</strong>Un utilisateur veut se connecter à son compte
+                        </p>
+                        
+                        <hr>
+                
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Acteurs</h5>
+                            <ul class="bare-list cu-actors">
+                                <li class="cu-actor">Utilisateur (Principal)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Préconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur doit aller à la page principale qui mentionne l'inscription ou la connexion d'un compte.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cu-part">
+                            <h5 class="cu-part-title">Postconditions</h5>
+                            <ul class="bare-list cu-conditions">
+                                <li class="dash">L'utilisateur aura accès à son compte</li>
+                            </ul>
+                        </div>
+
+                        <div class="cu-part cu-part--notes">
+                            <h5 class="cu-part-title">Notes</h5>
+                            <p class="cu-notes">Dans les versions futures, nous pouvons ajouter les comptes par une application tierce (e.g. Google, Facebook, Instagram, ...).</p>
+                        </div>
+                    </div>
+                    <div class="scenario-main">
+                        <h5 class="scenario-main-title">Scénario principal</h5>
+                        <ol class="scenario-main-steps">
+                            <li class="scenario-main-step">L'utilisateur accède à la page principale de connexion et d'inscription.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit de se connecter à son compte.</li>
+                            <li class="scenario-main-step">Le système affiche une nouvelle page montrant deux boîtes de texte, une pour son identifiant, l'autre pour son mot de passe.</li>
+                            <li class="scenario-main-step">L'utilisateur entre ses informations personnelles.</li>
+                            <li class="scenario-main-step">Le système vérifie les informations données.</li>
+                            <li class="scenario-main-step">Le système affiche un message disant que les données sont valides et affiche ensuite le menu principal de son compte.</li>
+                        </ol>
+                
+                        <h5 class="scenario-alt-title">Scénario alternatif</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="6">
+                                Les informations entrées sont invalides.
+                                <ol class="bare-list">
+                                    <li>Le système renvoie un message d'erreur disant que le procédé n'a pas pu être exécuté et que les informations doivent être entrées de nouveau</li>
+                                    <li>Après trois tentatives, le système revient à la page principale d'inscription et de connexion.</li>
+                                </ol>
+                            </li> 
+                        </ol>
+                    </div>
+                </div>
+                
+                
+                  
+                <h3 class="subsection-title">Diagramme d'activités</h3>
+                <div class="activity">
+                    <h4>Menu principal du résident</h4>
+                    <img class="activity-diagram" src="images/ResidentMenu.svg" alt="Diagramme d'activités" style="max-width: 90%;" />
+                </div>
+
+
+                
+                <div class="activity">
+                    <h4>Connexion et Inscription</h4>
+                    <img class="activity-diagram" src="images/DIAGRAMME1_CONNECTION.svg" alt="Diagramme d'activités" style="max-width: 90%;" />
+                </div>
+                <div class="activity">
+                    <h4>Consultation travaux</h4>
+                    <img class="activity-diagram" src="images/DIAGRAMME2_CONSULTATION_TRAVAUX.svg" alt="Diagramme d'activités" style="max-width: 90%;" />
+                </div>
+                <div class="activity">
+                    <h4>Signaler un problème à la ville</h4>
+                    <img class="activity-diagram" src="images/DIAGRAMME3_SIGNALER PROBLEME.svg" alt="Diagramme d'activités" style="max-width: 100%;" />
+                </div>
+                <div class="activity">
+                    <h4>Consulter et soumettre une requête</h4>
+                    <img class="activity-diagram" src="images/SoumettreRequetes.png" alt="Diagramme d'activités" style="max-width: 90%;" />
+                </div>
+                <div class="activity">
+                    <h4>Envoyer/Afficher notification</h4>
+                    <img class="activity-diagram" src="images/EnvoyerAfficherNotif.png" alt="Diagramme d'activités" style="max-width: 90%;" />
+                </div>
+                <div class="activity">
+                    <h4>Modifier Profil</h4>
+                    <img class="activity-diagram" src="images/ModifierProfil.png" alt="Diagramme d'activités" style="max-width: 90%;" />
+                </div>
+
+                
+            </section>
+
+            <section class="main-section">
+                <h2 id="analysis" class="section-title">Analyse</h2>
+
+                <div>
+                    <h3 class="subsection-title">Risques</h3>
+                    <ol class="risks">
+                        <li>Manque d'adhésion / participation des utilisateurs</li>
+                    <p>
+                        <em>
+                            Le manque d’adhésion des utilisateurs est un risque majeur pour l’application “MaVille”. D'après les données de Statista, 55% des utilisateurs d'applications mobiles abandonnent une application un mois après l'avoir téléchargée, 
+                            et ce taux grimpe à 68 % après trois mois (Levy, s.d.). Localytics souligne une statistique encore plus préoccupante : 21% des utilisateurs abandonnent une application après l'avoir lancée une seule fois (Levy, s.d.). Ces statistiques 
+                            montrent que l’adoption et l’engagement des utilisateurs sont des défis importants pour toute nouvelle application. Si les résidents et les intervenants n’adoptent pas “MaVille”, son impact sera limité, car l’application ne pourra pas 
+                            remplir son rôle de plateforme de communication et de coordination. En outre, les utilisateurs sont souvent réticents à adopter de nouvelles technologies en raison de la complexité perçue ou de la méfiance envers la sécurité des données
+                            (Mamavi et Zerbib, 2024). Une étude de la CNIL a montré que les utilisateurs sont de plus en plus préoccupés par la confidentialité de leurs données personnelles, ce qui peut également freiner l’adoption (CNIL, 2024). Par conséquent, il est 
+                            crucial de prendre en compte ces facteurs pour maximiser l’adhésion des utilisateurs. En résumé, sans une adoption significative, l’application “MaVille” risque de ne pas atteindre ses objectifs de réduction des incompréhensions et 
+                            d’amélioration de la coordination des travaux.
+                        </em>
+                    </p>
+                        
+                    <p>
+                        <em>
+                         Pour surmonter le risque de manque d’adhésion des utilisateurs, plusieurs solutions peuvent être mises en place. Tout d’abord, il est essentiel de créer une interface utilisateur intuitive et conviviale. Une étude a montré que les applications 
+                            avec une interface simple et facile à utiliser ont un taux de rétention plus élevé (AppMaster, 2023). En outre, il est important de lancer des campagnes de sensibilisation pour promouvoir l’utilisation de l’application. Ces campagnes peuvent 
+                            inclure des démonstrations en direct, des tutoriels vidéo, et des témoignages d’utilisateurs satisfaits. De plus, il est crucial de rassurer les utilisateurs sur la sécurité de leurs données. La mise en place de mesures de sécurité robustes et 
+                            la communication transparente sur la gestion des données peuvent aider à gagner la confiance des utilisateurs. Par ailleurs, l’intégration de fonctionnalités utiles et pertinentes, telles que des notifications en temps réel sur les travaux et 
+                            les événements locaux, peut encourager les utilisateurs à adopter l’application. Enfin, il est recommandé de recueillir régulièrement les retours des utilisateurs et d’apporter des améliorations continues à l’application en fonction de leurs besoins 
+                            et de leurs attentes. En mettant en œuvre ces solutions, l’application “MaVille” a de meilleures chances de réussir à attirer et à retenir ses utilisateurs, maximisant ainsi son impact positif sur la communauté.
+                        </em>
+                    </p> 
+                        
+                        <li>Sécurité des données</li>
+                    <p>
+                        <em>
+                            L’application “MaVille” gère des informations personnelles sensibles telles que les adresses et les noms complets des utilisateurs, ce qui la rend vulnérable aux risques de sécurité des données. En 2023, les violations de données ont coûté en moyenne 
+                            4,45 millions de dollars par incident (IBM, 2023). Les cyberattaques ciblant les applications mobiles ont augmenté de 50% en 2023 comparativement à l’années précédente (Kaspersky, 2024). Les données non sécurisées peuvent être exploitées par des 
+                            cybercriminels pour commettre des fraudes, des vols d’identité, et d’autres activités malveillantes. En outre, la perte de données peut entraîner des amendes réglementaires sévères, notamment en vertu du RGPD, qui prévoit des sanctions pouvant atteindre 
+                            20 millions d’euros ou 4% du chiffre d’affaires annuel mondial (Michel, 2023). La confiance des utilisateurs est également en jeu; par exemple, une étude a montré que 47 % des consommateurs américains cesseraient d’utiliser les services d’une entreprise 
+                            après une violation de données (Okta, 2022). Par conséquent, il est crucial de prendre des mesures rigoureuses pour protéger les données des utilisateurs et éviter les conséquences financières et réputationnelles.
+                        </em>
+                    </p>
+                        
+                        <li>Difficultés de mise à jour des informations en temps réel</li>
+                    <p>
+                        <em>
+                            Le risque de ne pas mettre à jour les informations en temps réel pour l’application ‘MaVille’ est significatif. Sans mises à jour opportunes, les informations fournies aux utilisateurs pourraient rapidement devenir obsolètes, entraînant confusion et frustration parmi les citoyens. 
+                            Cela pourrait entraîner un manque de confiance dans l’application, car les utilisateurs pourraient la trouver peu fiable. De plus, des informations obsolètes pourraient causer des perturbations dans les activités quotidiennes, 
+                            telles que des fermetures de routes inattendues ou des retards dans les services publics, qui auraient pu être évités avec des données précises et en temps réel. La crédibilité des parties prenantes impliquées pourrait également être compromise, 
+                            car le public pourrait les percevoir comme inefficaces ou non réactives. Par conséquent, il est crucial de s’assurer que les informations sont à jour pour le succès de l’application et pour maintenir la confiance du public.
+                        </em>
+                    </p>
+                        
+                    <p>
+                        <em>
+                            Pour répondre à ce risque, il est essentiel de mettre en place une architecture qui supporte des mises à jour fréquentes. Une API en temps réel peut faciliter le flux continu d’informations, garantissant que les utilisateurs reçoivent les données les plus récentes. 
+                            Cette approche permet une intégration transparente avec diverses sources de données, permettant des mises à jour automatiques sans intervention manuelle. De plus, l’utilisation de solutions basées sur le cloud peut améliorer la scalabilité et la fiabilité de l’application, 
+                            en accommodant de grands volumes de données et d’interactions utilisateurs. L’emploi de mécanismes robustes de validation et de surveillance des données peut en outre garantir l’exactitude et l’intégrité des informations fournies. En adoptant ces solutions technologiques, 
+                            l’application ‘MaVille’ peut efficacement atténuer le risque d’informations obsolètes, améliorant ainsi l’expérience utilisateur et favorisant une plus grande confiance parmi le public.
+                        </em>
+                    </p> 
+                        <li>Surcharge du système</li>
+                    <p>
+                        <em>
+                            L’application “MaVille” est conçue pour gérer des informations en temps réel sur les travaux publics et privés à Montréal, en permettant aux résidents et aux intervenants d’interagir avec ces données. 
+                            Cependant, si le nombre d’utilisateurs devient important, en particulier pendant les périodes de pic où de nombreux travaux sont en cours, le système pourrait être surchargé. Cette surcharge peut provoquer des ralentissements, voire des pannes, 
+                            affectant la capacité des utilisateurs à consulter ou soumettre des informations. De plus, les notifications en temps réel pour les résidents et les mises à jour fréquentes des travaux par les intervenants peuvent aggraver cette pression sur les serveurs. 
+                            Le document mentionne que l’application devra permettre aux résidents de recevoir des notifications personnalisées pour les projets qui les concernent, ce qui ajoute une complexité supplémentaire à la gestion des données et pourrait nuire à la performance si les 
+                            infrastructures ne sont pas adaptées.
+                        </em>
+                    </p>
+                        
+                    <p>
+                        <em>
+                            Pour éviter cette surcharge, il est essentiel de mettre en place une infrastructure scalable, capable de s’ajuster automatiquement en fonction du nombre d’utilisateurs et du volume de données traitées. 
+                            Par exemple, l’utilisation de serveurs dans le cloud permettrait de gérer les pics de trafic et de s’adapter en temps réel aux besoins de l’application. Une optimisation des bases de données, en structurant les informations par quartiers 
+                            ou par types de travaux, pourrait également réduire la charge lors des requêtes fréquentes de consultation. Le document précise que les résidents doivent pouvoir filtrer les travaux par quartier, type de travaux ou rue, ce qui pourrait être 
+                            utilisé pour limiter les requêtes inutiles et améliorer l’efficacité du système. Enfin, il serait utile d’implémenter des tests de charge réguliers pour anticiper les périodes de forte utilisation et garantir la stabilité de l’application.
+                        </em>
+                    </p> 
+                        <li>Conflits de priorités entre les intervenants</li>
+                    <p>
+                        <em>
+                            Les travaux publics et privés sont une réalité constante dans une grande ville comme Montréal, où de nombreux projets peuvent se chevaucher dans le temps et l’espace. La ville, les promoteurs immobiliers, les entrepreneurs privés et les particuliers peuvent planifier des 
+                            travaux dans la même zone sans coordination, entraînant des embouteillages et des perturbations supplémentaires. Le manque de synchronisation entre les différents intervenants peut rendre la gestion des travaux chaotique, avec des retards dans les projets et une frustration 
+                            accrue chez les citoyens. Dans le document de consignes, il est mentionné que les chantiers peuvent être mal annoncés et causer des perturbations importantes, ce qui amplifie les frustrations liées à l’imprévisibilité des travaux. Sans un outil efficace de coordination, les 
+                            différents acteurs peuvent entrer en conflit, chacun cherchant à faire avancer ses propres projets sans tenir compte de l’impact sur les autres.
+                        </em>
+                    </p>
+                        
+                    <p>
+                        <em>
+                            Pour mitiger ce risque, l’application “MaVille” peut intégrer un système de planification collaborative qui permet à tous les intervenants de visualiser les projets déjà programmés dans une zone donnée. Cela permettrait aux intervenants de mieux coordonner leurs travaux pour éviter 
+                            des chevauchements inutiles et réduire les perturbations pour les résidents. Le document propose déjà que les intervenants puissent consulter les préférences des résidents concernant les périodes de travaux ; cette idée pourrait être étendue en offrant aux intervenants une vue 
+                            d’ensemble des projets en cours. De plus, en ajoutant un tableau de bord centralisé, tous les projets prévus, en cours ou suspendus seraient visibles, facilitant la synchronisation entre les acteurs. Enfin, des notifications pourraient être envoyées automatiquement aux intervenants 
+                            lorsqu’un projet se chevauche avec un autre, les invitant à réévaluer leur calendrier pour mieux s’adapter aux contraintes de la zone.
+                        </em>
+                    </p> 
+                    </ol>
+                </div>
+                <div>
+                    <h3 class="subsection-title">Bibliographie des risques</h3>
+                    <ol class="bibli">
+                        <li>AppMaster. (2023). Conception d'interface utilisateur efficace pour les applications Android. APPMASTER. https://appmaster.io/fr/blog/conception-dinterface-utilisateur-efficace-pour-les-applications-android</li>
+                        <p></p> 
+                        <li>CNIL. (2024). Applications mobiles : la CNIL publie ses recommandations pour mieux protéger la vie privée. CNIL. https://www.cnil.fr/fr/applications-mobiles-la-cnil-publie-ses-recommandations-pour-mieux-proteger-la-vie-privee</li>
+                        <p></p>
+                        <li>IBM. (2023, juillet). Rapport IBM : La moitié des organisations victimes d'une violation ne prévoient pas d’augmenter leurs dépenses de sécurité malgré la montée en flèche du coût des violations. Newsroom IBM France. https://fr.newsroom.ibm.com/Rapport-IBM-La-moitie-des-organisations-victimes-dune-violation-ne-prevoient-pas-daugmenter-leurs-depenses-de-securite-malgre-la-montee-en-fleche-du-cout-des-violations</li>
+                        <p></p>
+                        <li>Kaspersky. (2024, février). Les attaques contre les appareils mobiles ont considérablement augmenté en 2023. Kaspersky. https://www.kaspersky.fr/about/press-releases/les-attaques-contre-les-appareils-mobiles-ont-considerablement-augmente-en-2023</li>
+                        <p></p>
+                        <li>Levy, L. (s.d.). 5 Ways To Optimise Your App For High User Retention. USABILITYGEEK.https://usabilitygeek.com/optimise-app-user-retention/#:~:text=According%20to%20mobile%20app%20user,after%20only%20launching%20it%20once.</li>
+                        <p></p>
+                        <li>Mamavi, O., Zerbib, R. (2024). Intelligence artificielle : quelles stratégies de survie pour les entreprises ?. Harvard Business Review. https://bib.umontreal.ca/citer/styles-bibliographiques/apa?tab=5248896</li>
+                        <p></p>
+                        <li>Michel, J. (2023, avril). Introduction à la sécurité des données en 2023. Analytics.fr. https://analytics.fr/securite/securite-des-donnees/</li>
+                        <p></p>
+                        <li>Okta, A. (2022, février). Qu’est-ce que la confiance numérique et comment profite-t-elle à l’entreprise numérique d’aujourd’hui ?. Okta. https://www.okta.com/fr/blog/2022/02/quest-ce-que-la-confiance-numerique-et-comment-profite-t-elle-a-lentreprise-numerique/</li>
+                    </ol>
+                </div> 
+
+                <div>
+                    <h3 class="subsection-title">Besoins non-fonctionnels</h3>
+                    <ol class="nf-requirements">
+                        <li>Accessibilité multiplateforme</li>
+                    <p>
+                        <em>
+                            Pour garantir une adoption large et efficace, l’application doit être accessible sur une variété d’appareils, y compris les ordinateurs, les téléphones cellulaires et les tablettes. Elle doit également être compatible avec différents systèmes d’exploitation tels que iOS, 
+                            Android et Windows. Cette accessibilité multiplateforme est essentielle pour répondre aux diverses préférences et contraintes technologiques des utilisateurs. En permettant l’accès depuis plusieurs types d’appareils et systèmes, l’application maximisera son utilisation et son 
+                            impact. De plus, cette approche inclusive facilitera l’engagement des utilisateurs, qu’ils soient résidents ou intervenants.
+                        </em>
+                    </p>
+                        <li>Mémoire</li>
+                    <p>
+                        <em>
+                            Pour garantir une performance optimale, l’application doit être conçue de manière à minimiser son empreinte mémoire sur l’ordinateur hôte. Elle doit utiliser les ressources de manière efficace pour éviter de surcharger la mémoire vive (RAM) et le stockage. Cette optimisation est 
+                            cruciale pour assurer que l’application fonctionne de manière fluide, même sur des systèmes avec des capacités limitées. En réduisant l’utilisation de la mémoire, l’application pourra coexister avec d’autres programmes sans provoquer de ralentissements ou de dysfonctionnements.
+                        </em>
+                    </p>
+                        <li>Utilisabilité</li>
+                    <p>
+                        <em>
+                            Pour garantir une utilisabilité optimale, l’application doit être accessible aux personnes en situation de handicap, notamment les personnes aveugles. Elle doit intégrer des fonctionnalités telles que la compatibilité avec les lecteurs d’écran et des commandes vocales pour permettre 
+                            une navigation fluide et intuitive. Cette accessibilité est cruciale pour que les utilisateurs aveugles puissent planifier leurs sorties et rester informés des événements locaux. En répondant aux besoins spécifiques de ces utilisateurs, l’application assure une inclusion maximale et 
+                            une égalité d’accès à l’information. De plus, cette approche renforce l’importance de l’application pour les personnes les plus affectées par les limitations visuelles.
+                        </em>
+                    </p>
+                        <li>Fiabilité</li>
+                    <p>
+                        <em>
+                            Pour garantir une fiabilité optimale, l’application doit être disponible 24 heures sur 24 et 7 jours sur 7. Les résidents et les intervenants doivent pouvoir consulter ou soumettre des informations à tout moment, y compris en dehors des heures de travail. Par exemple, les résidents 
+                            pourraient vouloir signaler des problèmes urgents ou consulter des travaux en cours pendant le week-end ou la nuit. Une haute disponibilité, avec un taux de disponibilité de 99,99%, est essentielle pour assurer que l’application soit fiable et constamment accessible.
+                        </em>
+                    </p>
+                        <li>Performance élevée</li>
+                    <p>
+                        <em>
+                            Pour assurer une performance élevée, l’application doit répondre rapidement aux demandes des utilisateurs. Par exemple, le temps de réponse pour la consultation des travaux en cours et la réception des notifications en temps réel devrait être inférieur à 2 secondes. 
+                            Une application lente ou qui ne fonctionne pas correctement causera de la frustration chez les utilisateurs et réduira l’adoption de l’outil.
+                        </em>
+                    </p>
+                    </ol>
+                </div>
+                
+                <div>
+                    <h3 class="subsection-title">Besoins matériels</h3>
+                    <ol class="besoinmat">
+                        <li>Serveurs de calcul et traitement</li>
+                    <p>
+                        <em>L’application nécessite des serveurs dédiés pour gérer les requêtes des utilisateurs et les traitements en arrière-plan (par exemple, la gestion des notifications et la mise à jour des informations sur les travaux). Dans ce contexte, 
+                            deux options sont possibles :
+                        </em>
+                    </p>
+                    <p>
+                        <em>
+                            •	Achat de serveurs physiques : Si l’équipe souhaite avoir une maîtrise complète sur l’infrastructure, elle devra acheter des serveurs puissants capables de gérer la charge. Ce choix implique des coûts initiaux élevés ainsi que des dépenses d’entretien.
+                        </em>
+                    </p>
+                    <p>
+                        <em>
+                            •	Location de serveurs dans le cloud : Une solution plus flexible consiste à louer des serveurs dans le cloud, permettant ainsi une scalabilité automatique en fonction du nombre d’utilisateurs. Cela réduira les coûts initiaux et offrira une solution adaptable aux besoins futurs.
+                        </em>
+                    </p>
+
+                        <li>Réseau et connectivité</li>
+                    <p>
+                        <em>Une connexion réseau rapide et fiable est cruciale pour assurer la disponibilité continue de l’application, surtout lors de la consultation des données en temps réel et de la synchronisation des informations entre résidents et intervenants. Une connexion réseau rapide et fiable est 
+                            essentielle pour garantir l’interaction fluide entre les utilisateurs et l’application.
+                        </em>
+                    </p>
+                    <p>
+                        <em>
+                            •	Souscrire à une connexion Internet haute vitesse pour les bureaux où se trouve l’équipe de développement.
+                        </em>
+                    </p>
+                    <p>
+                        <em>
+                            •	Mettre en place une infrastructure de gestion du trafic capable de distribuer les requêtes sur plusieurs serveurs, particulièrement lors des pics de charge.
+                        </em>
+                    </p>
+                        
+                        <li>Appareils d’entrée et de sortie</li>
+                    <p>
+                        <em>
+                           Les utilisateurs interagissent avec l’application principalement via leurs appareils personnels. Il est donc essentiel que l’application soit compatible avec une large gamme d’appareils. Les postes de travail pour les équipes de développement, de 
+                            maintenance et d’assistance devront également être équipés d’ordinateurs puissants et d’appareils de test (pour iOS, Android, etc.). 
+                        </em>
+                    </p>
+
+                        <li>Dispositifs de sécurité</li>
+                    <p>
+                        <em>
+                           Des pare-feu, des systèmes de détection d’intrusion par exemple sont nécessaires pour garantir la sécurité des données personnelles des utilisateurs et assurer la confidentialité des échanges. 
+                        </em>
+                    </p>
+                        
+                </div>
+                
+                <div>
+                    
+                    <h3 class="subsection-title">Solution de stockage</h3>
+                    <p>
+                        <em>Nous comptons opter pour un stockage de données dans des fichiers CSV, nous envisageons une organisation simple mais structurée. Chaque type de donnée aura son propre fichier CSV dédié. 
+                            Par exemple, un fichier utilisateurs.csv stockera des informations comme l’ID de l’utilisateur, son nom, son adresse e-mail et son rôle dans l’application. Un autre fichier, travaux.csv, contiendra les détails des travaux, avec des champs comme l’ID du travail, la description, la date de début et de fin, et l’état d’avancement. 
+                            D’autres fichiers peuvent inclure projets.csv pour les projets en cours et évaluations.csv pour les évaluations des projets ou utilisateurs. 
+                        </em>
+                    </p>
+                    <p>
+                        <em>
+                            Les fichiers CSV offrent une solution de stockage légère et universelle, compatible avec de nombreux logiciels de traitement de données comme Excel ou Google Sheets. Leur format simple et non volumineux permet une gestion facile des données tout en assurant une bonne portabilité entre différents systèmes.
+                        </em>
+                    </p>                 
+                    <p>
+                        <em>
+                            Cette approche permet une séparation claire des données, facilitant la gestion et la mise à jour des fichiers. Chaque fichier sera interconnecté par des champs clés, comme l’ID utilisateur, qui servira à lier les différents jeux de données.
+                            Par exemple, en reliant l’ID utilisateur dans utilisateurs.csv à l’ID responsable dans travaux.csv, on pourra associer les utilisateurs aux travaux qu’ils supervisent. Cela simplifie l’analyse et permet de travailler avec des outils qui supportent les formats CSV,
+                            tout en restant léger et compatible avec les logiciels de traitement de données classiques.
+                        </em>
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="subsection-title">Solution d'intégration</h3>
+
+                    <p>
+                        <em>Pour intégrer notre application avec les systèmes déjà existants de la ville, comme l’application Infos Entrave, il est crucial de favoriser la communication entre les différentes plateformes sans avoir à tout redévelopper.
+                            Nous pourrions commencer par étudier les API disponibles de ces systèmes, qui permettent d’accéder aux données et fonctionnalités qu’ils offrent.
+                            Cela nous permettrait de récupérer, par exemple, des informations en temps réel sur les travaux ou les fermetures de rues, sans avoir à redévelopper ces modules.
+                        </em>
+                    </p>
+
+                    <p>
+                        <em>En évaluant ces API ou services tiers, nous pourrions également standardiser les formats d’échange de données, comme l’utilisation du JSON ou XML, afin de garantir une compatibilité entre les systèmes.
+                             Par ailleurs, l’intégration pourrait se faire via des solutions d’interopérabilité qui connectent différents systèmes entre eux tout en assurant la cohérence des données.</em>
+                    </p>
+
+                    <p>
+                        <em>Une autre approche serait de s’assurer que les flux d’information sont harmonisés entre les différentes applications pour éviter les doublons ou les erreurs de données. 
+                            Par exemple, plutôt que de réintégrer manuellement des données déjà présentes dans d’autres systèmes, nous pourrions synchroniser notre application avec les bases de données existantes. 
+                            Cela réduirait les risques de divergences entre les systèmes et faciliterait la gestion des informations en centralisant les mises à jour. 
+                            Enfin, en travaillant avec les services informatiques de la ville, nous pourrions optimiser la compatibilité technique et garantir que les nouvelles données générées par notre application s’intègrent harmonieusement dans l’écosystème numérique déjà en place.
+                        </em>
+                    </p>
+                    
+                </div>
+            </section>
+
+            <section class="main-section">
+                <h2 id="archit" class="section-title">Architecture</h2>
+             <div>
+                  <p> 
+                  Le système commence avec le menu, qui affiche une carte de Montréal. Un API est utilisé pour prendre les informations de la carte, de les afficher, et un autre API pour mettre les zones, les travaux, les endroits à problème, bref, un API servant à afficher des données supplémentaires sur la carte.
+                  
+                  Ensuite, on demande de voir les projets de requêtes, ce qui nécessite un API pour aller chercher les informations sur le site « Infos entraves et travaux ». Après avoir reçu l’information, on enregistre ces données dans la base de données MaVille, par un API, s’appelant « Requête ». Ensuite, cette série de données est affichée pour l’utilisateur.
+                  
+                  Comme autre possibilité, il aurait pu vouloir avoir des projets de travaux, qui eux aussi ont besoin d’un accès à « Infos entraves et travaux ». Mais, ce qui semble être plus important dans notre projet, est que cette information vient de la base de donnés de la ville de Montréal.
+                  
+                  Ainsi, à partir de maintenant, nous n’allons que chercher ces informations à une certaine intervalle de temps afin qu’on soit mise à jour avec le système de la ville qui est malheureusement pas entièrement sur le système MaVille car les requêtes et les travaux peuvent encore être faits de d’autres façons, comme par version papier directement. Nous allons maintenant parler d’une base de donnée de requête et une de travaux et la base de données requête est celle du projet, celle de MaVille, qui se fait mettre à jour à un intervalle de temps prédéfini, et une base de données travaux, qui est appelée la base de données de la ville de Montréal car ces travaux sont officiels et sont prêt à être exécuté par des compagnies privées et par la ville.
+                  
+                  Il peut ensuite sélectionner des éléments sur la carte, sélectionner un travaux, une requête, et ceci va ouvrir les informations en cherchant une seconde fois dans la base de données avec l’adresse demandée pour faire les actions nécessaires. Cette information affichée est maintenant enregistrée dans une mémoire cache, ce qui permet à l’utilisateur d’y avoir accès plus rapidement aux prochaines fois qu’il consulte la carte et/ou les travaux et/ou les requêtes.
+                  
+                  </p>
+                  <p>
+                  Chaque action que l’utilisateur prend est enregistrée dans une base de donnée. Ce qu’on entend par action est, par exemple: aimer une requête déposée, commenter sur une requête, le nombre de fois qu’il ouvre l’application par jour, l’endroit où il crée ses requêtes, les numéros d’identification des requêtes et des travaux visionnées, etc.
+                  </p>
+                  <p>
+                  Afin de se connecter au système de MaVille, le système doit faire des requêtes aux APIs de logging, afin que la connexion se fasse correctement, tout en suivant des protocoles. Également, les protocoles doivent être sécuritaire, donc nous utilisons également des APIs d’authentification, de sécurité de l’API, et d’encryptage.
+                  
+                  À chaque intervalle de temps prédéterminé, le système sauvegarde l’état de chaque branch, de chaque services offerts, leurs utilisations, si il y a des problèmes, des surcharges, une gestion mal organisé, etc. Et il le sauvegarde dans un tracer afin d’avoir ces données si un service est problématique, si une erreur advient ou pour un rafraîchissement du système.
+                  
+                  Des APIs qui vont servir de distributeur de traffic afin d’éviter les surcharges seront mis en place, ainsi que ceux qui ajuste automatiquement le nombre d’instances de service pour mieux prévoir les problèmes, mieux gérer les risques qui pourraient s’occasionner. Nous avons également un API pour les problèmes de services, au cas où un serveur ou un autre système/service ne fonctionne pas, cet API permet de redistribuer les tâches aux autres serveurs et analyser le problème afin de le régler.
+                  
+                  Nous avons un API pour enregistrer les informations personnelles des utilisateurs, surtout ceux des compagnies privées et des agents du secteur public. Un API pour sauvegarder le cache dans un serveur le plus près de l’utilisateur sera mis en place et un gestionnaire de ces caches serait aussi installé.
+                  
+                  Il ne reste plus que le front-end du système à implémenter, ce qui requiert un API d’affichage approprié pour le système MaVille. 
+                  
+                  </p>
+
+                  <h2 id="archit" class="subsection-title">Architecture du système : Microservices</h2> <p>
+                   L’architecture microservices permet de créer des systèmes à plus grande échelle, car elle peut être divisée en plusieurs fonctionnalités qui travaillent en services indépendants. Ceci améliore donc la scalabilité, facilite la correction des problèmes et les nouvelles mises à jour, et permet de mieux gérer les situations de panne d’un service spécifique.
+
+Organisation des services <ol> <p>
+1.	Service Utilisateurs: </p><ol><p>
+a.	Gère les résidents, les compagnies privées, et les agents publics</p><p>
+b.	Authentification et autorisation (intègre un système comme OAuth 2.0)</p></ol><p>
+2.	Service Requêtes :</p><ol><p>
+a.	Gère la création, la modification, et le suivi des requêtes des résidents</p><p>
+b.	Inclut un système de priorisation des requêtes</p></ol><p>
+3.	Service Travaux :</p><ol><p>
+a.	Centralise les données des travaux en cours et des nouveaux projets</p><p>
+b.	Intègre les APIs pour récupérer les données des entraves en temps réel</p></ol><p>
+4.	Service Assignations :</p><ol><p>
+a.	Associe les projets aux compagnies privées intéressées</p><p>
+b.	Gère les notifications et les validations</p></ol><p>
+5.	Service Notifications :</p><ol><p>
+a.	Envoie des notifications aux utilisateurs via courriel, SMS, ou une application mobile</p></ol><p>
+6.	Service Reporting :</p><ol><p>
+a.	Génère des rapports sur les travaux terminés, les requêtes en attente, et les performances des compagnies</p></ol><p>
+7.	Service d'Administration :</p><ol><p>
+a.	Permet à la ville de superviser les projets et de configurer les priorités</p></ol>
+ </ol>
+
+             <h2 id="archit" class="subsection-title">Base de données</h2><p>
+             1. Base NoSQL (MongoDB, DynamoDB) :<ol>
+                 - Pour stocker les données des travaux et des requêtes (rapides, flexibles).</ol>
+             2. Base relationnelle (PostgreSQL, MySQL) : <ol>
+                 - Pour gérer les utilisateurs et les relations entre les projets, requêtes, et compagnies.</ol>
+             3. Base orientée graphe (Neo4j) :<ol>
+                 - Pour modéliser les connexions complexes entre les projets, les compagnies, et les zones géographiques.</ol></p>
+                 
+              <h2 id="archit" class="subsection-title">API et intégrations</h2><p>
+              - Intègre un API Gateway (par exemple, Kong, AWS API Gateway) pour centraliser les appels API et assurer la sécurité.
+              - Communication entre services via gRPC ou REST (en fonction des besoins de performance).</p>
+                   
+              <h2 id="archit" class="subsection-title">Technologies possibles</h2><p>
+              - Backend : Node.js, Python (FastAPI, Django), ou Java (Spring Boot).
+              - Frontend : Frameworks comme React ou Angular.
+              - Infrastructure : Kubernetes pour l'orchestration des conteneurs et Docker pour le packaging.
+              - Messagerie : RabbitMQ ou Kafka pour les notifications asynchrones.
+              - Cloud : AWS, Azure, ou GCP pour l’hébergement scalable.</p>
+
+              <h2 id="archit" class="subsection-title">Résilience et scalabilité</h2><p>
+              - Mise en cache : Utilise Redis ou Memcached pour réduire les temps de réponse.
+              - Monitoring : Installe des outils comme Prometheus et Grafana pour surveiller la performance et l’activité.
+              - CI/CD : Automatise les déploiements avec des outils comme GitHub Actions, Jenkins, ou GitLab CI/CD.</p>
+              
+              <h2 id="archit" class="subsection-title">Sécurité</h2><p>
+              - Chiffrement des communications avec HTTPS.
+              - Authentification via JWT ou OAuth 2.0.
+              - Vérification des droits d’accès (RBAC).</p>
+              
+
+             </p>
+              <div class="architecture">
+                    <img class="class-diagram" src="diagrammes/Architecture.svg" alt="Diagramme du type d'architecture" style="max-width: 100%;">
+              </div>
+
+
+
+             <p>
+             Nous choisissons un design modulaire où la cohésion dans la classe est forte, les relations entre les classes sont faibles et les séparations sont claires visuellement afin d’avoir un programme plus compréhensible. Nous implémentons des classes abstraites car nous avons des modules ayant des similarités, comme les résidents, les compagnies privées et les agents publics, qui ont des éléments en commun, par exemple, le nom, l’adresse, le courriel, le numéro de téléphone et quelques autres. Des classes d’instanciations comme Requetes et Travaux utilise l’encapsulation, afin de créer de nouvelles instances où les informations ne peuvent pas être modifiées sans utiliser les setters données par la classe, et les informations ne peuvent pas être vus sans utiliser les getters. Avec toutes ces fonctionnalités que nous utilisons, une conception qui permet une plus grande docilité dans les changements futurs sur les classes, les méthodes et les variables est donc plus facile à gérer que d’autres modèles qui restreint les modifications possible sur le système. Les répercussions sur des nouveautés apportées au programme sont alors moins négatives et plus simple à régler en suivant ce design. Si de plus gros changements ont besoin d’être faits, par exemple rajouter des villes autres que Montréal dans notre système, rajouter d’autres types d’utilisateurs, modifier les envois des requêtes et des travaux pour qu’ils soient aussi envoyés par lettre, alors notre choix initial permet de faire ces modifications avec une plus grande facilité.
+             </p>
+                </div>
+             <div class="classes">
+                    <img class="class-diagram" src="diagrammes/Class Diagram1.svg" alt="Diagramme de classe" style="max-width: 100%;">
+              </div>
+             <div class="sequence">
+                    <img class="class-diagram" src="diagrammes/SequenceDiagramConsultation.svg" alt="Diagramme de séquence de consultation de travaux" style="max-width: 100%;">
+                    <img class="class-diagram" src="diagrammes/SequenceDiagramConsulterRequetes.svg" alt="Diagramme de séquence de consultation de requêtes" style="max-width: 100%;">
+                    <img class="class-diagram" src="diagrammes/SequenceDiagramSoumettreRequeteTravail.svg" alt="Diagramme de séquence de soumission de requete de travail" style="max-width: 100%;">
+                    <img class="class-diagram" src="diagrammes/SequenceDiagramConsultation.svg" alt="Diagramme de séquence d'inscription et de connexion" style="max-width: 100%;">
+              </div>
+ 
+            </section>
+
+            <section class="main-section">
+                <h2 id="prototype" class="section-title">Prototype</h2>
+
+                <p>
+                    <em>
+                        </em>
+
+    <h2>Premièrement</h2>
+    <p>
+        Pour faciliter le lancement de l'application, veuillez double-cliquer sur le fichier <code>ProtypeDev2.jar</code> dans le dossier <strong>Application</strong>.
+        Si cela ne fonctionne pas, ouvrez le dossier dans le terminal et lancez le fichier jar avec la commande suivante:
+    </p>
+    <pre><code>java -jar PrototypeDev2.jar</code></pre>
+
+    <h2>Après exécution</h2>
+    <p>Vous serez rendu au menu suivant:</p>
+    <blockquote>
+        <p>Bienvenue dans MaVille</p>
+        <p>Menu:</p>
+        <p>Choisir une option:</p>
+        <ul>
+            <li>1. S'inscrire</li>
+            <li>2. Se connecter</li>
+            <li>3. Quitter l'application</li>
+        </ul>
+        <p>Veuillez entrer 1, 2 ou 3 selon ce que vous voulez.</p>
+    </blockquote>
+    
+    <p>
+        Les choix d'options se font ainsi dans pratiquement toutes les fonctionnalités de l'appli excepté pour la recherche des travaux
+    </p>
+
+  
+    <h2>Comptes Préconfigurés - Intervenants</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom Complet</th>
+                <th>Courriel</th>
+                <th>Mot de Passe</th>
+                <th>Type</th>
+                <th>Identifiant Ville</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Entreprise ABC</td>
+                <td>contact@abc.com</td>
+                <td>abcSecure</td>
+                <td>Entreprise publique</td>
+                <td>12345678</td>
+            </tr>
+            <tr>
+                <td>Entrepreneur XYZ</td>
+                <td>xyz@entrepreneur.com</td>
+                <td>xyzPass123</td>
+                <td>Entrepreneur privé</td>
+                <td>87654321</td>
+            </tr>
+            <tr>
+                <td>Jean Inspecteur</td>
+                <td>inspecteur@ville.com</td>
+                <td>villeSecure</td>
+                <td>Particulier</td>
+                <td>11223344</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Comptes Préconfigurés - Résidents</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom Complet</th>
+                <th>Courriel</th>
+                <th>Mot de Passe</th>
+                <th>Date de Naissance</th>
+                <th>Téléphone</th>
+                <th>Adresse Résidentielle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Alice Dupont</td>
+                <td>alice.dupont@example.com</td>
+                <td>Password123</td>
+                <td>1995-05-15</td>
+                <td>514-123-4567</td>
+                <td>123 Rue Principale, Montréal</td>
+            </tr>
+            <tr>
+                <td>Bob Tremblay</td>
+                <td>bob.tremblay@example.com</td>
+                <td>securePass1</td>
+                <td>1980-03-25</td>
+                <td>514-987-6543</td>
+                <td>456 Avenue Saint-Laurent, Montréal</td>
+            </tr>
+            <tr>
+                <td>Charlie Lemieux</td>
+                <td>charlie.lemieux@example.com</td>
+                <td>Lemieux123</td>
+                <td>2000-12-12</td>
+                <td>438-222-3333</td>
+                <td>789 Boulevard René-Lévesque, Montréal</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Requetes Préconfigurés</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre du Travail</th>
+                <th>Description Détailée</th>
+                <th>Type de Travaux</th>
+                <th>Date de Début Espérée</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Réparation de trottoir</td>
+                <td>Le trottoir est endommagé au coin de la rue.</td>
+                <td>Réparation</td>
+                <td>2024-12-01</td>
+            </tr>
+            <tr>
+                <td>Ajout d'une piste cyclable</td>
+                <td>Proposition pour ajouter une piste cyclable le long de l'avenue.</td>
+                <td>Construction</td>
+                <td>2025-01-15</td>
+            </tr>
+        </tbody>
+    </table>
+                Voici un <a href="https://chrisserver.github.io/Gr17_IFT2255/htmlPrototype/loginpage.html">lien</a> vers le site web, qui est encore dans ses premières versions.
+                </p>
+            </section>
+        </div>
+    </main>
+    <footer class="report-footer">
+        <p>
+            Devoir 1 &ndash; Analyse des exigences<br>
+            IFT2255 (Génie logiciel) <br>
+            Automne 2024
+        </p>
+    </footer>
+</body>
+
+</html>
