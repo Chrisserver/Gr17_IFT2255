@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Highlighter</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+        .highlight-btn {
+            position: absolute;
+            display: none;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class='p'>
+            <span class="verse" id="V1">1&#160;</span>
+            In the first year of Cyrus king of the Persians, that the word of the Lord might be accomplished, that he had promised by the mouth of Jeremy;
+        </div>
+        <div class='p'>
+            <span class="verse" id="V2">2&#160;</span>
+            The Lord raised up the spirit of Cyrus the king of the Persians, and he made proclamation through all his kingdom, and also by writing,
+        </div>
+        <div class='p'>
+            <span class="verse" id="V3">3&#160;</span>
+            Saying, Thus saith Cyrus king o...
+        </div>
+    </div>
+
+    <button id="highlight-btn" class="highlight-btn">Highlight</button>
+
+    <script>
+        const content = document.getElementById('content');
+        const highlightBtn = document.getElementById('highlight-btn');
+
+        // Show highlight button when text is selected
+        content.addEventListener('mouseup', () => {
+            const selection = window.getSelection();
+            if (!selection.isCollapsed) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                highlightBtn.style.top = `${window.scrollY + rect.bottom + 5}px`;
+                highlightBtn.style.left = `${rect.left}px`;
+                highlightBtn.style.display = 'block';
+            } else {
+                highlightBtn.style.display = 'none';
+            }
+        });
+
+        // Highlight text and save selection
+        highlightBtn.addEventListener('click', () => {
+            const selection = window.getSelection();
+            const range = selection.getRangeAt(0);
+            const span = document.createElement('span');
+            span.className = 'highlight';
+            range.surroundContents(span);
+            selection.removeAllRanges();
+
+            // Save highlight to localStorage
+            saveHighlight(span.textContent);
+            highlightBtn.style.display = 'none';
+        });
+
+        // Save highlighted text to localStorage
+        function saveHighlight(text) {
+            const highlights = JSON.parse(localStorage.getItem('highlights')) || [];
+            if (!highlights.includes(text)) {
+                highlights.push(text);
+                localStorage.setItem('highlights', JSON.stringify(highlights));
+            }
+        }
+
+        // Restore highlights from localStorage
+        function restoreHighlights() {
+            const highlights = JSON.parse(localStorage.getItem('highlights')) || [];
+            highlights.forEach(text => {
+                const regex = new RegExp(`(${text})`, 'g');
+                content.innerHTML = content.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+            });
+        }
+
+        // Initialize highlights on page load
+        restoreHighlights();
+    </script>
+</body>
+</html>
